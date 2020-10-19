@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SportEvent</string>
+    <string name="event_navn">Event navn</string>
+    <string name="event_beskrivelse">Event beskrivelse</string>
 </resources>
