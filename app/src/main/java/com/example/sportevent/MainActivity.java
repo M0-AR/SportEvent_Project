@@ -14,4 +14,3 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-// /Users/mohammad/SportEvent_Project/SportEvent/app
