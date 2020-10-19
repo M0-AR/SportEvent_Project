@@ -3,8 +3,8 @@ package com.example.sportevent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-// Devol
-//ik
+
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
