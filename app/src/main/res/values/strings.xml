@@ -55,5 +55,15 @@
         <item>55</item>
     </string-array>
 
+    <string-array name="event_title">
+        <item>Skovtur</item>
+        <item>Bytur</item>
+        <item>Cykeltur i regn</item>
+    </string-array>
 
+    <string-array name="event_description">
+        <item>Cykel i naturen..</item>
+        <item>Cykeltur og shopping?</item>
+        <item>Fuld fart ellers bliver du våd</item>
+    </string-array>
 </resources>

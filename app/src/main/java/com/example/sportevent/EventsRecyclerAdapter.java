@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +17,6 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     int[] images;
     Context context;
 
-
     public EventsRecyclerAdapter(Context ctx, String[] s1, String[] s2, int[] imgs){
         context = ctx;
         data1 = s1;
@@ -28,7 +28,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.signupparticipant_recyclerview_row, parent, false);
+        View view = inflater.inflate(R.layout.events_recyclerview_row, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -36,6 +36,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.myText1.setText(data1[position]);
         holder.myText2.setText(data2[position]);
+        holder.myImage.setImageResource(images[position]);
     }
 
     @Override
@@ -46,11 +47,13 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView myText1, myText2;
+        ImageView myImage;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            myText1 = itemView.findViewById(R.id.deltager);
-            myText2 = itemView.findViewById(R.id.deltagerNr);
+            myText1 = itemView.findViewById(R.id.eventTitle);
+            myText2 = itemView.findViewById(R.id.eventDescription);
+            myImage = itemView.findViewById(R.id.eventImage);
 
         }
     }

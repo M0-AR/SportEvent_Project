@@ -12,8 +12,20 @@
         <activity android:name=".SignupParticipants"></activity>
         <activity android:name=".SignupInfo"
                   android:exported="true"/>
-        <activity android:name=".CompletedParticipants" />
-        <activity android:name=".CompletedInfo" />
+        <activity android:name=".CompletedParticipants">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CompletedInfo">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+                   </activity>
         <activity android:name=".InfoPic" />
         <activity android:name=".CompletedEvents">
             <intent-filter>
