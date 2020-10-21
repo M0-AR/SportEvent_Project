@@ -1,3 +1,59 @@
 <resources>
     <string name="app_name">SportEvent</string>
+    
+    <string-array name="participants">
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+    </string-array>
+
+    <string-array name="partici_nr">
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+    </string-array>
+
+
 </resources>
