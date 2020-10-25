@@ -5,13 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.ui.AppBarConfiguration;
 
 import android.os.Bundle;
-
-import static androidx.navigation.Navigation.findNavController;
-
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
