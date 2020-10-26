@@ -7,7 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
 
     @Override

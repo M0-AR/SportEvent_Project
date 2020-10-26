@@ -8,4 +8,70 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="participants">
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+    </string-array>
+
+    <string-array name="partici_nr">
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+    </string-array>
+
+    <string-array name="event_title">
+        <item>Skovtur</item>
+        <item>Bytur</item>
+        <item>Skovtur i regn</item>
+    </string-array>
+
+    <string-array name="event_description">
+        <item>Cykel i naturen, bliv abe.. være abe</item>
+        <item>Cykeltur efterfuldt af shopping?</item>
+        <item>Fuld fart og stress på ellers bliver du våd</item>
+    </string-array>
 </resources>
