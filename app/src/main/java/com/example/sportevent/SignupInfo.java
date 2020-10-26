@@ -1,46 +1,42 @@
 package com.example.sportevent;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class SignupInfo extends AppCompatActivity implements View.OnClickListener {
+public class SignupInfo extends Fragment implements View.OnClickListener{
 
-    Button backButt, homeButt, deltagereButt, tilmeldButt;
+    Button deltagereButt, tilmeldButt;
     TextView eventName, eventInfo;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup_info);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        backButt = findViewById(R.id.backButton);
-        homeButt = findViewById(R.id.homeButton);
-        deltagereButt = findViewById(R.id.deltagereButton);
-        tilmeldButt = findViewById(R.id.tilmeldButton);
-        eventName = findViewById(R.id.eventName);
-        eventInfo = findViewById(R.id.eventInfo);
+        View view = inflater.inflate(R.layout.signup_info, container, false);
 
-        backButt.setOnClickListener(this);
-        homeButt.setOnClickListener(this);
+        deltagereButt = view.findViewById(R.id.deltagereButton);
+        tilmeldButt = view.findViewById(R.id.tilmeldButton);
+        eventName = view.findViewById(R.id.eventName);
+        eventInfo = view.findViewById(R.id.eventInfo);
+
         deltagereButt.setOnClickListener(this);
         tilmeldButt.setOnClickListener(this);
         eventName.setOnClickListener(this);
         eventInfo.setOnClickListener(this);
+
+        return view;
     }
 
     @Override
     public void onClick(View v) {
 
-        if (v == deltagereButt) {
-
-            Intent intent = new Intent(this, SignupParticipants.class);
-            startActivity(intent);
-        }
 
     }
 }
