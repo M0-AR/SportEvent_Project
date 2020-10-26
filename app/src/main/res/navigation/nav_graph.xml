@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.example.sportevent.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_joinedEventFragment"
+            app:destination="@id/joinedEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinedEventFragment"
+        android:name="com.example.sportevent.JoinedEventFragment"
+        android:label="joined_event_fragment"
+        tools:layout="@layout/joined_event_fragment" />
 </navigation>
