@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 // Todo check https://stackoverflow.com/questions/26621060/display-a-recyclerview-in-fragment
 // to use Runnable class
-public class JoinedEventFragment extends Fragment {
+public class JoinedEventFragment extends Fragment implements JoinedEventAdapter.ClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,10 +34,16 @@ public class JoinedEventFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 3. Create an adapter
-        RecyclerView.Adapter mAdapter = new JoinedEventAdapter(joinedEventList);
+        RecyclerView.Adapter mAdapter = new JoinedEventAdapter(joinedEventList, this);
         // 4. Set adapter
         mRecyclerView.setAdapter(mAdapter);
 
         return view;
+    }
+
+    @Override
+    public void mClick(View view, int position) {
+        Toast.makeText(view.getContext(), "JoinedEventFragment : " + position, Toast.LENGTH_SHORT).show();
+
     }
 }
