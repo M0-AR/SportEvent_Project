@@ -1,69 +1,11 @@
 <resources>
     <string name="app_name">SportEvent</string>
-    
-    <string-array name="participants">
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-        <item>poop</item>
-        <item>lol</item>
-        <item>ok</item>
-    </string-array>
+    <string name="home_icon">Home</string>
+    <string name="back_icon">Back</string>
+    <string name="joined_event">Joined Event</string>
 
-    <string-array name="partici_nr">
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-        <item>3</item>
-        <item>44</item>
-        <item>55</item>
-    </string-array>
 
-    <string-array name="event_title">
-        <item>Skovtur</item>
-        <item>Bytur</item>
-        <item>Cykeltur i regn</item>
-    </string-array>
 
-    <string-array name="event_description">
-        <item>Cykel i naturen..</item>
-        <item>Cykeltur og shopping?</item>
-        <item>Fuld fart ellers bliver du våd</item>
-    </string-array>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
