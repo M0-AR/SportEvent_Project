@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">SportEvent</string>
+    <string name="home_icon">Home</string>
+    <string name="back_icon">Back</string>
+    <string name="joined_event">Joined Event</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="event_navn">Event navn</string>
     <string name="event_beskrivelse">Event beskrivelse</string>
 </resources>
