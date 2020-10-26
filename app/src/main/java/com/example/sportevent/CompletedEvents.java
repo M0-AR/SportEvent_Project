@@ -1,27 +1,30 @@
 package com.example.sportevent;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-public class CompletedEvents extends AppCompatActivity implements View.OnClickListener {
+public class CompletedEvents extends Fragment implements View.OnClickListener{
 
     RecyclerView eventsRecycler;
     String[] s1;
     String[] s2;
     int[] images = {R.drawable.eventlistexample,
-                    R.drawable.eventlistexample,
-                    R.drawable.eventlistexample};
+            R.drawable.eventlistexample,
+            R.drawable.eventlistexample};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_completed_events);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view =  inflater.inflate(R.layout.completed_events, container, false);
 
-        eventsRecycler = findViewById(R.id.eventsRecycler);
+        eventsRecycler = view.findViewById(R.id.eventsRecycler);
 
         s1 = getResources().getStringArray(R.array.event_title);
         s2 = getResources().getStringArray(R.array.event_description);
@@ -30,14 +33,12 @@ public class CompletedEvents extends AppCompatActivity implements View.OnClickLi
         eventsRecycler.setAdapter(adapter);
         eventsRecycler.setLayoutManager(new LinearLayoutManager(this));
 
+        return view;
     }
 
     @Override
     public void onClick(View v) {
 
-
     }
+
 }
-
-
-

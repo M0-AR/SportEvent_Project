@@ -37,6 +37,12 @@ public class SignupInfo extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
+        if(v == deltagereButt) {
 
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_container, new SignupParticipants())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }

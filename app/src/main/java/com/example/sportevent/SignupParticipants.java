@@ -1,26 +1,27 @@
 package com.example.sportevent;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 
-public class SignupParticipants extends AppCompatActivity implements View.OnClickListener {
+public class SignupParticipants extends Fragment implements View.OnClickListener{
 
     RecyclerView participantsRecycler;
     String s1[], s2[];
-    Button backButt, homeButt;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup_participants);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.signup_participants, container, false);
 
-        participantsRecycler = findViewById(R.id.participantRecycler);
+        participantsRecycler = view.findViewById(R.id.participantRecycler);
 
         s1 = getResources().getStringArray(R.array.participants);
         s2 = getResources().getStringArray(R.array.partici_nr);
@@ -30,22 +31,11 @@ public class SignupParticipants extends AppCompatActivity implements View.OnClic
         participantsRecycler.setAdapter(adapter);
         participantsRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        backButt = findViewById(R.id.backButton);
-        homeButt = findViewById(R.id.homeButton);
-
-        backButt.setOnClickListener(this);
-        homeButt.setOnClickListener(this);
-
+        return view;
     }
 
     @Override
     public void onClick(View v) {
-
-        if (v == backButt) {
-
-            Intent intent = new Intent(this, SignupInfo.class);
-            startActivity(intent);
-        }
 
     }
 }

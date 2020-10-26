@@ -1,48 +1,49 @@
 package com.example.sportevent;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CompletedInfo extends AppCompatActivity implements View.OnClickListener {
+public class CompletedInfo extends Fragment implements View.OnClickListener{
 
-    Button backButt, homeButt, deltagereButt;
+    Button deltagereButt;
     TextView eventName, eventInfo, eventDescription;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_completed_info);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        backButt = findViewById(R.id.backButton);
-        homeButt = findViewById(R.id.homeButton);
-        deltagereButt = findViewById(R.id.deltagereButton);
-        eventName = findViewById(R.id.eventName);
-        eventInfo = findViewById(R.id.eventInfo);
-        eventDescription = findViewById(R.id.eventDescript);
+        View view = inflater.inflate(R.layout.completed_info, container, false);
 
-        backButt.setOnClickListener(this);
-        homeButt.setOnClickListener(this);
+        deltagereButt = view.findViewById(R.id.deltagereButton);
+        eventName = view.findViewById(R.id.eventName);
+        eventInfo = view.findViewById(R.id.eventInfo);
+        eventDescription = view.findViewById(R.id.eventDescript);
+
         deltagereButt.setOnClickListener(this);
         eventName.setOnClickListener(this);
         eventInfo.setOnClickListener(this);
         eventDescription.setOnClickListener(this);
+
+        return view;
     }
 
     @Override
     public void onClick(View v) {
 
         if (v == deltagereButt) {
-            Intent intent = new Intent(this, CompletedParticipants.class);
-            startActivity(intent);
-        }
-        if (v == backButt) {
-            Intent intent = new Intent(this, CompletedEvents.class);
-            startActivity(intent);
+
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_container, new CompletedParticipants())
+                    .addToBackStack(null)
+                    .commit();
+
         }
     }
 }
