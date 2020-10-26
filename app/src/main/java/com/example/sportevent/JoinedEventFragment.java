@@ -13,7 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+// Todo check https://stackoverflow.com/questions/26621060/display-a-recyclerview-in-fragment
+// to use Runnable class
 public class JoinedEventFragment extends Fragment {
     @Nullable
     @Override
