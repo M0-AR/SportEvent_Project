@@ -14,32 +14,36 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:scaleType="fitXY"
             android:padding="2dp"/>
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_navn"
+            android:text="@string/event_name"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imageView"
+            android:maxLines="1"
+            android:ellipsize="end"
             />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/event_beskrivelse"
+            android:text="@string/event_description"
             android:textSize="15sp"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/imageView"
             android:layout_below="@+id/textView1"
-            />
+            android:maxLines="5"
+            android:ellipsize="end"/>
 
 
     </RelativeLayout>

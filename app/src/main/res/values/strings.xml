@@ -8,6 +8,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="event_navn">Event navn</string>
-    <string name="event_beskrivelse">Event beskrivelse</string>
+    <string name="event_name">Event navn</string>
+    <string name="event_description">Event beskrivelse</string>
+    <string name="participants">Participants</string>
+    <string name="start_event">Start</string>
 </resources>

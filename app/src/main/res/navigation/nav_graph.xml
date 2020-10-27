@@ -16,7 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
-        android:name="com.example.sportevent.JoinedEventFragment"
+        android:name="com.example.sportevent.EventListFragment"
         android:label="joined_event_fragment"
-        tools:layout="@layout/joined_event_fragment" />
+        tools:layout="@layout/fragment_list_event" >
+        <action
+            android:id="@+id/action_joinedEventFragment_to_eventDescriptionFragment"
+            app:destination="@id/eventDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDescriptionFragment"
+        android:name="com.example.sportevent.EventDescriptionFragment"
+        android:label="fragment_description_event"
+        tools:layout="@layout/fragment_description_event" />
 </navigation>
