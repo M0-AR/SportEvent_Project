@@ -34,8 +34,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             Event currentItem = mEventList.get(position);
 
             holder.mImageView.setImageResource(currentItem.getImageResource());
-            holder.mTextView1.setText(currentItem.getTextView1());
-            holder.mTextView2.setText(currentItem.getTextView2());
+            holder.mTextView1.setText(currentItem.getEventName());
+            holder.mTextView2.setText(currentItem.getEventDescription());
         } // Todo how to cover this problem 9:37 https://www.youtube.com/watch?v=reSPN7mgshI&list=PLrnPJCHvNZuDihTpkRs6SpZhqgBqPU118&index=6
     }
 
