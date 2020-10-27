@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_joinedEventFragment"
-            app:destination="@id/joinedEventFragment" />
+            app:destination="@id/joinedEventFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
@@ -21,11 +25,22 @@
         tools:layout="@layout/fragment_list_event" >
         <action
             android:id="@+id/action_joinedEventFragment_to_eventDescriptionFragment"
-            app:destination="@id/eventDescriptionFragment" />
+            app:destination="@id/eventDescriptionFragment"
+          />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
         android:name="com.example.sportevent.EventDescriptionFragment"
         android:label="fragment_description_event"
-        tools:layout="@layout/fragment_description_event" />
+        tools:layout="@layout/fragment_description_event" >
+        <argument
+            android:name="image"
+            app:argType="integer" />
+        <argument
+            android:name="eventName"
+            app:argType="string" />
+        <argument
+            android:name="eventDescription"
+            app:argType="string" />
+    </fragment>
 </navigation>

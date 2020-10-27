@@ -2,24 +2,24 @@ package com.example.sportevent;
 
 public class Event {
     private int imageResource;
-    private String textView1;
-    private String textView2;
+    private String eventName;
+    private String eventDescription;
 
-    public Event(int imageResource, String textView1, String textView2) {
+    public Event(int imageResource, String eventName, String eventDescription) {
         this.imageResource = imageResource;
-        this.textView1 = textView1;
-        this.textView2 = textView2;
+        this.eventName = eventName;
+        this.eventDescription = eventDescription;
     }
 
     public int getImageResource() {
         return imageResource;
     }
 
-    public String getTextView1() {
-        return textView1;
+    public String getEventName() {
+        return eventName;
     }
 
-    public String getTextView2() {
-        return textView2;
+    public String getEventDescription() {
+        return eventDescription;
     }
 }
