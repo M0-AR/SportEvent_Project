@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragment.StartEventFragment"></activity>
+        <activity android:name=".fragment.EventResultFragment"></activity>
+        <activity android:name=".fragment.StartTripFragment" />
+        <activity android:name=".fragment.EventStartFragment" />
         <activity android:name=".fragment.ParticipantListFragment" />
         <activity
             android:name=".MainActivity"

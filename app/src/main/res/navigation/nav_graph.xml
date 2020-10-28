@@ -56,7 +56,7 @@
         tools:layout="@layout/fragment_list_participant" />
     <fragment
         android:id="@+id/startEvent"
-        android:name="com.example.sportevent.fragment.StartEventFragment"
+        android:name="com.example.sportevent.fragment.EventStartFragment"
         android:label="fragment_start_event"
         tools:layout="@layout/fragment_start_event" />
 </navigation>
