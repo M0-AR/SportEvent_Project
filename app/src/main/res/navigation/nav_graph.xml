@@ -51,12 +51,12 @@
     </fragment>
     <fragment
         android:id="@+id/participant"
-        android:name="com.example.sportevent.Participant"
+        android:name="com.example.sportevent.ParticipantFragment"
         android:label="fragment_participant"
         tools:layout="@layout/fragment_participant" />
     <fragment
         android:id="@+id/startEvent"
-        android:name="com.example.sportevent.StartEvent"
+        android:name="com.example.sportevent.StartEventFragment"
         android:label="fragment_start_event"
         tools:layout="@layout/fragment_start_event" />
 </navigation>

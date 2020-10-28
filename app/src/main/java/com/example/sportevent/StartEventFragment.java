@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class StartEvent extends Fragment {
+public class StartEventFragment extends Fragment {
 
     @Nullable
     @Override

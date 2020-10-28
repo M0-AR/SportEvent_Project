@@ -1,20 +1,37 @@
 package com.example.sportevent;
 
+public class Participant {
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+    private int id;
+    private String name;
+    private String email;
+    private String address;
+    private String phoneNumber;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+    public Participant(String name, String email, String address, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
 
-public class Participant extends Fragment {
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_participant, container, false);
-        return view;
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }
