@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.fragment;
 
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.sportevent.R;
 
 public class EventDescriptionFragment extends Fragment implements View.OnClickListener{
 

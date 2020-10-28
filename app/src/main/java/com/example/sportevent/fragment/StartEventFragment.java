@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.sportevent.R;
 
 public class StartEventFragment extends Fragment {
 

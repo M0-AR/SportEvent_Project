@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.data;
 
 public class Event {
     private int imageResource;

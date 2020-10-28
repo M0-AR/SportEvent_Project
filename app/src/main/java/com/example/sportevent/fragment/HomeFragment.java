@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.sportevent.R;
 
 import java.util.Objects;
 

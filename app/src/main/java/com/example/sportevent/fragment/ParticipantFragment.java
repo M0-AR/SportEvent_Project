@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.fragment;
 
 
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.sportevent.R;
 
 public class ParticipantFragment extends Fragment {
     @Nullable

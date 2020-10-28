@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.sportevent.HomeFragment"
+        android:name="com.example.sportevent.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
-        android:name="com.example.sportevent.EventListFragment"
+        android:name="com.example.sportevent.fragment.EventListFragment"
         android:label="joined_event_fragment"
         tools:layout="@layout/fragment_list_event" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
-        android:name="com.example.sportevent.EventDescriptionFragment"
+        android:name="com.example.sportevent.fragment.EventDescriptionFragment"
         android:label="fragment_description_event"
         tools:layout="@layout/fragment_description_event" >
         <argument
@@ -51,12 +51,12 @@
     </fragment>
     <fragment
         android:id="@+id/participant"
-        android:name="com.example.sportevent.ParticipantFragment"
+        android:name="com.example.sportevent.fragment.ParticipantFragment"
         android:label="fragment_participant"
         tools:layout="@layout/fragment_participant" />
     <fragment
         android:id="@+id/startEvent"
-        android:name="com.example.sportevent.StartEventFragment"
+        android:name="com.example.sportevent.fragment.StartEventFragment"
         android:label="fragment_start_event"
         tools:layout="@layout/fragment_start_event" />
 </navigation>

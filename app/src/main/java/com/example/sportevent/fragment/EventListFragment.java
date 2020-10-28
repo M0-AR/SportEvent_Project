@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.sportevent.R;
+import com.example.sportevent.fragment.adapters.EventAdapter;
+import com.example.sportevent.data.Event;
 
 // Todo check https://stackoverflow.com/questions/26621060/display-a-recyclerview-in-fragment
 // to use Runnable class
