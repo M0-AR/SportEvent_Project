@@ -42,5 +42,21 @@
         <argument
             android:name="eventDescription"
             app:argType="string" />
+        <action
+            android:id="@+id/action_eventDescriptionFragment_to_participant"
+            app:destination="@id/participant" />
+        <action
+            android:id="@+id/action_eventDescriptionFragment_to_startEvent"
+            app:destination="@id/startEvent" />
     </fragment>
+    <fragment
+        android:id="@+id/participant"
+        android:name="com.example.sportevent.Participant"
+        android:label="fragment_participant"
+        tools:layout="@layout/fragment_participant" />
+    <fragment
+        android:id="@+id/startEvent"
+        android:name="com.example.sportevent.StartEvent"
+        android:label="fragment_start_event"
+        tools:layout="@layout/fragment_start_event" />
 </navigation>

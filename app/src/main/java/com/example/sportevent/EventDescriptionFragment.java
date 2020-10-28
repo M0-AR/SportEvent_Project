@@ -5,15 +5,17 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
-public class EventDescriptionFragment extends Fragment {
+public class EventDescriptionFragment extends Fragment implements View.OnClickListener{
 
     @Nullable
     @Override
@@ -28,19 +30,56 @@ public class EventDescriptionFragment extends Fragment {
 
         TextView textView1 = view.findViewById(R.id.textView1);
         textView1.setText(getArguments().getString("eventName"));
+
         TextView textView2 = view.findViewById(R.id.textView2);
         textView2.setText(getArguments().getString("eventDescription"));
         textView2.setMovementMethod(new ScrollingMovementMethod());
 
+        final Button participantList = view.findViewById(R.id.participant_list);
+        participantList.setOnClickListener(this);
+        final Button startEvent = view.findViewById(R.id.event_start);
+        startEvent.setOnClickListener(this);
 
         return view;
     }
 
 
-    @Override
+   /* @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        final Button participantList = view.findViewById(R.id.participant_list);
+        final NavController navControllerStart = Navigation.findNavController(view);
+        participantList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navControllerStart.navigate(R.id.action_homeFragment_to_joinedEventFragment);
+            }
+        });
 
+        final Button startEvent = view.findViewById(R.id.event_start);
+        final NavController navController = Navigation.findNavController(view);
+        startEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_homeFragment_to_joinedEventFragment);
+            }
+        });
+
+    }*/
+
+    @Override
+    public void onClick(View v) {
+        NavController navController = Navigation.findNavController(v);;
+        switch (v.getId()) {
+            case R.id.participant_list:
+                navController.navigate(R.id.action_eventDescriptionFragment_to_participant);
+                break;
+            case R.id.event_start:
+                navController.navigate(R.id.action_eventDescriptionFragment_to_startEvent);
+                break;
+            default:
+                break;
+        }
     }
 }
