@@ -33,11 +33,19 @@ public class CompletedEvents extends Fragment implements View.OnClickListener{
         eventsRecycler.setAdapter(adapter);
         eventsRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        eventsRecycler.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
+
+        if (v == eventsRecycler) { //IMPLEMENT SO ONLICK WORKS
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_container, new CompletedInfo())
+                    .addToBackStack(null)
+                    .commit();
+        }
 
     }
 

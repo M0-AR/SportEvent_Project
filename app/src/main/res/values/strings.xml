@@ -79,9 +79,9 @@
     </string-array>
 
     <string-array name="event_description">
-        <item>Cykel i naturen, bliv abe.. være abe</item>
+        <item>Cykel i naturen</item>
         <item>Cykeltur efterfuldt af shopping?</item>
-        <item>Fuld fart og stress på ellers bliver du våd</item>
+        <item>På farten ellers bliver du våd</item>
     </string-array>
 
     <string name="app_name">SportEvent</string>
