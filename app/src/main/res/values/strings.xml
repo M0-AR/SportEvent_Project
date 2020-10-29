@@ -1,4 +1,89 @@
 <resources>
+
+    <string-array name="participants">
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+        <item>poop</item>
+        <item>lol</item>
+        <item>ok</item>
+    </string-array>
+
+    <string-array name="partici_nr">
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+        <item>3</item>
+        <item>44</item>
+        <item>55</item>
+    </string-array>
+
+    <string-array name="partici_time">
+        <item>1.  9:44</item>
+        <item>2.  11:22</item>
+        <item>3.  11:33</item>
+        <item>4.  11:44</item>
+        <item>5.  12:22</item>
+        <item>6.  13:33</item>
+        <item>7.  14:22</item>
+        <item>8.  15:22</item>
+        <item>9.  21:33</item>
+        <item>10.  22:22</item>
+        <item>11.  23:22</item>
+        <item>12.  25:33</item>
+        <item>13.  33:22</item>
+        <item>14.  31:22</item>
+        <item>15.  35:33</item>
+        <item>16.  41:22</item>
+        <item>17.  42:22</item>
+        <item>18.  43:33</item>
+        <item>19.  44:22</item>
+        <item>20.  45:22</item>
+        <item>21.  45:33</item>
+    </string-array>
+
+    <string-array name="event_title">
+        <item>Skovtur</item>
+        <item>Bytur</item>
+        <item>Skovtur i regn</item>
+    </string-array>
+
+    <string-array name="event_description">
+        <item>Cykel i naturen</item>
+        <item>Cykeltur efterfuldt af shopping?</item>
+        <item>På farten ellers bliver du våd</item>
+    </string-array>
+
     <string name="app_name">SportEvent</string>
     <string name="home_icon">Home</string>
     <string name="back_icon">Back</string>
