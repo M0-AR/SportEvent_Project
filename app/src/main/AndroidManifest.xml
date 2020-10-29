@@ -16,7 +16,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBnR4ViXl40S9SvXdCt4g2lGg8jWr5ATA0"/>
-        
+
         <activity android:name=".fragment.EventResultFragment"
             tools:ignore="Instantiatable" />
         <activity android:name=".fragment.EventStartFragment"
