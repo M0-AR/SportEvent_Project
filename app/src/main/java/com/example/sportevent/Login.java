@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Login extends Fragment implements View.OnClickListener {
     Button loginUser;
@@ -38,14 +39,17 @@ public class Login extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
+            case R.id.orgLoginButton:
+                // todo Organizer button  first screen
+                Toast.makeText(view.getContext(), "Could work next time", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.userLoginButton:
                 navController.navigate(R.id.action_login_to_loginEmail);
                 break;
-            case R.id.orgLoginButton:
-                navController.navigate(R.id.action_login_to_loginEmail);
-                break;
             case R.id.signupButton:
-                navController.navigate(R.id.action_login_to_createUser);
+                Toast.makeText(view.getContext(), "It's working but there is small bug Can't open now", Toast.LENGTH_SHORT).show();
+                // todo SignUpButton First screen navController.navigate(R.id.action_login_to_createUser);
+                break;
             default:
                 break;
 

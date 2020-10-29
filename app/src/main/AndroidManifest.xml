@@ -24,11 +24,12 @@
         <activity android:name=".fragment.ParticipantListFragment"
             tools:ignore="Instantiatable" />
 
-        <activity android:name=".SignupToEventHome"
-            tools:ignore="Instantiatable"></activity>
+        <activity
+            android:name=".SignupToEventHome"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".CreateUser"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".LoginEmail"
             tools:ignore="Instantiatable" />
