@@ -3,6 +3,8 @@ package com.example.sportevent.fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +19,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class EventStartFragment extends Fragment implements OnMapReadyCallback {
+public class EventStartFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener{
 
     private MapView mMapView;
 
@@ -34,6 +36,8 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback {
         return view;
     }
 
+
+
     private void initGoogleMap(Bundle savedInstanceState){
         // *** IMPORTANT ***
         // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
@@ -46,6 +50,18 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback {
         mMapView.onCreate(mapViewBundle);
 
         mMapView.getMapAsync(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        String s = v.getTextAlignment()+"";
+
+        NavController navController = Navigation.findNavController(v);
+
+        switch (v.getId()) {
+            case R.id.start_event:
+                break;
+        }
     }
 
     @Override
@@ -88,4 +104,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback {
         super.onLowMemory();
         mMapView.onLowMemory();
     }
+
+
 }
