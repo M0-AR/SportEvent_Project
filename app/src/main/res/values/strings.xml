@@ -10,4 +10,6 @@
     <string name="organizer_login">OrganizerLogin</string>
     <string name="user_login">UserLogin</string>
     <string name="sign_up">Signup</string>
+    <string name="login_button">Login</string>
+    <string name="enter_e_mail">Enter E-mail</string>
 </resources>
