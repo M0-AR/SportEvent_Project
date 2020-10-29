@@ -39,36 +39,11 @@ public class EventDescriptionFragment extends Fragment implements View.OnClickLi
 
         final Button participantList = view.findViewById(R.id.participant_list);
         participantList.setOnClickListener(this);
-        final Button startEvent = view.findViewById(R.id.event_start);
+        final Button startEvent = view.findViewById(R.id.event_start_description);
         startEvent.setOnClickListener(this);
 
         return view;
     }
-
-
-   /* @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        final Button participantList = view.findViewById(R.id.participant_list);
-        final NavController navControllerStart = Navigation.findNavController(view);
-        participantList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navControllerStart.navigate(R.id.action_homeFragment_to_joinedEventFragment);
-            }
-        });
-
-        final Button startEvent = view.findViewById(R.id.event_start);
-        final NavController navController = Navigation.findNavController(view);
-        startEvent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_homeFragment_to_joinedEventFragment);
-            }
-        });
-
-    }*/
 
     @Override
     public void onClick(View v) {
@@ -77,7 +52,7 @@ public class EventDescriptionFragment extends Fragment implements View.OnClickLi
             case R.id.participant_list:
                 navController.navigate(R.id.action_eventDescriptionFragment_to_participant);
                 break;
-            case R.id.event_start:
+            case R.id.event_start_description:
                 navController.navigate(R.id.action_eventDescriptionFragment_to_startEvent);
                 break;
             default:

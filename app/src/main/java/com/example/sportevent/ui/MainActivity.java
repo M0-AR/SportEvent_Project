@@ -7,8 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
+import com.example.sportevent.R;
 
 import com.example.sportevent.R;
 

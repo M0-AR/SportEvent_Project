@@ -6,7 +6,7 @@
     android:layout_margin="8dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".fragment.HomeFragment">
+    tools:context="com.example.sportevent.fragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

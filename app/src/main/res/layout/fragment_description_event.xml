@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     android:orientation="vertical"
-    tools:context=".fragment.EventDescriptionFragment">
+    tools:context="com.example.sportevent.fragment.EventDescriptionFragment">
 
 
     <ImageView
@@ -56,7 +56,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/event_start"
+            android:id="@+id/event_start_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
