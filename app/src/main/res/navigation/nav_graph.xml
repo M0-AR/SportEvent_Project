@@ -26,10 +26,19 @@
         android:id="@+id/loginEmail"
         android:name="com.example.sportevent.LoginEmail"
         android:label="fragment_login_email"
-        tools:layout="@layout/fragment_login_email" />
+        tools:layout="@layout/fragment_login_email" >
+        <action
+            android:id="@+id/action_loginEmail_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createUser"
         android:name="com.example.sportevent.CreateUser"
         android:label="fragment_create_user"
         tools:layout="@layout/fragment_create_user" />
+    <fragment
+        android:id="@+id/signupToEventHome"
+        android:name="com.example.sportevent.SignupToEventHome"
+        android:label="fragment_signup_to_event_home"
+        tools:layout="@layout/fragment_signup_to_event_home" />
 </navigation>
