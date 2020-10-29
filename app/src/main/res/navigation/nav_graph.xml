@@ -58,5 +58,14 @@
         android:id="@+id/startEvent"
         android:name="com.example.sportevent.fragment.EventStartFragment"
         android:label="fragment_start_event"
-        tools:layout="@layout/fragment_start_event" />
+        tools:layout="@layout/fragment_start_event" >
+        <action
+            android:id="@+id/action_startEvent_to_eventResultFragment"
+            app:destination="@id/eventResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventResultFragment"
+        android:name="com.example.sportevent.fragment.EventResultFragment"
+        android:label="fragment_result_event"
+        tools:layout="@layout/fragment_result_event" />
 </navigation>

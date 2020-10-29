@@ -14,4 +14,14 @@
     <string name="participant_name_test">Participant\'s name</string>
     <string name="participant_id_test">Participant\'s id</string>
     <string name="start_event_button">Start Event</string>
+    <string name="result_information">Result\'s Information</string>
+    <string name="time_counter">Time:</string>
+    <string name="distance">Distance:</string>
+    <string name="race_place_number">Race place number:</string>
+    <string name="medal">Medal</string>
+    <string name="participants_number_result">Participant:</string>
+    <string name="result_user_name">"Name: "</string>
+    <string name="speed_start_event">"\t\t\t\t\tSpeed\n\n\t\t\t\t\t\t\t\t\t\tkm/h"</string>
+    <string name="distance_start_event">"\t\t\t\tDistance\n\n\t\t\t\t\t\t\t\t\t\t\t\tkm"</string>
+    <string name="timer_start_event">"\t\t\t\t\tTimer\n\n\t\t\t\t\t\t\t\t\t\tmin"</string>
 </resources>

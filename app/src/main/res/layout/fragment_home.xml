@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button"
             android:text="Event List"
-            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             android:layout_marginBottom="64dp"/>
 
         <Button
@@ -31,7 +33,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button"
             android:text="Joined Event"
-            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             android:layout_marginBottom="64dp"/>
 
         <Button
@@ -40,7 +44,9 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button"
             android:text="Finished Event"
-            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             android:layout_marginBottom="64dp"/>
 
     </LinearLayout>
