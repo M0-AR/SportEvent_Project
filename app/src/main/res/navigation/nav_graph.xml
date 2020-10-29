@@ -44,10 +44,18 @@
             app:argType="string" />
         <action
             android:id="@+id/action_eventDescriptionFragment_to_participant"
-            app:destination="@id/participant" />
+            app:destination="@id/participant"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_eventDescriptionFragment_to_startEvent"
-            app:destination="@id/startEvent" />
+            app:destination="@id/startEvent"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/participant"
@@ -61,11 +69,21 @@
         tools:layout="@layout/fragment_start_event" >
         <action
             android:id="@+id/action_startEvent_to_eventResultFragment"
-            app:destination="@id/eventResultFragment" />
+            app:destination="@id/eventResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/eventResultFragment"
         android:name="com.example.sportevent.fragment.EventResultFragment"
         android:label="fragment_result_event"
-        tools:layout="@layout/fragment_result_event" />
+        tools:layout="@layout/fragment_result_event" >
+        <action
+            android:id="@+id/action_eventResultFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
