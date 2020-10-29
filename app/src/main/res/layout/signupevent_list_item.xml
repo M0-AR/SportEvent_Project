@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="150dp"
+android:layout_height="350dp"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_marginBottom="4dp"
+app:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:background="@mipmap/ic_launcher"
+                android:id="@+id/signupEventImage"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"/>
+
+            <TextView
+                android:id="@+id/signupEventName"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Name"/>
+
+            <TextView
+                android:id="@+id/signupEventDesc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:text="Teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeext" />
+
+
+
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>

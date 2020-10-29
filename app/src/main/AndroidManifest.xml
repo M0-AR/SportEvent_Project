@@ -24,6 +24,17 @@
         <activity android:name=".fragment.ParticipantListFragment"
             tools:ignore="Instantiatable" />
 
+        <activity android:name=".SignupToEventHome"
+            tools:ignore="Instantiatable"></activity>
+        <activity
+            android:name=".CreateUser"
+            tools:ignore="Instantiatable"></activity>
+        <activity
+            android:name=".LoginEmail"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".Login"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

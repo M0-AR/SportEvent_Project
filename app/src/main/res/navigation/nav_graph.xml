@@ -29,6 +29,18 @@
           />
     </fragment>
     <fragment
+        android:id="@+id/login"
+        android:name="com.example.sportevent.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_loginEmail"
+            app:destination="@id/loginEmail" />
+        <action
+            android:id="@+id/action_login_to_createUser"
+            app:destination="@id/createUser" />
+    </fragment>
+    <fragment
         android:id="@+id/eventDescriptionFragment"
         android:name="com.example.sportevent.fragment.EventDescriptionFragment"
         android:label="fragment_description_event"
@@ -86,4 +98,23 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/loginEmail"
+        android:name="com.example.sportevent.LoginEmail"
+        android:label="fragment_login_email"
+        tools:layout="@layout/fragment_login_email" >
+        <action
+            android:id="@+id/action_loginEmail_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createUser"
+        android:name="com.example.sportevent.CreateUser"
+        android:label="fragment_create_user"
+        tools:layout="@layout/fragment_create_user" />
+    <fragment
+        android:id="@+id/signupToEventHome"
+        android:name="com.example.sportevent.SignupToEventHome"
+        android:label="fragment_signup_to_event_home"
+        tools:layout="@layout/fragment_signup_to_event_home" />
 </navigation>
