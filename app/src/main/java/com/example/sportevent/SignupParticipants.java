@@ -26,10 +26,10 @@ public class SignupParticipants extends Fragment implements View.OnClickListener
         s1 = getResources().getStringArray(R.array.participants);
         s2 = getResources().getStringArray(R.array.partici_nr);
 
-        SignupParticipantsRecyclerAdapter adapter = new SignupParticipantsRecyclerAdapter(this, s1, s2);
+        SignupParticipantsRecyclerAdapter adapter = new SignupParticipantsRecyclerAdapter(s1, s2);
 
         participantsRecycler.setAdapter(adapter);
-        participantsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        participantsRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
     }

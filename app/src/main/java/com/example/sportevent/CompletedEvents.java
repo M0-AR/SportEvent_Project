@@ -29,9 +29,9 @@ public class CompletedEvents extends Fragment implements View.OnClickListener{
         s1 = getResources().getStringArray(R.array.event_title);
         s2 = getResources().getStringArray(R.array.event_description);
 
-        EventsRecyclerAdapter adapter = new EventsRecyclerAdapter(this, s1, s2, images);
+        EventsRecyclerAdapter adapter = new EventsRecyclerAdapter(s1, s2, images);
         eventsRecycler.setAdapter(adapter);
-        eventsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        eventsRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
     }

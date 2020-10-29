@@ -13,10 +13,8 @@ public class SignupParticipantsRecyclerAdapter extends RecyclerView.Adapter<Sign
 
     String[] data1;
     String[] data2;
-    Context context;
 
-    public SignupParticipantsRecyclerAdapter(Context ctx, String[] s1, String[] s2){
-        context = ctx;
+    public SignupParticipantsRecyclerAdapter(String[] s1, String[] s2){
         data1 = s1;
         data2 = s2;
     }
@@ -24,7 +22,7 @@ public class SignupParticipantsRecyclerAdapter extends RecyclerView.Adapter<Sign
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.signupparticipant_recyclerview_row, parent, false);
         return new MyViewHolder(view);
     }

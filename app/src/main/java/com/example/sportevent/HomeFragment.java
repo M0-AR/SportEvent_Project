@@ -40,5 +40,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     .commit();
         }
 
+        if(v == finishedEvent) {
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_container, new CompletedParticipants())
+                    .addToBackStack(null)
+                    .commit();
+        }
+
+
     }
 }
