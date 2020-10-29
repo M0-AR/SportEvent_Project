@@ -12,4 +12,12 @@
     <string name="sign_up">Signup</string>
     <string name="login_button">Login</string>
     <string name="enter_e_mail">Enter E-mail</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_phone_number">Enter Phone number</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="register_user">Register</string>
+    <string name="name_title_edittext">Name:</string>
+    <string name="e_mail_title_edittext">E-mail:</string>
+    <string name="address_title_edittext">Address:</string>
+    <string name="phone_number_title_edittext">Phone number:</string>
 </resources>

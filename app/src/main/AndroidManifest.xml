@@ -11,9 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginEmail"
+            android:name=".CreateUser"
             tools:ignore="Instantiatable">
         </activity>
+        <activity
+            android:name=".LoginEmail"
+            tools:ignore="Instantiatable"></activity>
         <activity
             android:name=".Login"
             tools:ignore="Instantiatable" />

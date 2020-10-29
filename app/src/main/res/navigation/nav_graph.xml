@@ -16,12 +16,20 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login_to_loginEmail2"
+            android:id="@+id/action_login_to_loginEmail"
             app:destination="@id/loginEmail" />
+        <action
+            android:id="@+id/action_login_to_createUser"
+            app:destination="@id/createUser" />
     </fragment>
     <fragment
         android:id="@+id/loginEmail"
         android:name="com.example.sportevent.LoginEmail"
         android:label="fragment_login_email"
         tools:layout="@layout/fragment_login_email" />
+    <fragment
+        android:id="@+id/createUser"
+        android:name="com.example.sportevent.CreateUser"
+        android:label="fragment_create_user"
+        tools:layout="@layout/fragment_create_user" />
 </navigation>

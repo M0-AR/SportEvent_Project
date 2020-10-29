@@ -15,6 +15,7 @@ import android.widget.Button;
 public class Login extends Fragment implements View.OnClickListener {
     Button loginUser;
     Button loginOrg;
+    Button signup;
 
     @Nullable
     @Override
@@ -28,7 +29,8 @@ public class Login extends Fragment implements View.OnClickListener {
         loginOrg = (Button) view.findViewById(R.id.orgLoginButton);
         loginOrg.setOnClickListener(this);
 
-
+        signup = (Button) view.findViewById(R.id.signupButton);
+        signup.setOnClickListener(this);
 
         return view;
     }
@@ -37,11 +39,13 @@ public class Login extends Fragment implements View.OnClickListener {
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.userLoginButton:
-                navController.navigate(R.id.action_login_to_loginEmail2);
+                navController.navigate(R.id.action_login_to_loginEmail);
                 break;
             case R.id.orgLoginButton:
-                navController.navigate(R.id.action_login_to_loginEmail2);
+                navController.navigate(R.id.action_login_to_loginEmail);
                 break;
+            case R.id.signupButton:
+                navController.navigate(R.id.action_login_to_createUser);
             default:
                 break;
 
