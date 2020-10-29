@@ -5,7 +5,9 @@
     <string name="joined_event">Joined Event</string>
 
 
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="organizer_login">OrganizerLogin</string>
+    <string name="user_login">UserLogin</string>
+    <string name="sign_up">Signup</string>
 </resources>
