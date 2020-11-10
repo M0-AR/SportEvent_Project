@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final Button joinedEventButton = view.findViewById(R.id.joined_event);
+        final Button finishedEventButton = view.findViewById(R.id.finished_event);
 
         final NavController navController = Navigation.findNavController(view);
 
@@ -41,5 +42,13 @@ public class HomeFragment extends Fragment {
                 navController.navigate(R.id.action_homeFragment_to_joinedEventFragment);
             }
         });
+
+        finishedEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_homeFragment_to_participantListFragment2);
+            }
+        });
+
     }
 }

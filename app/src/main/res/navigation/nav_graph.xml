@@ -17,6 +17,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_participantListFragment2"
+            app:destination="@id/participantListFragment2" />
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
@@ -112,4 +115,14 @@
         android:name="com.example.sportevent.CreateUser"
         android:label="fragment_create_user"
         tools:layout="@layout/fragment_create_user" />
+    <fragment
+        android:id="@+id/completedParticipants"
+        android:name="com.example.sportevent.CompletedParticipants"
+        android:label="completed_participants"
+        tools:layout="@layout/completed_participants" />
+    <fragment
+        android:id="@+id/participantListFragment2"
+        android:name="com.example.sportevent.fragment.ParticipantListFragment2"
+        android:label="fragment_list_participant2"
+        tools:layout="@layout/fragment_list_participant2" />
 </navigation>
