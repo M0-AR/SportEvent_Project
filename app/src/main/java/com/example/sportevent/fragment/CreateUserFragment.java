@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,9 +15,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.sportevent.R;
+
 import java.util.Objects;
 
-class CreateUser extends Fragment {
+class CreateUserFragment extends Fragment {
 
     @Nullable
     @Override

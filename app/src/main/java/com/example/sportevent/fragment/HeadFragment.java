@@ -1,4 +1,4 @@
-package com.example.sportevent;
+package com.example.sportevent.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class Login extends Fragment implements View.OnClickListener {
+import com.example.sportevent.R;
+
+public class HeadFragment extends Fragment implements View.OnClickListener {
     Button loginUser;
     Button loginOrg;
     Button signup;
