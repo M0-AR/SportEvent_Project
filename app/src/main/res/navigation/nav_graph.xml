@@ -115,11 +115,7 @@
         android:name="com.example.sportevent.fragment.CreateUserFragment"
         android:label="fragment_create_user"
         tools:layout="@layout/fragment_create_user" />
-    <fragment
-        android:id="@+id/completedParticipants"
-        android:name="com.example.sportevent.CompletedParticipants"
-        android:label="completed_participants"
-        tools:layout="@layout/completed_participants" />
+
     <fragment
         android:id="@+id/participantListFragment2"
         android:name="com.example.sportevent.fragment.ParticipantListFragment2"
