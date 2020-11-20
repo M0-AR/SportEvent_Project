@@ -69,7 +69,8 @@
             android:text="@string/start_event"
             android:textSize="14sp"
             android:textColor="@android:color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:visibility="invisible"/>
     </LinearLayout>
 
 </LinearLayout>

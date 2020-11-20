@@ -20,15 +20,13 @@ import com.example.sportevent.R;
 import com.example.sportevent.fragment.adapters.EventAdapter;
 import com.example.sportevent.data.Event;
 
-// Todo check https://stackoverflow.com/questions/26621060/display-a-recyclerview-in-fragment
-// to use Runnable class
-public class EventListFragment extends Fragment {
-   private EventAdapter mEventAdapter;
+public class EventListFragmentTEMP extends Fragment {
+    private EventAdapter mEventAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_event, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_temp, container, false);
 
         //need to check user choice to know which fragment to focus on, crashes the app.. idk
         //int prevID = Navigation.findNavController(view).getPreviousBackStackEntry().getDestination().getId();
@@ -76,7 +74,6 @@ public class EventListFragment extends Fragment {
         return view;
     }
 
-
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -90,7 +87,7 @@ public class EventListFragment extends Fragment {
                 bundle.putInt("image", event.getImageResource());
                 bundle.putString("eventName", event.getEventName());
                 bundle.putString("eventDescription", event.getEventDescription());
-                navController.navigate(R.id.action_joinedEventFragment_to_eventDescriptionFragment, bundle);
+                navController.navigate(R.id.action_eventListFragmentTEMP2_to_eventDescriptionFragment1, bundle);
             }
         });
 

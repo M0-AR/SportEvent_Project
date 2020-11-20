@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final Button joinedEventButton = view.findViewById(R.id.joined_event);
         final Button finishedEventButton = view.findViewById(R.id.finished_event);
+        final Button signupEventButton = view.findViewById(R.id.event_list);
 
         final NavController navController = Navigation.findNavController(view);
 
@@ -46,7 +47,14 @@ public class HomeFragment extends Fragment {
         finishedEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_homeFragment_to_participantListFragment2);
+                navController.navigate(R.id.action_homeFragment_to_completedEventFragment);
+            }
+        });
+
+        signupEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_homeFragment_to_eventListFragmentTEMP2);
             }
         });
 
