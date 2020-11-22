@@ -124,4 +124,6 @@
     <string name="e_mail_title_edittext">E-mail:</string>
     <string name="address_title_edittext">Address:</string>
     <string name="phone_number_title_edittext">Phone number:</string>
+    <string name="terms_and_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="contact_us">Contact US</string>
 </resources>

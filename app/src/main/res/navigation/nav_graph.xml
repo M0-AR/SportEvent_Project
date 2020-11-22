@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/backFragment"
-        android:name="com.example.sportevent.fragment.BackButtonFragment"
+        android:name="com.example.sportevent.fragment.NearestEvent"
         >
     </fragment>
     <fragment
