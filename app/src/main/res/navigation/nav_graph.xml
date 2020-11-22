@@ -22,6 +22,11 @@
             app:destination="@id/participantListFragment2" />
     </fragment>
     <fragment
+        android:id="@+id/backFragment"
+        android:name="com.example.sportevent.fragment.BackButtonFragment"
+        >
+    </fragment>
+    <fragment
         android:id="@+id/joinedEventFragment"
         android:name="com.example.sportevent.fragment.EventListFragment"
         android:label="joined_event_fragment"
