@@ -50,8 +50,6 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.buttonsignUp:
                 navController.navigate(R.id.action_login_to_createUserFragment2);
-                Toast.makeText(view.getContext(), "It's working but there is small bug Can't open now", Toast.LENGTH_SHORT).show();
-                // todo SignUpButton First screen navController.navigate(R.id.action_login_to_createUser);
                 break;
             default:
               break;
