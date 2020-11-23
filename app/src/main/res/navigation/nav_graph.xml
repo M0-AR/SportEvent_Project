@@ -40,8 +40,8 @@
             android:id="@+id/action_login_to_loginEmail"
             app:destination="@id/loginEmail" />
         <action
-            android:id="@+id/action_login_to_createUser"
-            app:destination="@id/createUser" />
+            android:id="@+id/action_login_to_createUserFragment2"
+            app:destination="@id/createUserFragment2" />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
@@ -121,4 +121,12 @@
         android:name="com.example.sportevent.fragment.ParticipantListFragment2"
         android:label="fragment_list_participant2"
         tools:layout="@layout/fragment_list_participant2" />
+    <fragment
+        android:id="@+id/createUserFragment2"
+        android:name="com.example.sportevent.fragment.CreateUserFragment2"
+        android:label="CreateUserFragment2" >
+        <action
+            android:id="@+id/action_createUserFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

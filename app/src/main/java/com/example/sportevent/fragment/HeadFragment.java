@@ -32,7 +32,7 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
         loginOrg = (Button) view.findViewById(R.id.orgLoginButton);
         loginOrg.setOnClickListener(this);
 
-        signup = (Button) view.findViewById(R.id.signupButton);
+        signup = (Button) view.findViewById(R.id.buttonsignUp);
         signup.setOnClickListener(this);
 
         return view;
@@ -48,12 +48,13 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
             case R.id.userLoginButton:
                 navController.navigate(R.id.action_login_to_loginEmail);
                 break;
-            case R.id.signupButton:
+            case R.id.buttonsignUp:
+                navController.navigate(R.id.action_login_to_createUserFragment2);
                 Toast.makeText(view.getContext(), "It's working but there is small bug Can't open now", Toast.LENGTH_SHORT).show();
                 // todo SignUpButton First screen navController.navigate(R.id.action_login_to_createUser);
                 break;
             default:
-                break;
+              break;
 
         }
     }
