@@ -26,13 +26,13 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
 
-        loginUser = (Button) view.findViewById(R.id.userLoginButton);
+        loginUser =  view.findViewById(R.id.userLoginButton);
         loginUser.setOnClickListener(this);
 
-        loginOrg = (Button) view.findViewById(R.id.orgLoginButton);
+        loginOrg = view.findViewById(R.id.orgLoginButton);
         loginOrg.setOnClickListener(this);
 
-        signup = (Button) view.findViewById(R.id.buttonsignUp);
+        signup = view.findViewById(R.id.buttonsignUp);
         signup.setOnClickListener(this);
 
         return view;
