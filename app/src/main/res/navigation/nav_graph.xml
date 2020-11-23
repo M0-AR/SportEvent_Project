@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_homeFragment_to_participantListFragment2"
             app:destination="@id/participantListFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventDescriptionFragment"
+            app:destination="@id/eventDescriptionFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
