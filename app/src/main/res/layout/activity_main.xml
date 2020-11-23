@@ -24,7 +24,7 @@
         />
 
 
-        <androidx.fragment.app.FragmentContainerView
+        <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/drawer_bottom_nav_menu"
+        app:menu="@menu/options_menu"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
