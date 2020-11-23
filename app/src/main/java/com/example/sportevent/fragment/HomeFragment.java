@@ -10,10 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,9 +20,7 @@ import com.example.sportevent.data.Event;
 import com.example.sportevent.fragment.adapters.CreationOfEventAdapter;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.Objects;
 import java.util.*;
 public class HomeFragment extends Fragment {
     private CreationOfEventAdapter mCreationOfEventAdapter;
@@ -38,7 +34,11 @@ public class HomeFragment extends Fragment {
         ArrayList<Event> joinedEventList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             //todo we have to consider if the current date is close to the end of the month then we have to increment the month by 1
-            joinedEventList.add(new Event(R.drawable.image_01, (int)(Math.random()*10+1) +" : "+ name, description, new Date(2020 , 11 , 15 + i), new Date(2020, 11, 25 + i)));
+            joinedEventList.add(new Event(R.drawable.image_01, (int)(Math.random()*10+1) +" : "+ name, description,
+                                                                                        new Date(2020 , 11 , 15 + i), // JoinStartDate
+                                                                                        new Date(2020, 11, 25 + i) ,  // JoinEndDate
+                                                                                        new Date(2021 , 11 , 15 + i), // RaceStartDate
+                                                                                        new Date(2021, 11, 25 + i))); // JoinEndDate
         }
         Collections.shuffle(joinedEventList);
         sortEventsByClosestDateToToday(joinedEventList);
@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
             int index = i;
             for (int j = i + 1; j < events.size(); j++) {
                 Event event = events.get(j);
-                if (min.getStartDate().after(event.getStartDate())) { // "Date1 is after Date2"
+                if (min.getJoinStartDate().after(event.getJoinStartDate())) { // "Date1 is after Date2"
                     min = event;
                     index = j;
                 }

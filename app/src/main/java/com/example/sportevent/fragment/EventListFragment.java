@@ -62,7 +62,7 @@ public class EventListFragment extends Fragment {
 
         ArrayList<Event> joinedEventList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            joinedEventList.add(new Event(R.drawable.image_01, i +" : "+ name, description, new Date(), new Date() ));
+            joinedEventList.add(new Event(R.drawable.image_01, i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
         }
 
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
