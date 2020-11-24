@@ -11,6 +11,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -60,7 +62,7 @@ public class EventListFragment extends Fragment {
 
         ArrayList<Event> joinedEventList = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            joinedEventList.add(new Event(R.drawable.image_01, i +" : "+ name, description));
+            joinedEventList.add(new Event(R.drawable.image_01, i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
         }
 
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
