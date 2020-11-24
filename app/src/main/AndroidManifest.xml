@@ -28,7 +28,7 @@
             android:name=".SignupToEventHome"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".CreateUser"
+            android:name=".fragment.adapters.CreateUser"
             tools:ignore="Instantiatable" />
         <activity
             android:name=".fragment.LoginEmailFragment"
