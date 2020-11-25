@@ -24,11 +24,15 @@ import java.util.Date;
 import java.util.*;
 public class HomeFragment extends Fragment {
     private CreationOfEventAdapter mCreationOfEventAdapter;
-
+    View view = null;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        // Todo: it's working but when I go to another app like google Map The view will be not being saved
+        if (view != null)
+            return view;
+
+        view =  inflater.inflate(R.layout.fragment_home, container, false);
         String name = "Software ";
         String description = "test tsets";
         ArrayList<Event> joinedEventList = new ArrayList<>();
