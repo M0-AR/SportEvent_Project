@@ -55,8 +55,8 @@ public class CreationOfEventAdapter extends RecyclerView.Adapter<CreationOfEvent
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.mImageView = itemView.findViewById(R.id.imageView);
-            this.mTextView1 = itemView.findViewById(R.id.textView1);
-            this.mTextView2 = itemView.findViewById(R.id.textView2);
+            this.mTextView1 = itemView.findViewById(R.id.textView_title);
+            this.mTextView2 = itemView.findViewById(R.id.textView_description);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

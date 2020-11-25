@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
 
         view =  inflater.inflate(R.layout.fragment_home, container, false);
         String name = "Software ";
-        String description = "test tsets";
+        String description = "test tsets test tsetstest tsetstest tsetstest tsetstest tsetstest tsetstest tsets";
         ArrayList<Event> joinedEventList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             //todo we have to consider if the current date is close to the end of the month then we have to increment the month by 1
