@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sportevent.R;
 import com.example.sportevent.fragment.adapters.EventAdapter;
 import com.example.sportevent.data.Event;
+import com.example.sportevent.fragment.adapters.LAYOUT;
 import com.example.sportevent.utilities.Constants;
 
 // Todo check https://stackoverflow.com/questions/26621060/display-a-recyclerview-in-fragment
@@ -70,7 +71,7 @@ public class EventListFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mEventAdapter = new EventAdapter(getContext());
+        mEventAdapter = new EventAdapter(getContext(), LAYOUT.JOINED_EVENT_LIST);
         mEventAdapter.setMEventList(joinedEventList);
 
         mRecyclerView.setAdapter(mEventAdapter);

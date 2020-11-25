@@ -22,15 +22,22 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     private  List<Event> mEventList;
     private static OnEventClickListener mOnEventClickListener;
     private Context mContext;
+    private LAYOUT mLAYOUT;
 
-    public EventAdapter(Context context) {
+    public EventAdapter(Context context, LAYOUT layout) {
         this.mContext = context;
+        this.mLAYOUT = layout;
     }
 
     @NonNull
     @Override
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_item, parent, false);
+        View view;
+        if (mLAYOUT == LAYOUT.HOME_LIST)
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.created_item, parent, false);
+        else
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_item, parent, false);
+
         EventViewHolder eventViewHolder = new EventViewHolder(view);
         return eventViewHolder;
     }
@@ -98,8 +105,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
             this.mImageView = itemView.findViewById(R.id.imageView);
-            this.mTextView1 = itemView.findViewById(R.id.textView1);
-            this.mTextView2 = itemView.findViewById(R.id.textView2);
+            this.mTextView1 = itemView.findViewById(R.id.textView_title);
+            this.mTextView2 = itemView.findViewById(R.id.textView_description);
             this.mParent = itemView.findViewById(R.id.event_item_parent);
         }
     }

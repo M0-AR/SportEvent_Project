@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sportevent.R;
 import com.example.sportevent.data.Event;
 import com.example.sportevent.fragment.adapters.EventAdapter;
+import com.example.sportevent.fragment.adapters.LAYOUT;
 import com.example.sportevent.utilities.Constants;
 
 import java.util.ArrayList;
@@ -54,30 +55,13 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        mEventAdapter = new EventAdapter(getContext());
+        mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
+       // mEventAdapter = new CreationOfEventAdapter(getContext());
         mEventAdapter.setMEventList(joinedEventList);
         mRecyclerView.setAdapter(mEventAdapter);
         return view;
     }
-    public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
-        ArrayList<Event> sortedEvents = events;
-        for (int i = 0; i < events.size(); i++) {
-            Event min = events.get(i);
-            int index = i;
-            for (int j = i + 1; j < events.size(); j++) {
-                Event event = events.get(j);
-                if (min.getJoinStartDate().after(event.getJoinStartDate())) { // "Date1 is after Date2"
-                    min = event;
-                    index = j;
-                }
-            }
-            if (i != index) {
-               events.set(index, events.get(i));
-               events.set(i, min);
-            }
-        }
-        return sortedEvents;
-    }
+
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
@@ -116,5 +100,23 @@ public class HomeFragment extends Fragment {
         });
     }
 
-
+    public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
+        ArrayList<Event> sortedEvents = events;
+        for (int i = 0; i < events.size(); i++) {
+            Event min = events.get(i);
+            int index = i;
+            for (int j = i + 1; j < events.size(); j++) {
+                Event event = events.get(j);
+                if (min.getJoinStartDate().after(event.getJoinStartDate())) { // "Date1 is after Date2"
+                    min = event;
+                    index = j;
+                }
+            }
+            if (i != index) {
+                events.set(index, events.get(i));
+                events.set(i, min);
+            }
+        }
+        return sortedEvents;
+    }
 }
