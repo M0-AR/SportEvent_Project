@@ -116,13 +116,11 @@
         tools:layout="@layout/fragment_login_email" >
         <action
             android:id="@+id/action_loginEmail_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/createUser"
-        android:name="com.example.sportevent.fragment.CreateUserFragment"
-        android:label="fragment_create_user"
-        tools:layout="@layout/fragment_create_user" />
+
 
     <fragment
         android:id="@+id/participantListFragment2"
@@ -135,6 +133,8 @@
         android:label="CreateUserFragment2" >
         <action
             android:id="@+id/action_createUserFragment2_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
