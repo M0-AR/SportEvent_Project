@@ -58,7 +58,7 @@
         tools:layout="@layout/fragment_description_event" >
         <argument
             android:name="image"
-            app:argType="integer" />
+            app:argType="string" />
         <argument
             android:name="eventName"
             app:argType="string" />

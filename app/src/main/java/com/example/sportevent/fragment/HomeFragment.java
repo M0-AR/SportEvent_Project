@@ -17,14 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.Event;
-import com.example.sportevent.fragment.adapters.CreationOfEventAdapter;
+import com.example.sportevent.fragment.adapters.EventAdapter;
+import com.example.sportevent.utilities.Constants;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.*;
 public class HomeFragment extends Fragment {
-    private CreationOfEventAdapter mCreationOfEventAdapter;
+    private EventAdapter mEventAdapter;
     View view = null;
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,9 +40,9 @@ public class HomeFragment extends Fragment {
         String name = "Software ";
         String description = "test tsets test tsetstest tsetstest tsetstest tsetstest tsetstest tsetstest tsets";
         ArrayList<Event> joinedEventList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 8; i++) {
             //todo we have to consider if the current date is close to the end of the month then we have to increment the month by 1
-            joinedEventList.add(new Event(R.drawable.image_01, (int)(Math.random()*10+1) +" : "+ name, description,
+            joinedEventList.add(new Event(Constants.IMAGES[i], (int)(Math.random()*10+1) +" : "+ name, description,
                                                                                         new Date(2020 , 11 , 15 + i), // JoinStartDate
                                                                                         new Date(2020, 11, 25 + i) ,  // JoinEndDate
                                                                                         new Date(2021 , 11 , 15 + i), // RaceStartDate
@@ -50,8 +54,9 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        mCreationOfEventAdapter = new CreationOfEventAdapter(joinedEventList);
-        mRecyclerView.setAdapter(mCreationOfEventAdapter);
+        mEventAdapter = new EventAdapter(getContext());
+        mEventAdapter.setMEventList(joinedEventList);
+        mRecyclerView.setAdapter(mEventAdapter);
         return view;
     }
     public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
@@ -97,21 +102,19 @@ public class HomeFragment extends Fragment {
         });
 
 
-        mCreationOfEventAdapter.setOnEventClickListener(new CreationOfEventAdapter.OnEventClickListener() {
+        mEventAdapter.setOnEventClickListener(new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
                 Bundle bundle = new Bundle();
-                bundle.putInt("image", event.getImageResource());
+                bundle.putString("image", event.getImageURL());
                 bundle.putString("eventName", event.getEventName());
                 bundle.putString("eventDescription", event.getEventDescription());
                 navController.navigate(R.id.action_homeFragment_to_eventDescriptionFragment, bundle);
             }
         });
-
     }
-
 
 
 }
