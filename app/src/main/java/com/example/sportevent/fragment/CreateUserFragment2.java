@@ -23,7 +23,7 @@ public class CreateUserFragment2 extends Fragment {
 
         register = view.findViewById(R.id.registerButton);
         // https://developer.android.com/guide/navigation/navigation-navigate#java
-        register.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_createUserFragment2_to_homeFragment, null));
+        register.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_createUser_to_homeFragment, null));
         return view;
     }
 

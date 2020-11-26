@@ -18,8 +18,10 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_homeFragment_to_participantListFragment2"
-            app:destination="@id/participantListFragment2" />
+            android:id="@+id/action_homeFragment_to_completedEventFragment"
+            app:destination="@id/completedEventFragment" />
+        android:id="@+id/action_homeFragment_to_participantListFragment2"
+        app:destination="@id/participantListFragment2" />
         <action
             android:id="@+id/action_homeFragment_to_eventDescriptionFragment"
             app:destination="@id/eventDescriptionFragment" />
@@ -37,7 +39,7 @@
         <action
             android:id="@+id/action_joinedEventFragment_to_eventDescriptionFragment"
             app:destination="@id/eventDescriptionFragment"
-          />
+            />
     </fragment>
     <fragment
         android:id="@+id/login"
@@ -47,9 +49,10 @@
         <action
             android:id="@+id/action_login_to_loginEmail"
             app:destination="@id/loginEmail" />
+
         <action
-            android:id="@+id/action_login_to_createUserFragment2"
-            app:destination="@id/createUserFragment2" />
+            android:id="@+id/action_login_to_createUser"
+            app:destination="@id/createUser" />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
@@ -116,11 +119,17 @@
         tools:layout="@layout/fragment_login_email" >
         <action
             android:id="@+id/action_loginEmail_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:destination="@id/homeFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/createUser"
+        android:name="com.example.sportevent.fragment.CreateUserFragment2"
+        android:label="fragment_create_user"
+        tools:layout="@layout/activity_create_user_fragment2" >
+        <action
+            android:id="@+id/action_createUser_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/participantListFragment2"
@@ -128,13 +137,35 @@
         android:label="fragment_list_participant2"
         tools:layout="@layout/fragment_list_participant2" />
     <fragment
-        android:id="@+id/createUserFragment2"
-        android:name="com.example.sportevent.fragment.CreateUserFragment2"
-        android:label="CreateUserFragment2" >
+        android:id="@+id/completedEventFragment"
+        android:name="com.example.sportevent.fragment.EventListFragment2"
+        android:label="completed_event_fragment"
+        tools:layout="@layout/fragment_list_event2" >
         <action
-            android:id="@+id/action_createUserFragment2_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_completedEventFragment_to_eventDescriptionFragment2"
+            app:destination="@id/eventDescriptionFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/eventDescriptionFragment2"
+        android:name="com.example.sportevent.fragment.EventDescriptionFragment2"
+        android:label="fragment_description_event2"
+        tools:layout="@layout/fragment_description_event2" >
+        <action
+            android:id="@+id/action_eventDescriptionFragment2_to_participantListFragment2"
+            app:destination="@id/participantListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDescriptionFragment1"
+        android:name="com.example.sportevent.fragment.EventDescriptionFragment1"
+        android:label="fragment_description_event1"
+        tools:layout="@layout/fragment_description_event1" >
+        <action
+            android:id="@+id/action_eventDescriptionFragment1_to_participantListFragment1"
+            app:destination="@id/participantListFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/participantListFragment1"
+        android:name="com.example.sportevent.fragment.ParticipantListFragment1"
+        android:label="fragment_list_participant1"
+        tools:layout="@layout/fragment_list_participant1" />
 </navigation>

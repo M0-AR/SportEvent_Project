@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sportevent.R;
 import com.example.sportevent.fragment.adapters.EventAdapter;
 import com.example.sportevent.data.Event;
+import com.example.sportevent.fragment.adapters.LAYOUT;
+import com.example.sportevent.utilities.Constants;
 
 public class EventListFragment2 extends Fragment {
     private EventAdapter mEventAdapter;
@@ -33,7 +35,7 @@ public class EventListFragment2 extends Fragment {
         //need to check user choice to know which fragment to focus on, crashes the app.. idk
         //int prevID = Navigation.findNavController(view).getPreviousBackStackEntry().getDestination().getId();
 
-        String name = "Software Engineer job description guide";
+        String name = "Finished EVENT";
         String description = "The business environment relies heavily on software for many functions - from automated traffic control systems to complex manufacturing processes, and Software Engineers are pivotal in the development of software that provides real solutions. A Software Engineer needs to address the entire software development lifecycle - to analyse the needs, and then design, test and develop software in order to meet those needs.\n" +
                 "\n" +
                 "Software Engineer duties and responsibilities of the job\n" +
@@ -62,20 +64,22 @@ public class EventListFragment2 extends Fragment {
                 "Looking for an Software Engineer job or IT and Technology specific salary information? Head over to our Software Engineer Salary Guide for insights and trends.";
 
         ArrayList<Event> joinedEventList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 8; i++) {
             //todo we have to consider if the current date is close to the end of the month then we have to increment the month by 1
-            joinedEventList.add(new Event(R.drawable.image_01, (int)(Math.random()*10+1) +" : "+ name, description,
+            joinedEventList.add(new Event(Constants.IMAGES[i], (int)(Math.random()*10+1) +" : "+ name, description,
                     new Date(2020 , 11 , 15 + i), // JoinStartDate
                     new Date(2020, 11, 25 + i) ,  // JoinEndDate
                     new Date(2021 , 11 , 15 + i), // RaceStartDate
-                    new Date(2021, 11, 25 + i))); // JoinEndDate
+                    new Date(2021, 11, 25 + i))); // RaceEndDate
         }
 
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mEventAdapter = new EventAdapter(joinedEventList);
+        mEventAdapter = new EventAdapter(getContext(), LAYOUT.JOINED_EVENT_LIST);
+        mEventAdapter.setMEventList(joinedEventList);
         mRecyclerView.setAdapter(mEventAdapter);
 
         return view;
@@ -85,13 +89,14 @@ public class EventListFragment2 extends Fragment {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         mEventAdapter.setOnEventClickListener(new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
                 Bundle bundle = new Bundle();
-                bundle.putInt("image", event.getImageResource());
+                bundle.putString("image", event.getImageURL());
                 bundle.putString("eventName", event.getEventName());
                 bundle.putString("eventDescription", event.getEventDescription());
                 navController.navigate(R.id.action_completedEventFragment_to_eventDescriptionFragment2, bundle);
