@@ -16,6 +16,7 @@
         android:layout_weight="0.5"
         android:orientation="horizontal"
         android:padding="4dp"
+        android:fadeScrollbars="false"
         android:scrollbars="horizontal"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/created_item" />

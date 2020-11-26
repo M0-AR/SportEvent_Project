@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 
 public class EventDescriptionFragment extends Fragment implements View.OnClickListener{
@@ -25,11 +26,13 @@ public class EventDescriptionFragment extends Fragment implements View.OnClickLi
         View view =  inflater.inflate(R.layout.fragment_description_event, container, false);
 
         // Todo: Maybe: size of image 0.3 and textView 2 is 0.7 try to hide action bar getActivity().getActionBar().hide();
-
         ImageView imageView = view.findViewById(R.id.imageView);
         // Todo: why the program suggest this assert getArguments() != null;
-        imageView.setImageResource(getArguments().getInt("image"));
 
+        Glide.with(getContext())
+                .asBitmap()
+                .load(getArguments().getString("image"))
+                .into(imageView);
         TextView textView1 = view.findViewById(R.id.textView1);
         textView1.setText(getArguments().getString("eventName"));
 

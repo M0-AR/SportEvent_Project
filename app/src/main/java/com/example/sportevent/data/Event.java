@@ -10,7 +10,7 @@ import java.util.Date;
 
 
 public class Event {
-    private int imageResource;
+    private String imageURL;
     private String eventName;
     private String eventDescription;
     private Date joinStartDate;
@@ -18,8 +18,8 @@ public class Event {
     private Date raceStartDate;
     private Date raceEndDate;
 
-    public Event(int imageResource, String eventName, String eventDescription, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
-        this.imageResource = imageResource;
+    public Event(String imageURL, String eventName, String eventDescription, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
+        this.imageURL = imageURL;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.joinStartDate = joinStartDate;
@@ -36,8 +36,8 @@ public class Event {
         return raceEndDate;
     }
 
-    public int getImageResource() {
-        return imageResource;
+    public String getImageURL() {
+        return imageURL;
     }
 
     public String getEventName() {

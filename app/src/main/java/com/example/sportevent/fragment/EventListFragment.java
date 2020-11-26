@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sportevent.R;
 import com.example.sportevent.fragment.adapters.EventAdapter;
 import com.example.sportevent.data.Event;
+import com.example.sportevent.fragment.adapters.LAYOUT;
+import com.example.sportevent.utilities.Constants;
 
 // Todo check https://stackoverflow.com/questions/26621060/display-a-recyclerview-in-fragment
 // to use Runnable class
@@ -64,15 +66,17 @@ public class EventListFragment extends Fragment {
                 "Looking for an Software Engineer job or IT and Technology specific salary information? Head over to our Software Engineer Salary Guide for insights and trends.";
 
         ArrayList<Event> joinedEventList = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            joinedEventList.add(new Event(R.drawable.image_01, i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
+        for (int i = 0; i < 8; i++) {
+            joinedEventList.add(new Event(Constants.IMAGES[i], i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
         }
 
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mEventAdapter = new EventAdapter(joinedEventList);
+        mEventAdapter = new EventAdapter(getContext(), LAYOUT.JOINED_EVENT_LIST);
+        mEventAdapter.setMEventList(joinedEventList);
+
         mRecyclerView.setAdapter(mEventAdapter);
 
         return view;
@@ -89,7 +93,7 @@ public class EventListFragment extends Fragment {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
                 Bundle bundle = new Bundle();
-                bundle.putInt("image", event.getImageResource());
+                bundle.putString("image", event.getImageURL());
                 bundle.putString("eventName", event.getEventName());
                 bundle.putString("eventDescription", event.getEventDescription());
                 navController.navigate(R.id.action_joinedEventFragment_to_eventDescriptionFragment, bundle);

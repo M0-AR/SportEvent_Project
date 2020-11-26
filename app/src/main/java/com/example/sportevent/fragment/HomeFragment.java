@@ -17,24 +17,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.Event;
-import com.example.sportevent.fragment.adapters.CreationOfEventAdapter;
+import com.example.sportevent.fragment.adapters.EventAdapter;
+import com.example.sportevent.fragment.adapters.LAYOUT;
+import com.example.sportevent.utilities.Constants;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.*;
 public class HomeFragment extends Fragment {
-    private CreationOfEventAdapter mCreationOfEventAdapter;
+    private EventAdapter mEventAdapter;
+    View view = null;
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        // Todo: it's working but when I go to another app like google Map The view will be not being saved
+        if (view != null)
+            return view;
+
+        view =  inflater.inflate(R.layout.fragment_home, container, false);
         String name = "Software ";
-        String description = "test tsets";
+        String description = "test tsets test tsetstest tsetstest tsetstest tsetstest tsetstest tsetstest tsets";
         ArrayList<Event> joinedEventList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 8; i++) {
             //todo we have to consider if the current date is close to the end of the month then we have to increment the month by 1
-            joinedEventList.add(new Event(R.drawable.image_01, (int)(Math.random()*10+1) +" : "+ name, description,
+            joinedEventList.add(new Event(Constants.IMAGES[i], (int)(Math.random()*10+1) +" : "+ name, description,
                                                                                         new Date(2020 , 11 , 15 + i), // JoinStartDate
                                                                                         new Date(2020, 11, 25 + i) ,  // JoinEndDate
                                                                                         new Date(2021 , 11 , 15 + i), // RaceStartDate
@@ -46,29 +55,13 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        mCreationOfEventAdapter = new CreationOfEventAdapter(joinedEventList);
-        mRecyclerView.setAdapter(mCreationOfEventAdapter);
+        mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
+       // mEventAdapter = new CreationOfEventAdapter(getContext());
+        mEventAdapter.setMEventList(joinedEventList);
+        mRecyclerView.setAdapter(mEventAdapter);
         return view;
     }
-    public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
-        ArrayList<Event> sortedEvents = events;
-        for (int i = 0; i < events.size(); i++) {
-            Event min = events.get(i);
-            int index = i;
-            for (int j = i + 1; j < events.size(); j++) {
-                Event event = events.get(j);
-                if (min.getJoinStartDate().after(event.getJoinStartDate())) { // "Date1 is after Date2"
-                    min = event;
-                    index = j;
-                }
-            }
-            if (i != index) {
-               events.set(index, events.get(i));
-               events.set(i, min);
-            }
-        }
-        return sortedEvents;
-    }
+
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
@@ -93,21 +86,37 @@ public class HomeFragment extends Fragment {
         });
 
 
-        mCreationOfEventAdapter.setOnEventClickListener(new CreationOfEventAdapter.OnEventClickListener() {
+        mEventAdapter.setOnEventClickListener(new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
                 Bundle bundle = new Bundle();
-                bundle.putInt("image", event.getImageResource());
+                bundle.putString("image", event.getImageURL());
                 bundle.putString("eventName", event.getEventName());
                 bundle.putString("eventDescription", event.getEventDescription());
                 navController.navigate(R.id.action_homeFragment_to_eventDescriptionFragment, bundle);
             }
         });
-
     }
 
-
-
+    public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
+        ArrayList<Event> sortedEvents = events;
+        for (int i = 0; i < events.size(); i++) {
+            Event min = events.get(i);
+            int index = i;
+            for (int j = i + 1; j < events.size(); j++) {
+                Event event = events.get(j);
+                if (min.getJoinStartDate().after(event.getJoinStartDate())) { // "Date1 is after Date2"
+                    min = event;
+                    index = j;
+                }
+            }
+            if (i != index) {
+                events.set(index, events.get(i));
+                events.set(i, min);
+            }
+        }
+        return sortedEvents;
+    }
 }
