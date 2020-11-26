@@ -6,7 +6,7 @@
     android:layout_margin="8dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.sportevent_test.fragment.HomeFragment">
+    tools:context="com.example.sportevent.fragment.HomeFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

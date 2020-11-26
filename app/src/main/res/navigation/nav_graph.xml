@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.sportevent_test.fragment.HomeFragment"
+        android:name="com.example.sportevent.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -28,12 +28,12 @@
     </fragment>
     <fragment
         android:id="@+id/backFragment"
-        android:name="com.example.sportevent_test.fragment.NearestEvent"
+        android:name="com.example.sportevent.fragment.NearestEvent"
         >
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
-        android:name="com.example.sportevent_test.fragment.EventListFragment"
+        android:name="com.example.sportevent.fragment.EventListFragment"
         android:label="joined_event_fragment"
         tools:layout="@layout/fragment_list_event" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/login"
-        android:name="com.example.sportevent_test.fragment.HeadFragment"
+        android:name="com.example.sportevent.fragment.HeadFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
-        android:name="com.example.sportevent_test.fragment.EventDescriptionFragment"
+        android:name="com.example.sportevent.fragment.EventDescriptionFragment"
         android:label="fragment_description_event"
         tools:layout="@layout/fragment_description_event" >
         <argument
@@ -85,12 +85,12 @@
     </fragment>
     <fragment
         android:id="@+id/participant"
-        android:name="com.example.sportevent_test.fragment.ParticipantListFragment"
+        android:name="com.example.sportevent.fragment.ParticipantListFragment"
         android:label="fragment_participant"
         tools:layout="@layout/fragment_list_participant" />
     <fragment
         android:id="@+id/startEvent"
-        android:name="com.example.sportevent_test.fragment.EventStartFragment"
+        android:name="com.example.sportevent.fragment.EventStartFragment"
         android:label="fragment_start_event"
         tools:layout="@layout/fragment_start_event" >
         <action
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventResultFragment"
-        android:name="com.example.sportevent_test.fragment.EventResultFragment"
+        android:name="com.example.sportevent.fragment.EventResultFragment"
         android:label="fragment_result_event"
         tools:layout="@layout/fragment_result_event" >
         <action
@@ -114,7 +114,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginEmail"
-        android:name="com.example.sportevent_test.fragment.LoginEmailFragment"
+        android:name="com.example.sportevent.fragment.LoginEmailFragment"
         android:label="fragment_login_email"
         tools:layout="@layout/fragment_login_email" >
         <action
@@ -123,7 +123,7 @@
     </fragment>
     <fragment
         android:id="@+id/createUser"
-        android:name="com.example.sportevent_test.fragment.CreateUserFragment2"
+        android:name="com.example.sportevent.fragment.CreateUserFragment2"
         android:label="fragment_create_user"
         tools:layout="@layout/activity_create_user_fragment2" >
         <action
@@ -133,12 +133,12 @@
 
     <fragment
         android:id="@+id/participantListFragment2"
-        android:name="com.example.sportevent_test.fragment.ParticipantListFragment2"
+        android:name="com.example.sportevent.fragment.ParticipantListFragment2"
         android:label="fragment_list_participant2"
         tools:layout="@layout/fragment_list_participant2" />
     <fragment
         android:id="@+id/completedEventFragment"
-        android:name="com.example.sportevent_test.fragment.EventListFragment2"
+        android:name="com.example.sportevent.fragment.EventListFragment2"
         android:label="completed_event_fragment"
         tools:layout="@layout/fragment_list_event2" >
         <action
@@ -147,7 +147,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment2"
-        android:name="com.example.sportevent_test.fragment.EventDescriptionFragment2"
+        android:name="com.example.sportevent.fragment.EventDescriptionFragment2"
         android:label="fragment_description_event2"
         tools:layout="@layout/fragment_description_event2" >
         <action
@@ -156,7 +156,7 @@
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment1"
-        android:name="com.example.sportevent_test.fragment.EventDescriptionFragment1"
+        android:name="com.example.sportevent.fragment.EventDescriptionFragment1"
         android:label="fragment_description_event1"
         tools:layout="@layout/fragment_description_event1" >
         <action
@@ -165,7 +165,7 @@
     </fragment>
     <fragment
         android:id="@+id/participantListFragment1"
-        android:name="com.example.sportevent_test.fragment.ParticipantListFragment1"
+        android:name="com.example.sportevent.fragment.ParticipantListFragment1"
         android:label="fragment_list_participant1"
         tools:layout="@layout/fragment_list_participant1" />
 </navigation>
