@@ -31,7 +31,7 @@ public class CreateUserFragment2 extends Fragment implements View.OnClickListene
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.registerButton:
-                navController.navigate(R.id.action_createUserFragment2_to_homeFragment);
+                navController.navigate(R.id.action_createUser_to_homeFragment);
                 break;
 
 

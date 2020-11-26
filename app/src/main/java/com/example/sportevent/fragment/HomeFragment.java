@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
         finishedEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_homeFragment_to_participantListFragment2);
+                navController.navigate(R.id.action_homeFragment_to_completedEventFragment);
             }
         });
 

@@ -11,6 +11,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -60,8 +62,13 @@ public class EventListFragment2 extends Fragment {
                 "Looking for an Software Engineer job or IT and Technology specific salary information? Head over to our Software Engineer Salary Guide for insights and trends.";
 
         ArrayList<Event> joinedEventList = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            joinedEventList.add(new Event(R.drawable.image_01, i +" : "+ name, description));
+        for (int i = 0; i < 10; i++) {
+            //todo we have to consider if the current date is close to the end of the month then we have to increment the month by 1
+            joinedEventList.add(new Event(R.drawable.image_01, (int)(Math.random()*10+1) +" : "+ name, description,
+                    new Date(2020 , 11 , 15 + i), // JoinStartDate
+                    new Date(2020, 11, 25 + i) ,  // JoinEndDate
+                    new Date(2021 , 11 , 15 + i), // RaceStartDate
+                    new Date(2021, 11, 25 + i))); // JoinEndDate
         }
 
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
