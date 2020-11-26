@@ -37,6 +37,7 @@ dependencies {
 
     // Navigation Component dependencies
     def nav_version = "2.3.1"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
     // Java language implementation
     implementation "androidx.navigation:navigation-fragment:$nav_version"

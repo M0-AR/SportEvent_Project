@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.sportevent">
+    package="com.example.sportevent_test">
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".fragment.CreateUserFragment2"
+            android:name="com.example.sportevent_test.fragment.CreateUserFragment2"
             tools:ignore="Instantiatable" />
 
         <meta-data
@@ -19,23 +19,23 @@
             android:value="AIzaSyBnR4ViXl40S9SvXdCt4g2lGg8jWr5ATA0" />
 
         <activity
-            android:name=".fragment.EventResultFragment"
+            android:name="com.example.sportevent_test.fragment.EventResultFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".fragment.EventStartFragment"
+            android:name="com.example.sportevent_test.fragment.EventStartFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".fragment.ParticipantListFragment"
+            android:name="com.example.sportevent_test.fragment.ParticipantListFragment"
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".fragment.LoginEmailFragment"
+            android:name="com.example.sportevent_test.fragment.LoginEmailFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".fragment.HeadFragment"
+            android:name="com.example.sportevent_test.fragment.HeadFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.example.sportevent_test.ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

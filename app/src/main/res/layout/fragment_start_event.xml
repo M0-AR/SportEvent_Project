@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_margin="8dp"
     android:orientation="vertical"
-    tools:context="com.example.sportevent.fragment.EventStartFragment">
+    tools:context="com.example.sportevent_test.fragment.EventStartFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
