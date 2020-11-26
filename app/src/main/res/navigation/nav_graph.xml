@@ -20,9 +20,6 @@
         <action
             android:id="@+id/action_homeFragment_to_completedEventFragment"
             app:destination="@id/completedEventFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_eventListFragmentTEMP2"
-            app:destination="@id/eventListFragmentTEMP" />
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
@@ -150,15 +147,6 @@
         <action
             android:id="@+id/action_eventDescriptionFragment1_to_participantListFragment1"
             app:destination="@id/participantListFragment1" />
-    </fragment>
-    <fragment
-        android:id="@+id/eventListFragmentTEMP"
-        android:name="com.example.sportevent.fragment.EventListFragmentTEMP"
-        android:label="fragment_list_temp"
-        tools:layout="@layout/fragment_list_temp" >
-        <action
-            android:id="@+id/action_eventListFragmentTEMP2_to_eventDescriptionFragment1"
-            app:destination="@id/eventDescriptionFragment1" />
     </fragment>
     <fragment
         android:id="@+id/participantListFragment1"
