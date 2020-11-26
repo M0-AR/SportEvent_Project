@@ -1,68 +1,55 @@
 package com.example.sportevent.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
 import com.example.sportevent.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    private DrawerLayout drawerLayout;
+
+public class MainActivity extends AppCompatActivity {
+    private NavController navController;
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        navController = Navigation.findNavController( this, R.id.nav_host_fragment_container);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-
+        appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.login).setDrawerLayout(drawerLayout).build(); //R.id.drawer_layout
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+         setSupportActionBar(toolbar);
+        NavigationUI.setupWithNavController(toolbar,navController, appBarConfiguration);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
 
-        ActionBarDrawerToggle  toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                            R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        NavigationView navView = findViewById(R.id.nav_view);
+        NavigationUI.setupWithNavController(navView, navController);
+
+        BottomNavigationView  bottomNavigationView = findViewById(R.id.bottom_nav);
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
 
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-       // NavController navController = Navigation.findNavController(getParent().finish());
-        switch (item.getItemId()) {
-            case R.id.homeFragment:
-          //      navController.navigate(R.id.action_eventDescriptionFragment_to_participant);
-                Toast.makeText(MainActivity.this, "Will work next time", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.backFragment:
-                super.onBackPressed();
-                break;
-        }
-        return true;
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
     }
+
+
 }
 
 

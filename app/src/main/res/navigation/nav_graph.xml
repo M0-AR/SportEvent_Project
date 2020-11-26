@@ -20,6 +20,16 @@
         <action
             android:id="@+id/action_homeFragment_to_completedEventFragment"
             app:destination="@id/completedEventFragment" />
+            android:id="@+id/action_homeFragment_to_participantListFragment2"
+            app:destination="@id/participantListFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventDescriptionFragment"
+            app:destination="@id/eventDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/backFragment"
+        android:name="com.example.sportevent.fragment.NearestEvent"
+        >
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
@@ -40,8 +50,8 @@
             android:id="@+id/action_login_to_loginEmail"
             app:destination="@id/loginEmail" />
         <action
-            android:id="@+id/action_login_to_createUser"
-            app:destination="@id/createUser" />
+            android:id="@+id/action_login_to_createUserFragment2"
+            app:destination="@id/createUserFragment2" />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
