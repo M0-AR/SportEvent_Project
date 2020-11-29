@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_homeFragment_to_eventDescriptionFragment"
             app:destination="@id/eventDescriptionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventDescriptionFragment1"
+            app:destination="@id/eventDescriptionFragment1" />
     </fragment>
     <fragment
         android:id="@+id/closestEvent"

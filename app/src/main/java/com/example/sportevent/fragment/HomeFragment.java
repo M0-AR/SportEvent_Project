@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
                 bundle.putString("image", event.getImageURL());
                 bundle.putString("eventName", event.getEventName());
                 bundle.putString("eventDescription", event.getEventDescription());
-                navController.navigate(R.id.action_homeFragment_to_eventDescriptionFragment, bundle);
+                navController.navigate(R.id.action_homeFragment_to_eventDescriptionFragment1, bundle);
             }
         });
     }
