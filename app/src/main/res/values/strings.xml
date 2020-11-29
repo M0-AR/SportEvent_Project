@@ -86,7 +86,7 @@
 
     <string name="app_name">SportEvent</string>
     <string name="home_icon">Home</string>
-    <string name="back_icon">Back</string>
+    <string name="bike_icon">Closest Event</string>
     <string name="joined_event">Joined Event</string>
 
 

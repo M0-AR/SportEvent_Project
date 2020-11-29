@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController( this, R.id.nav_host_fragment_container);
 
 
-        appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.login).setDrawerLayout(drawerLayout).build(); //R.id.drawer_layout
+        appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.login, R.id.closestEvent).setDrawerLayout(drawerLayout).build(); //R.id.drawer_layout
         Toolbar toolbar = findViewById(R.id.toolbar);
          setSupportActionBar(toolbar);
         NavigationUI.setupWithNavController(toolbar,navController, appBarConfiguration);
