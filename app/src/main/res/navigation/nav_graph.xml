@@ -21,14 +21,19 @@
          />
         <action
             android:id="@+id/action_homeFragment_to_completedEventFragment"
-            app:destination="@id/completedEventFragment" />
+            app:destination="@id/completedEventFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_eventDescriptionSignUpFragment"
+            app:destination="@id/eventDescriptionSignUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
 
-        <action
-            android:id="@+id/action_homeFragment_to_eventDescriptionFragment"
-            app:destination="@id/eventDescriptionFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_eventDescriptionFragment1"
-            app:destination="@id/eventDescriptionFragment1" />
     </fragment>
     <fragment
         android:id="@+id/closestEvent"
@@ -111,14 +116,7 @@
         android:id="@+id/eventResultFragment"
         android:name="com.example.sportevent.fragment.EventResultFragment"
         android:label="fragment_result_event"
-        tools:layout="@layout/fragment_result_event" >
-        <action
-            android:id="@+id/action_eventResultFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:launchSingleTop="true"
-
-             />
-    </fragment>
+        tools:layout="@layout/fragment_result_event" />
     <fragment
         android:id="@+id/loginEmail"
         android:name="com.example.sportevent.fragment.LoginEmailFragment"
@@ -166,12 +164,21 @@
             app:destination="@id/participantListFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/eventDescriptionFragment1"
-        android:name="com.example.sportevent.fragment.EventDescriptionFragment1"
+        android:id="@+id/eventDescriptionSignUpFragment"
+        android:name="com.example.sportevent.fragment.EventDescriptionSignUpFragment"
         android:label="fragment_description_event1"
-        tools:layout="@layout/fragment_description_event1" >
+        tools:layout="@layout/fragment_signup_description_event" >
+        <argument
+            android:name="image"
+            app:argType="string" />
+        <argument
+            android:name="eventName"
+            app:argType="string" />
+        <argument
+            android:name="eventDescription"
+            app:argType="string" />
         <action
-            android:id="@+id/action_eventDescriptionFragment1_to_participantListFragment1"
+            android:id="@+id/action_eventDescriptionSignUpFragment_to_participantListFragment1"
             app:destination="@id/participantListFragment1" />
     </fragment>
     <fragment

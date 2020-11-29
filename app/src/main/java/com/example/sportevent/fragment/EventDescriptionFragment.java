@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 
 public class EventDescriptionFragment extends Fragment implements View.OnClickListener{
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,13 +30,13 @@ public class EventDescriptionFragment extends Fragment implements View.OnClickLi
 
         Glide.with(getContext())
                 .asBitmap()
-                .load(getArguments().getString("image"))
+                .load(EventDescriptionFragmentArgs.fromBundle(getArguments()).getImage())
                 .into(imageView);
         TextView textView1 = view.findViewById(R.id.textView1);
-        textView1.setText(getArguments().getString("eventName"));
+        textView1.setText(EventDescriptionFragmentArgs.fromBundle(getArguments()).getEventName());
 
         TextView textView2 = view.findViewById(R.id.textView2);
-        textView2.setText(getArguments().getString("eventDescription"));
+        textView2.setText(EventDescriptionFragmentArgs.fromBundle(getArguments()).getEventDescription());
         textView2.setMovementMethod(new ScrollingMovementMethod());
 
         final Button participantList = view.findViewById(R.id.participant_list);

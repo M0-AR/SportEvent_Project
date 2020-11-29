@@ -74,14 +74,14 @@ public class HomeFragment extends Fragment {
         joinedEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_homeFragment_to_joinedEventFragment);
+                navController.navigate( HomeFragmentDirections.actionHomeFragmentToJoinedEventFragment());
             }
         });
 
         finishedEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_homeFragment_to_completedEventFragment);
+                navController.navigate( HomeFragmentDirections.actionHomeFragmentToCompletedEventFragment());
             }
         });
 
@@ -91,7 +91,7 @@ public class HomeFragment extends Fragment {
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
-                navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionFragment(event.getImageURL(), event.getEventName(), event.getEventDescription()));
+                navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionSignUpFragment(event.getImageURL(), event.getEventName(), event.getEventDescription()));
             }
         });
     }
