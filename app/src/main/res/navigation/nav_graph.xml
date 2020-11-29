@@ -9,19 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="com.example.sportevent.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home"
+        tools:ignore="ExtraText">
         <action
             android:id="@+id/action_homeFragment_to_joinedEventFragment"
             app:destination="@id/joinedEventFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+         />
         <action
             android:id="@+id/action_homeFragment_to_completedEventFragment"
             app:destination="@id/completedEventFragment" />
-        android:id="@+id/action_homeFragment_to_participantListFragment2"
-        app:destination="@id/participantListFragment2" />
+
         <action
             android:id="@+id/action_homeFragment_to_eventDescriptionFragment"
             app:destination="@id/eventDescriptionFragment" />
@@ -99,7 +100,9 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/eventResultFragment"
@@ -109,8 +112,9 @@
         <action
             android:id="@+id/action_eventResultFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:launchSingleTop="true"
+
+             />
     </fragment>
     <fragment
         android:id="@+id/loginEmail"
@@ -119,7 +123,8 @@
         tools:layout="@layout/fragment_login_email" >
         <action
             android:id="@+id/action_loginEmail_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/createUser"
@@ -128,7 +133,9 @@
         tools:layout="@layout/activity_create_user_fragment2" >
         <action
             android:id="@+id/action_createUser_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -168,4 +175,18 @@
         android:name="com.example.sportevent.fragment.ParticipantListFragment1"
         android:label="fragment_list_participant1"
         tools:layout="@layout/fragment_list_participant1" />
+    <action
+        android:id="@+id/action_global_closestEvent"
+        app:destination="@id/closestEvent"
+        app:enterAnim="@anim/slide_in_top"
+        app:exitAnim="@anim/slide_out_bottom"
+        app:popEnterAnim="@anim/slide_in_bottom"
+        app:popExitAnim="@anim/slide_out_top"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
 </navigation>

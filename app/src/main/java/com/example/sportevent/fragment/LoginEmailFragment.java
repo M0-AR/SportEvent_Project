@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import android.os.Bundle;
@@ -33,10 +34,10 @@ public class LoginEmailFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        NavController navController = Navigation.findNavController(view);
+           NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.emailLogin:
-                navController.navigate(R.id.action_loginEmail_to_homeFragment);
+                navController.navigate( LoginEmailFragmentDirections.actionLoginEmailToHomeFragment() );
                 break;
         }
     }

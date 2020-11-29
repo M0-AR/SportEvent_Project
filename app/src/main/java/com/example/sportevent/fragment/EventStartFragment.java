@@ -65,7 +65,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             startActivity(i);
         }
         else
-            navController.navigate(R.id.action_startEvent_to_eventResultFragment);
+            navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment());
     }
 
     @Override
