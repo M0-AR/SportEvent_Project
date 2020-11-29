@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.sportevent.R;
+import com.example.sportevent.ui.MainActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HeadFragment extends Fragment implements View.OnClickListener {
     Button loginUser;
@@ -37,6 +40,7 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
 
         return view;
     }
+
 
     public void onClick(View view) {
         NavController navController = Navigation.findNavController(view);

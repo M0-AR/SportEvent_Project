@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.sportevent.R;
+import com.example.sportevent.ui.MainActivity;
 
 public class CreateUserFragment2 extends Fragment {
     Button register;
@@ -22,7 +23,17 @@ public class CreateUserFragment2 extends Fragment {
         register = view.findViewById(R.id.registerButton);
         // https://developer.android.com/guide/navigation/navigation-navigate#java
         register.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_createUser_to_homeFragment, null));
+
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        MainActivity activity = (MainActivity) getActivity();
+        if (activity != null)
+            activity.hideBottomBar(false);    // to show the bottom bar when
+        // we destroy this fragment
+    }
 }

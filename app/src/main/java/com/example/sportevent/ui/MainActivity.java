@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.sportevent.NavGraphDirections;
@@ -27,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
+    private BottomNavigationView  bottomNavigationView;
     private boolean doubleBackToExitPressedOnce;
 
     @Override
@@ -39,18 +41,23 @@ public class MainActivity extends AppCompatActivity {
 
         appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.login, R.id.closestEvent, R.id.eventResultFragment).setDrawerLayout(drawerLayout).build(); //R.id.drawer_layout
         Toolbar toolbar = findViewById(R.id.toolbar);
-         setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         NavigationUI.setupWithNavController(toolbar,navController, appBarConfiguration);
 
 
         NavigationView navView = findViewById(R.id.nav_view);
         NavigationUI.setupWithNavController(navView, navController);
 
-        BottomNavigationView  bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setVisibility(View.INVISIBLE);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
 
     }
 
+    public void hideBottomBar(boolean isHidden){
+        bottomNavigationView.setVisibility(isHidden ? View.INVISIBLE : View.VISIBLE);
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
