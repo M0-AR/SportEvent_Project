@@ -57,11 +57,15 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_loginEmail"
-            app:destination="@id/loginEmail" />
+            app:destination="@id/loginEmail"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
 
         <action
             android:id="@+id/action_login_to_createUser"
-            app:destination="@id/createUser" />
+            app:destination="@id/createUser"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
@@ -125,6 +129,8 @@
         <action
             android:id="@+id/action_loginEmail_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
@@ -136,8 +142,9 @@
         <action
             android:id="@+id/action_createUser_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment

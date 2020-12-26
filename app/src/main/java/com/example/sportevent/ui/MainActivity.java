@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         navController = Navigation.findNavController( this, R.id.nav_host_fragment_container);
 
