@@ -50,6 +50,7 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.buttonsignUp:
                 navController.navigate(R.id.action_login_to_createUserFragment2);
+
                 break;
             default:
               break;

@@ -7,7 +7,7 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".CreateUser">
+    tools:context=".fragment.CreateUser">
 
 
 
@@ -27,7 +27,7 @@
 
         <EditText
             android:layout_marginBottom="34dp"
-            android:id="@+id/navnInput"
+            android:id="@+id/nameInput"
             android:hint="@string/enter_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,11 +82,13 @@
             android:background="@color/white"/>
 
         <Button
+            android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
             android:gravity="center"
-            android:text="@string/register_user" />
+            android:text="Register"
+             />
 
 
     </LinearLayout>

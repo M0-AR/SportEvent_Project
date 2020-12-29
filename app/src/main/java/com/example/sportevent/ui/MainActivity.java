@@ -1,5 +1,6 @@
 package com.example.sportevent.ui;
 
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,11 +10,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
-import android.os.Bundle;
 import com.example.sportevent.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView  bottomNavigationView = findViewById(R.id.bottom_nav);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
     }
 
 

@@ -35,11 +35,11 @@
 
         <Button
             android:id="@+id/userLoginButton"
-            android:layout_marginBottom="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_login"
-            android:background="@drawable/button"/>
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button"
+            android:text="@string/user_login" />
 
         <Button
             android:id="@+id/buttonsignUp"
