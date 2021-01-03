@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/image_01"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".fragment.CreateUserFragment2">
@@ -23,6 +23,7 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
             android:text="@string/name_title_edittext" />
 
         <EditText
@@ -35,7 +36,8 @@
 
         <TextView
             android:layout_marginBottom="4dp"
-            android:textSize="34dp"
+            android:textSize="34sp"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,10 +53,11 @@
 
         <TextView
             android:layout_marginBottom="4dp"
-            android:textSize="34dp"
+            android:textSize="34sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
             android:text="@string/address_title_edittext" />
 
         <EditText
@@ -69,7 +72,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:textSize="34dp"
+            android:textSize="34sp"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:text="@string/phone_number_title_edittext"/>
 
@@ -87,6 +91,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button"
             android:gravity="center"
+            android:textSize="28sp"
+            android:fontFamily="@font/lemon"
             android:text="@string/register_user" />
 
 

@@ -59,13 +59,13 @@
             android:id="@+id/action_login_to_loginEmail"
             app:destination="@id/loginEmail"
             app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out" />
 
         <action
             android:id="@+id/action_login_to_createUser"
             app:destination="@id/createUser"
             app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out" />
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionFragment"
@@ -138,7 +138,7 @@
         android:id="@+id/createUser"
         android:name="com.example.sportevent.fragment.CreateUserFragment2"
         android:label="fragment_create_user"
-        tools:layout="@layout/activity_create_user_fragment2" >
+        tools:layout="@layout/fragment_login_create_user" >
         <action
             android:id="@+id/action_createUser_to_homeFragment"
             app:destination="@id/homeFragment"

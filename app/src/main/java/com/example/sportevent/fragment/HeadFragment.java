@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HeadFragment extends Fragment implements View.OnClickListener {
     Button loginUser;
-    Button loginOrg;
     Button signup;
 
     @Nullable
@@ -28,12 +27,8 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-
         loginUser =  view.findViewById(R.id.userLoginButton);
         loginUser.setOnClickListener(this);
-
-        loginOrg = view.findViewById(R.id.orgLoginButton);
-        loginOrg.setOnClickListener(this);
 
         signup = view.findViewById(R.id.buttonsignUp);
         signup.setOnClickListener(this);
@@ -45,10 +40,6 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
-            case R.id.orgLoginButton:
-                // todo Organizer button  first screen
-                Toast.makeText(view.getContext(), "Could work next time", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.userLoginButton:
                 navController.navigate(R.id.action_login_to_loginEmail);
                 break;

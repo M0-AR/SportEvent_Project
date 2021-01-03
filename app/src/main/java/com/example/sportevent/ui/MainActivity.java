@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setVisibility(isHidden ? View.INVISIBLE : View.VISIBLE);
     }
 
+
     @Override
     public boolean onSupportNavigateUp() {
         return NavigationUI.navigateUp(navController, appBarConfiguration)

@@ -18,7 +18,7 @@ public class CreateUserFragment2 extends Fragment {
     Button register;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_create_user_fragment2, container, false);
+        View view = inflater.inflate(R.layout.fragment_login_create_user, container, false);
 
         register = view.findViewById(R.id.registerButton);
         // https://developer.android.com/guide/navigation/navigation-navigate#java
