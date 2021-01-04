@@ -11,6 +11,7 @@ public class Event {
     private Date joinEndDate;
     private Date raceStartDate;
     private Date raceEndDate;
+    // TODO: 1/4/2021 make a boolean attribute to hide the event according to joinEndDate
 
     public Event(String imageURL, String eventName, String eventDescription, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
         this.imageURL = imageURL;
