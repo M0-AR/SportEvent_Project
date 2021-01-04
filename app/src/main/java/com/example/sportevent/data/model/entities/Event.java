@@ -6,6 +6,7 @@ public class Event {
     private String imageURL;
     private String eventName;
     private String eventDescription;
+    private String location;
     private Date joinStartDate;
     private Date joinEndDate;
     private Date raceStartDate;

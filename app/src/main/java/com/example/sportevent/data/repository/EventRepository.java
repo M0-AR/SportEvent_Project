@@ -3,6 +3,7 @@ package com.example.sportevent.data.repository;
 import androidx.lifecycle.LiveData;
 
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.utilities.SampleData;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class EventRepository {
     private LiveData<List<Event>> getAllEvents() {
         return null;
     }
+
 
 
 

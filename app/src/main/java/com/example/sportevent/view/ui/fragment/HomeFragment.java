@@ -49,6 +49,7 @@ public class HomeFragment extends Fragment {
                                                                                         new Date(2021 , 11 , 15 + i), // RaceStartDate
                                                                                         new Date(2021, 11, 25 + i))); // JoinEndDate
         }
+
         Collections.shuffle(joinedEventList);
         sortEventsByClosestDateToToday(joinedEventList);
         RecyclerView mRecyclerView = view.findViewById(R.id.recycler_view0);
