@@ -7,7 +7,7 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.sportevent.fragment.EventResultFragment">
+    tools:context=".view.ui.fragment.EventResultFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

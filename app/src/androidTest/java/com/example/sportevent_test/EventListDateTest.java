@@ -2,7 +2,7 @@ package com.example.sportevent_test;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.example.sportevent.data.Event;
+import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.utilities.Constants;
 
 import org.junit.Test;

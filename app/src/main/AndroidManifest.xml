@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.sportevent.fragment.CreateUserFragment2"
+            android:name=".view.ui.fragment.CreateUserFragment2"
             tools:ignore="Instantiatable" />
 
         <meta-data
@@ -19,23 +19,23 @@
             android:value="AIzaSyBnR4ViXl40S9SvXdCt4g2lGg8jWr5ATA0" />
 
         <activity
-            android:name="com.example.sportevent.fragment.EventResultFragment"
+            android:name=".view.ui.fragment.EventResultFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name="com.example.sportevent.fragment.EventStartFragment"
+            android:name=".view.ui.fragment.EventStartFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name="com.example.sportevent.fragment.ParticipantListFragment"
+            android:name=".view.ui.fragment.ParticipantListFragment"
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name="com.example.sportevent.fragment.LoginEmailFragment"
+            android:name=".view.ui.fragment.LoginEmailFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name="com.example.sportevent.fragment.HeadFragment"
+            android:name=".view.ui.fragment.HeadFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name="com.example.sportevent.ui.MainActivity"
+            android:name=".view.ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,7 +7,7 @@
     android:background="@drawable/image_01"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".fragment.CreateUserFragment2">
+    tools:context=".view.ui.fragment.CreateUserFragment2">
 
 
 
