@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/closestEvent"
-        android:name="com.example.sportevent.view.ui.fragment.NearestEvent"
+        android:name="com.example.sportevent.view.ui.fragment.ClosestEvent"
         >
     </fragment>
     <fragment
