@@ -9,6 +9,7 @@ public class Participant {
     private String address;
     private String phoneNumber;
 
+
     public Participant(int id, String name, String email, String address, String phoneNumber) {
         this.id = id;
         this.name = name;

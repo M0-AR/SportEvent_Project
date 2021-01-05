@@ -40,13 +40,14 @@ Mohamad and Ismail :
                         * Sign up Event 
                             * Participants button -> Current joined participants in the event
                             * Sign up -> Dialog (yes|no) ---Done--- 
-                            * Button -> navigate to google maps -> see route
+                            * Button -> navigate to google maps -> see route /andrey tager
                     * Joned Event List 
                         * Button -> navigate to google maps -> see route
                         * Participants button = Sign up Participants button 
                         * Start button -> raceStartDate ---Done---  -> Dialog turn on GPS Tracking  
                             * Gps Activity 
-                                * Distance ->  how much km the user reach 
+                                * Dis
+                                tance ->  how much km the user reach 
                                 * Time START click on Start Event FINISH click on finish button -> Joined Event list to Finish Event list & put participants in finsished participants list(Result) -> sort them according to ride race time 
                             * Result Activity 
                                 * Participant(Entity) -> Result    
