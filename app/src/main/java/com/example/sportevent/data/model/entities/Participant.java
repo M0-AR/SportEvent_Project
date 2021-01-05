@@ -14,6 +14,7 @@ public class Participant {
     private ArrayList<Event> finishedEventList;
     private Result result;
 
+
     public Participant(int id, String name, String email, String address, String phoneNumber) {
         this.id = id;
         this.name = name;
