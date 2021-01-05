@@ -8,6 +8,9 @@ import java.util.Date;
 
 public class SampleData {
     public static ArrayList<Participant> participants;
+    public static ArrayList<Participant> joinedParticipantList;
+    public static ArrayList<Participant> finishedParticipantList;
+
     public static ArrayList<Event> signUpEventList;
     public static ArrayList<Event> joinedEventList;
     public static ArrayList<Event> finishedEventList;
@@ -83,8 +86,8 @@ public class SampleData {
 
         for (int i = 0; i < 8; i++) {
             signUpEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
-            // joinedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
-            // finishedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
+            joinedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
+            finishedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
         }
     }
 

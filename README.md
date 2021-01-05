@@ -34,16 +34,17 @@ Mohamad and Ismail :
                     * Make id for every new user. 
                 * HomeScreen
                     * Sign up event should be displyed according to closest event date. ---Done--- 
-                    * Move Sign up Event -> Joined Event -> Finished Event.
+                    * Move Sign up Event -> Joined Event -> Finished Event. --- Need to test with a data base ---- 
                     * Sing up List 
+                        * Delete the event when joinEndDate is done 
                         * Sign up Event 
                             * Participants button -> Current joined participants in the event
-                            * Sign up -> Check joinEndDate -> Dialog (yes|no) 
+                            * Sign up -> Dialog (yes|no) ---Done--- 
                             * Button -> navigate to google maps -> see route
                     * Joned Event List 
                         * Button -> navigate to google maps -> see route
                         * Participants button = Sign up Participants button 
-                        * Start button -> raceStartDate -> Dialog turn on GPS Tracking 
+                        * Start button -> raceStartDate ---Done---  -> Dialog turn on GPS Tracking  
                             * Gps Activity 
                                 * Distance ->  how much km the user reach 
                                 * Time START click on Start Event FINISH click on finish button -> Joined Event list to Finish Event list & put participants in finsished participants list(Result) -> sort them according to ride race time 

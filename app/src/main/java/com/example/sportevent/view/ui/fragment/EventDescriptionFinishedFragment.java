@@ -19,7 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
 
-public class EventDescriptionFragment2 extends Fragment implements View.OnClickListener{
+public class EventDescriptionFinishedFragment extends Fragment implements View.OnClickListener{
 
     @Nullable
     @Override

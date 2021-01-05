@@ -1,7 +1,6 @@
 package com.example.sportevent.view.ui.fragment;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,10 +21,11 @@ import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.utilities.SampleData;
+import com.example.sportevent.view.adapters.EventAdapter;
+import com.example.sportevent.view.adapters.LAYOUT;
 
 public class EventDescriptionSignUpFragment extends Fragment implements View.OnClickListener{
-    private Event event;
-
+    private Event mEvent;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,19 +33,19 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
 
         // Todo: Maybe: size of image 0.3 and textView 2 is 0.7 try to hide action bar getActivity().getActionBar().hide();
 
-        event = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
+        mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
 
         ImageView imageView = view.findViewById(R.id.imageView);
         Glide.with(this)
                 .asBitmap()
-                .load(event.getImageURL())
+                .load(mEvent.getImageURL())
                 .into(imageView);
 
         TextView textView1 = view.findViewById(R.id.textView1);
-        textView1.setText(event.getEventName());
+        textView1.setText(mEvent.getEventName());
 
         TextView textView2 = view.findViewById(R.id.textView2);
-        textView2.setText(event.getEventDescription());
+        textView2.setText(mEvent.getEventDescription());
         textView2.setMovementMethod(new ScrollingMovementMethod());
 
         final Button participantList = view.findViewById(R.id.participant_list);
@@ -78,8 +77,8 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
                             public void onClick(DialogInterface dialog, int which) {
                                 // TODO: 05/01/2021 Show an animation
                                 // TODO: 05/01/2021 Show toast message if the user is already sing up to the event OR find another solution
-                                SampleData.addJoinedEventList(event);
-                                SampleData.removeSignUpEventList(event);
+                                SampleData.addJoinedEventList(mEvent);
+                                SampleData.removeSignUpEventList(mEvent); // TODO: 05/01/2021 the delete here should be from the data base
 
                             }
                         });

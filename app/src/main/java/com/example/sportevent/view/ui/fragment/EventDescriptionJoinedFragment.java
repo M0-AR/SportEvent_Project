@@ -1,5 +1,7 @@
 package com.example.sportevent.view.ui.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -19,25 +21,29 @@ import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
 
-public class EventDescriptionFragment extends Fragment implements View.OnClickListener{
+import java.util.Date;
+
+public class EventDescriptionJoinedFragment extends Fragment implements View.OnClickListener{
+    private Event mEvent;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_description_event, container, false);
 
-        Event event = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
+        mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
 
         ImageView imageView = view.findViewById(R.id.imageView);
         Glide.with(this)
                 .asBitmap()
-                .load(event.getImageURL())
+                .load(mEvent.getImageURL())
                 .into(imageView);
 
         TextView textView1 = view.findViewById(R.id.textView1);
-        textView1.setText(event.getEventName());
+        textView1.setText(mEvent.getEventName());
 
         TextView textView2 = view.findViewById(R.id.textView2);
-        textView2.setText(event.getEventDescription());
+        textView2.setText(mEvent.getEventDescription());
         textView2.setMovementMethod(new ScrollingMovementMethod());
 
         final Button participantList = view.findViewById(R.id.participant_list);
@@ -56,7 +62,19 @@ public class EventDescriptionFragment extends Fragment implements View.OnClickLi
                 navController.navigate(R.id.action_eventDescriptionFragment_to_participant);
                 break;
             case R.id.event_start_description:
-                navController.navigate(R.id.action_eventDescriptionFragment_to_startEvent);
+                if(mEvent.getRaceStartDate().equals(new Date()))
+                    navController.navigate(R.id.action_eventDescriptionFragment_to_startEvent);
+                else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                            .setTitle("OPS...")
+                            .setMessage("This event will start on " + mEvent.getRaceStartDate())
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                    builder.create().show();
+                }
                 break;
             default:
                 break;
