@@ -1,6 +1,6 @@
 package com.example.sportevent.data.model.entities;
 
-
+// TODO: 05/01/2021 Why have we this class ???
 public class PersonalEventData {
 
     String racerMail;
