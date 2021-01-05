@@ -4,6 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.utilities.Constants;
+import com.example.sportevent.utilities.SampleData;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,9 +27,10 @@ public class EventListDateTest{
         /* The test here is according to the requirements.
            The Events list should appear in ascending order
          */
+        SampleData.initData();
         ArrayList<Event> joinedEventList = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            joinedEventList.add(new Event(Constants.IMAGES[i], (int)(Math.random()*10+1) +" : "+ "Event's Name", "Event's Description",
+            joinedEventList.add(new Event(SampleData.images.get(i), (int)(Math.random()*10+1) +" : "+ "Event's Name", "Event's Description",
                     new Date(2020 , 11 , 15 + i), // JoinStartDate
                     new Date(2020, 11, 25 + i) ,  // JoinEndDate
                     new Date(2021 , 11 , 15 + i), // RaceStartDate
