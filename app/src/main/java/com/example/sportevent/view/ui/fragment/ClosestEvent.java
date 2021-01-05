@@ -20,9 +20,7 @@ import androidx.navigation.Navigation;
 import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
-
-import static com.example.sportevent.utilities.Constants.IMAGES;
-
+import com.example.sportevent.utilities.SampleData;
 
 public class ClosestEvent extends Fragment implements View.OnClickListener{
 
@@ -31,17 +29,18 @@ public class ClosestEvent extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_closest_event, container, false);
 
         // TODO: 05/01/2021 Get the first element in the list which has the closest event
+        Event event = SampleData.signUpEventList.get(0);
         ImageView imageView = view.findViewById(R.id.imageView);
         Glide.with(this)
                 .asBitmap()
-                .load(IMAGES[0])
+                .load(event.getImageURL())
                 .into(imageView);
 
         TextView textView1 = view.findViewById(R.id.textView1);
-        textView1.setText("TEST");
+        textView1.setText(event.getEventName());
 
         TextView textView2 = view.findViewById(R.id.textView2);
-        textView2.setText("TTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSTTTTTTTTTTT");
+        textView2.setText(event.getEventDescription());
         textView2.setMovementMethod(new ScrollingMovementMethod());
 
         final Button participantList = view.findViewById(R.id.participant_list);

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.adapters.EventAdapter;
 import com.example.sportevent.view.adapters.LAYOUT;
 import com.example.sportevent.utilities.Constants;
@@ -28,8 +29,6 @@ public class HomeFragment extends Fragment {
     private EventAdapter mEventAdapter;
     View view = null;
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,27 +37,17 @@ public class HomeFragment extends Fragment {
             return view;
 
         view =  inflater.inflate(R.layout.fragment_home, container, false);
-        String name = "Software ";
-        String description = "test tsets test tsetstest tsetstest tsetstest tsetstest tsetstest tsetstest tsets";
-        ArrayList<Event> joinedEventList = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            //todo we have to consider if the current date is close to the end of the month then we have to increment the month by 1
-            joinedEventList.add(new Event(Constants.IMAGES[i], (int)(Math.random()*10+1) +" : "+ name, description,
-                                                                                        new Date(2020 , 11 , 15 + i), // JoinStartDate
-                                                                                        new Date(2020, 11, 25 + i) ,  // JoinEndDate
-                                                                                        new Date(2021 , 11 , 15 + i), // RaceStartDate
-                                                                                        new Date(2021, 11, 25 + i))); // JoinEndDate
-        }
+        ArrayList<Event> signUpEventList = SampleData.getSignUpEventList();
 
-        Collections.shuffle(joinedEventList);
-        sortEventsByClosestDateToToday(joinedEventList);
+        Collections.shuffle(signUpEventList);
+        sortEventsByClosestDateToToday(signUpEventList);
         RecyclerView mRecyclerView = view.findViewById(R.id.recycler_view0);
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
        // mEventAdapter = new CreationOfEventAdapter(getContext());
-        mEventAdapter.setMEventList(joinedEventList);
+        mEventAdapter.setMEventList(signUpEventList);
         mRecyclerView.setAdapter(mEventAdapter);
         return view;
     }

@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.sportevent.R;
+import com.example.sportevent.utilities.SampleData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SampleData.initData();
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         navController = Navigation.findNavController( this, R.id.nav_host_fragment_container);

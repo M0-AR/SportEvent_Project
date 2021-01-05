@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
-        android:name="com.example.sportevent.view.ui.fragment.EventListFragment"
+        android:name="com.example.sportevent.view.ui.fragment.JoinedEventListFragment"
         android:label="joined_event_fragment"
         tools:layout="@layout/fragment_list_event" >
         <action
@@ -154,7 +154,7 @@
         tools:layout="@layout/fragment_list_participant2" />
     <fragment
         android:id="@+id/completedEventFragment"
-        android:name="com.example.sportevent.view.ui.fragment.EventListFragment2"
+        android:name="com.example.sportevent.view.ui.fragment.FinishedEventListFragment"
         android:label="completed_event_fragment"
         tools:layout="@layout/fragment_list_event2" >
         <action
