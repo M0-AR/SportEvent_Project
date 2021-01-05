@@ -20,7 +20,7 @@ Mohamad and Ismail :
     * UX 
         * 06/01-2021 Grupper præsenterer deres app for Ian og får feedback på deres UX
         * 08/01-2021 De resterende grupper præsenterer deres app for Ian og får feedback på deres UX
-            * Show the closest event in ClosetEvent(Menu) 
+            * Show the closest event in ClosetEvent(Menu) ---Done--- 
             
     * 12/01-2021 Aflevering 
         * 14.00 Aflevering af 4. iteration - til projektstillere og til internt review
@@ -33,7 +33,7 @@ Mohamad and Ismail :
                 * Sign up user
                     * Make id for every new user. 
                 * HomeScreen
-                    * Sign up event should be displyed according to closest event date.
+                    * Sign up event should be displyed according to closest event date. ---Done--- 
                     * Move Sign up Event -> Joined Event -> Finished Event.
                     * Sing up List 
                         * Sign up Event 

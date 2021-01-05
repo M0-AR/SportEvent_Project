@@ -72,15 +72,6 @@
         android:name="com.example.sportevent.view.ui.fragment.EventDescriptionFragment"
         android:label="fragment_description_event"
         tools:layout="@layout/fragment_description_event" >
-        <argument
-            android:name="image"
-            app:argType="string" />
-        <argument
-            android:name="eventName"
-            app:argType="string" />
-        <argument
-            android:name="eventDescription"
-            app:argType="string" />
         <action
             android:id="@+id/action_eventDescriptionFragment_to_participant"
             app:destination="@id/participant"
@@ -95,6 +86,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
     </fragment>
     <fragment
         android:id="@+id/participant"
@@ -169,24 +163,21 @@
         <action
             android:id="@+id/action_eventDescriptionFragment2_to_participantListFragment2"
             app:destination="@id/participantListFragment2" />
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionSignUpFragment"
         android:name="com.example.sportevent.view.ui.fragment.EventDescriptionSignUpFragment"
         android:label="fragment_description_event1"
         tools:layout="@layout/fragment_signup_description_event" >
-        <argument
-            android:name="image"
-            app:argType="string" />
-        <argument
-            android:name="eventName"
-            app:argType="string" />
-        <argument
-            android:name="eventDescription"
-            app:argType="string" />
         <action
             android:id="@+id/action_eventDescriptionSignUpFragment_to_participantListFragment1"
             app:destination="@id/participantListFragment1" />
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
     </fragment>
     <fragment
         android:id="@+id/participantListFragment1"

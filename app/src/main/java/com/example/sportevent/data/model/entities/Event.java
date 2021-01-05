@@ -1,8 +1,9 @@
 package com.example.sportevent.data.model.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Event {
+public class Event implements Serializable {
     private String imageURL;
     private String eventName;
     private String eventDescription;

@@ -73,10 +73,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
 
 
-
-
-
-    // Instead of passing reference from constructor
     public void setOnEventClickListener(OnEventClickListener onEventClickListener) {
         mOnEventClickListener = onEventClickListener;
     }
@@ -90,7 +86,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
 
     public interface OnEventClickListener {
-        // Todo why this suggest safe delete
         void onEventClick(Event event);
     }
 

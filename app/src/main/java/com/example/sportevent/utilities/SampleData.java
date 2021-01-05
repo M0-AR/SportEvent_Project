@@ -83,8 +83,8 @@ public class SampleData {
 
         for (int i = 0; i < 8; i++) {
             signUpEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
-            joinedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
-            finishedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
+            // joinedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
+            // finishedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
         }
     }
 
@@ -110,15 +110,23 @@ public class SampleData {
         return participants.remove(participant);
     }
 
-    public static boolean getSignUpEventList(Event event) {
+    public static boolean removeSignUpEventList(Event event) {
         return signUpEventList.remove(event);
     }
 
-    public static boolean getJoinedEventList(Event event) {
+    public static boolean removeJoinedEventList(Event event) {
         return joinedEventList.remove(event);
     }
 
-    public static boolean getFinishedEventList(Event event) {
+    public static boolean removeFinishedEventList(Event event) {
+        return finishedEventList.remove(event);
+    }
+
+    public static boolean addJoinedEventList(Event event) {
+        return joinedEventList.remove(event);
+    }
+
+    public static boolean addFinishedEventList(Event event) {
         return finishedEventList.remove(event);
     }
 }

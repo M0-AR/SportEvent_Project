@@ -1,5 +1,8 @@
 package com.example.sportevent.view.ui.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -18,8 +21,12 @@ import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
+import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.utilities.SampleData;
 
 public class EventDescriptionSignUpFragment extends Fragment implements View.OnClickListener{
+    private Event event;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,18 +34,19 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
 
         // Todo: Maybe: size of image 0.3 and textView 2 is 0.7 try to hide action bar getActivity().getActionBar().hide();
 
+        event = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
+
         ImageView imageView = view.findViewById(R.id.imageView);
-        // Todo: why the program suggest this assert getArguments() != null;
-        Glide.with(getContext())
+        Glide.with(this)
                 .asBitmap()
-                .load(EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getImage())
+                .load(event.getImageURL())
                 .into(imageView);
 
         TextView textView1 = view.findViewById(R.id.textView1);
-        textView1.setText(EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEventName());
+        textView1.setText(event.getEventName());
 
         TextView textView2 = view.findViewById(R.id.textView2);
-        textView2.setText(EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEventDescription());
+        textView2.setText(event.getEventDescription());
         textView2.setMovementMethod(new ScrollingMovementMethod());
 
         final Button participantList = view.findViewById(R.id.participant_list);
@@ -57,7 +65,25 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
               //  navController.navigate(R.id.action_eventDescriptionFragment1_to_participantListFragment1);
                 break;
             case R.id.event_signup:
-                Toast.makeText(getContext(), "sign up window here", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                        .setTitle("Join The Event")
+                        .setMessage("Confirm for joining this event !")
+                        .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO: 05/01/2021 Show an animation
+                                // TODO: 05/01/2021 Show toast message if the user is already sing up to the event OR find another solution
+                                SampleData.addJoinedEventList(event);
+                                SampleData.removeSignUpEventList(event);
+
+                            }
+                        });
+                builder.create().show();
                 break;
 
             default:

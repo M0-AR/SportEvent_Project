@@ -58,11 +58,7 @@ public class FinishedEventListFragment extends Fragment {
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
-                Bundle bundle = new Bundle();
-                bundle.putString("image", event.getImageURL());
-                bundle.putString("eventName", event.getEventName());
-                bundle.putString("eventDescription", event.getEventDescription());
-                navController.navigate(R.id.action_completedEventFragment_to_eventDescriptionFragment2, bundle);
+                navController.navigate( FinishedEventListFragmentDirections.actionCompletedEventFragmentToEventDescriptionFragment2(event));
             }
         });
 

@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
-                navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionSignUpFragment(event.getImageURL(), event.getEventName(), event.getEventDescription()));
+                navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionSignUpFragment(event));
             }
         });
     }
