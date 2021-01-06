@@ -18,15 +18,7 @@ public class Event implements Serializable {
     private Date raceEndDate;
 
 
-    public Event(String imageURL, String eventName, String eventDescription, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
-        this.imageURL = imageURL;
-        this.eventName = eventName;
-        this.eventDescription = eventDescription;
-        this.joinStartDate = joinStartDate;
-        this.joinEndDate = joinEndDate;
-        this.raceStartDate = raceStartDate;
-        this.raceEndDate = raceEndDate;
-    }
+
 
     public Event(int id, String imageURL, String eventName, String eventDescription, String location, ArrayList<Participant> joinedEventParticipants, ArrayList<Participant> finishedRaceParticipants, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
         this.id = id;

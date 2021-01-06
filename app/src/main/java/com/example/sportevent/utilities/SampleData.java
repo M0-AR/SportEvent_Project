@@ -27,12 +27,19 @@ public class SampleData {
     private static final String image_test_7 = "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2017/08/08/amateur-cyclists-mt-evans-colorado_s.jpg";
 
     public static void initData() {
-        if (participants == null) {
+        if (participants == null && joinedParticipantList == null && finishedParticipantList == null) {
             participants = new ArrayList<>();
+            joinedParticipantList = new ArrayList<>();
+            finishedParticipantList = new ArrayList<>();
         }
 
         for (int i = 0; i < 20; i++) {
             participants.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
+        }
+
+        for (int i = 0; i < 5; i++) {
+            joinedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
+            finishedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
         }
 
         if (images == null) {
@@ -68,26 +75,13 @@ public class SampleData {
                 "Liaising with colleagues to implement technical designs\n" +
                 "Investigating and using new technologies where relevant\n" +
                 "Providing written knowledge transfer material\n" +
-                "Software Engineer job qualifications and requirements\n" +
-                "A degree in Software Engineering, Computer Science, Mathematics or related fields is essential. Some companies may require expertise in particular high-level programming languages such as C++, Java or Scala.\n" +
-                "\n" +
-                "As technology develops at an ever increasing pace, it is critical for Software Engineers to stay up to date with the latest developments in hardware, systems and coding.\n" +
-                "\n" +
-                "As well as formal qualifications, a Software Engineer job description should emphasise an importance towards:\n" +
-                "\n" +
-                " - A passion for solving problems and providing workable solutions\n" +
-                " - Knowledge of algorithms and data structures\n" +
-                " - Strong analytical and reasoning skills with an ability to visualise processes and outcomes\n" +
-                " - Proficiency in troubleshooting software issues and debugging a large codebase\n" +
-                " - Outstanding all-round communication skills and ability to work collaboratively\n" +
-                "Robert Half is one of the leading technology recruitment agencies in Australia. Are you looking for an Software Engineer role? View our latest Software Engineer jobs here.\n" +
-                "\n" +
-                "Looking for an Software Engineer job or IT and Technology specific salary information? Head over to our Software Engineer Salary Guide for insights and trends.";
+                "Software Engineer job qualifications and requirements\n";
 
         for (int i = 0; i < 8; i++) {
-            signUpEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
-            joinedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
-            finishedEventList.add(new Event(images.get(i), i +" : "+ name, description, new Date(), new Date(), new Date(), new Date() ));
+            signUpEventList.add(new Event(i,images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+                                                ,joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
+            joinedEventList.add(new Event(i,images.get(i), i +" : "+ name, description,"",joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
+            finishedEventList.add(new Event(i,images.get(i), i +" : "+ name, description,"",joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
         }
     }
 

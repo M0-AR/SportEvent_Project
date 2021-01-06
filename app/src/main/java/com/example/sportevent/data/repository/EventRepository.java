@@ -25,7 +25,7 @@ public class EventRepository {
 
 
     public void createEvent(Event event) {
-        FirebaseFirestore.getInstance().collection("events")
+        DB.collection("events")
                 .add(event)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
