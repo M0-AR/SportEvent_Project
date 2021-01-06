@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,11 +22,13 @@ import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.adapters.EventAdapter;
 import com.example.sportevent.view.adapters.LAYOUT;
 import com.example.sportevent.utilities.Constants;
+import com.example.sportevent.viewModel.EventViewModel;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.*;
 public class HomeFragment extends Fragment {
+    private EventViewModel mEventViewModel;
     private EventAdapter mEventAdapter;
     View view = null;
 
@@ -36,8 +39,13 @@ public class HomeFragment extends Fragment {
         if (view != null)
             return view;
 
+        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+
         view =  inflater.inflate(R.layout.fragment_home, container, false);
         ArrayList<Event> signUpEventList = SampleData.getSignUpEventList();
+
+        // TODO TEST: create an event
+
 
         Collections.shuffle(signUpEventList);
         sortEventsByClosestDateToToday(signUpEventList);
@@ -80,6 +88,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
+                mEventViewModel.createEvent(event);
                 final NavController navController = Navigation.findNavController(view);
                 navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionSignUpFragment(event));
             }
