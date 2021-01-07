@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.process.RequestCall;
 import com.example.sportevent.data.repository.EventRepository;
 
 import java.util.List;
@@ -25,10 +26,13 @@ public class EventViewModel extends AndroidViewModel {
     }
 
 
-    public void createEvent(Event event) {
-        mEventRepository.createEvent(event);
+    public void createEvent(Event event, int id) {
+        mEventRepository.createEvent(event, id);
     }
 
+    public MutableLiveData<RequestCall> getAllEvents() {
+        return mEventRepository.getAllEvents();
+    }
 
 
 }

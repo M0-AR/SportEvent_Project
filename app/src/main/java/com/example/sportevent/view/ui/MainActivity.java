@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -13,21 +14,30 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.sportevent.R;
+import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.utilities.SampleData;
+import com.example.sportevent.viewModel.EventViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
     private BottomNavigationView  bottomNavigationView;
     private boolean doubleBackToExitPressedOnce;
+
+
+    private EventViewModel mEventViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SampleData.initData();
+        Log.d(TAG, "onCreate: create events");
+        // TODO: 07/01/2021 Delete this later
+        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+//        for (int i = 0; i < 8; i++) {
+//            mEventViewModel.createEvent(SampleData.signUpEventList.get(i), SampleData.signUpEventList.get(i).getId());
+//        }
+
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         navController = Navigation.findNavController( this, R.id.nav_host_fragment_container);

@@ -1,10 +1,13 @@
 package com.example.sportevent.data.model.entities;
 
+import com.example.sportevent.utilities.SampleData;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Event implements Serializable {
+    private static int count = 1;
     private int id;
     private String imageURL;
     private String eventName;
@@ -20,8 +23,8 @@ public class Event implements Serializable {
 
 
 
-    public Event(int id, String imageURL, String eventName, String eventDescription, String location, ArrayList<Participant> joinedEventParticipants, ArrayList<Participant> finishedRaceParticipants, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
-        this.id = id;
+    public Event(String imageURL, String eventName, String eventDescription, String location, ArrayList<Participant> joinedEventParticipants, ArrayList<Participant> finishedRaceParticipants, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
+        this.id = count++;
         this.imageURL = imageURL;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
@@ -34,16 +37,12 @@ public class Event implements Serializable {
         this.raceEndDate = raceEndDate;
     }
 
+    public Event() {
+        // Firebase
+    }
+
     public int getId() {
         return id;
-    }
-
-    public Date getRaceStartDate() {
-        return raceStartDate;
-    }
-
-    public Date getRaceEndDate() {
-        return raceEndDate;
     }
 
     public String getImageURL() {
@@ -58,15 +57,6 @@ public class Event implements Serializable {
         return eventDescription;
     }
 
-
-    public Date getJoinStartDate() {
-        return joinStartDate;
-    }
-
-    public Date getJoinEndDate() {
-        return joinEndDate;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -77,5 +67,21 @@ public class Event implements Serializable {
 
     public ArrayList<Participant> getFinishedRaceParticipants() {
         return finishedRaceParticipants;
+    }
+
+    public Date getJoinStartDate() {
+        return joinStartDate;
+    }
+
+    public Date getJoinEndDate() {
+        return joinEndDate;
+    }
+
+    public Date getRaceStartDate() {
+        return raceStartDate;
+    }
+
+    public Date getRaceEndDate() {
+        return raceEndDate;
     }
 }

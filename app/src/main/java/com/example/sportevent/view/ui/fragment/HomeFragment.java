@@ -1,6 +1,8 @@
 package com.example.sportevent.view.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -18,20 +21,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.process.RequestCall;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.adapters.EventAdapter;
 import com.example.sportevent.view.adapters.LAYOUT;
-import com.example.sportevent.utilities.Constants;
 import com.example.sportevent.viewModel.EventViewModel;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.*;
 public class HomeFragment extends Fragment {
+    private static final String TAG = "HomeFragment";
+
     private EventViewModel mEventViewModel;
     private EventAdapter mEventAdapter;
+    private HashMap<String, Object> mSignUpEventList;
+    private ArrayList<String> mIdList;
     View view = null;
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+
+        mEventViewModel.getAllEvents().observe(this, new Observer<RequestCall>() {
+            @Override
+            public void onChanged(RequestCall requestCall) {
+                Log.d(TAG, "onChanged: events" );
+                mSignUpEventList = requestCall.hashMap;
+                mIdList = requestCall.idList;
+            }
+        });
+    }
+
+    @SuppressLint("FragmentLiveDataObserve")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,12 +62,11 @@ public class HomeFragment extends Fragment {
         if (view != null)
             return view;
 
-        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-
         view =  inflater.inflate(R.layout.fragment_home, container, false);
+
+        Log.d(TAG, "onCreateView: mIdList" + mIdList);
         ArrayList<Event> signUpEventList = SampleData.getSignUpEventList();
 
-        // TODO TEST: create an event
 
 
         Collections.shuffle(signUpEventList);
@@ -54,7 +76,6 @@ public class HomeFragment extends Fragment {
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
-       // mEventAdapter = new CreationOfEventAdapter(getContext());
         mEventAdapter.setMEventList(signUpEventList);
         mRecyclerView.setAdapter(mEventAdapter);
         return view;
@@ -88,7 +109,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
-                mEventViewModel.createEvent(event);
+                mEventViewModel.createEvent(event, event.getId());
                 final NavController navController = Navigation.findNavController(view);
                 navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionSignUpFragment(event));
             }
