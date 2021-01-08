@@ -24,11 +24,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 
 import static com.example.sportevent.utilities.Constants.DB;
 
 public class EventRepository {
+    private static final String TAG = "EventRepository";
     private Application application;
     public MutableLiveData<Event> mEvents;
     public MutableLiveData<RequestCall> mutableLiveData;
@@ -61,56 +63,44 @@ public class EventRepository {
     }
 
     public MutableLiveData<RequestCall> getAllEvents() {
-        final HashMap<String, Object> objectHashMap = new HashMap<>();
-        final ArrayList<String> idList = new ArrayList<>();
         RequestCall requestCall = new RequestCall();
+        final ArrayList<Event> eventList = new ArrayList<>();
 
 
-        DocumentReference docRef = DB.collection("events").document("LA");
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                // Event event = documentSnapshot.toObject(Event.class);
-//                 String eventDescription = documentSnapshot.getString("eventDescription");
-//                 double id = documentSnapshot.getDouble("id");
-//                 String imageURL = documentSnapshot.getString("imageURL");;
-//                 String eventName  = documentSnapshot.getString("eventName");
-//                 String location  = documentSnapshot.getString("location");
-//               // String joinedEventParticipants  = documentSnapshot.get("joinedEventParticipants");
-//                String finishedRaceParticipants  = documentSnapshot.getString("finishedRaceParticipants");
-//                 ArrayList<String> joinedEventParticipants  = (ArrayList<String>) documentSnapshot.get("joinedEventParticipants");;
-//                 //ArrayList<Participant> finishedRaceParticipants  = documentSnapshot.getString("finishedRaceParticipants");
-//                 Date joinStartDate  = documentSnapshot.getDate("joinStartDate");
-//                 Date joinEndDate  = documentSnapshot.getDate("joinEndDate");
-//                 Date raceStartDate  = documentSnapshot.getDate("raceStartDate");
-//                 Date raceEndDate  = documentSnapshot.getDate("raceEndDate");
-                // todo !!!!!!!!!!!!!!!!!!! not working Event event = documentSnapshot.toObject(Event.class);
-            }
-        });
+//        DocumentReference docRef = DB.collection("events").document("1");
+//        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                Log.d(TAG, "onSuccess: getAllEvents");
+//                 Event event = documentSnapshot.toObject(Event.class);
+//                Log.d(TAG, "onSuccess: getJoinedEventParticipantsEmails" + (event != null ? event.getJoinedEventParticipantsEmails() : null));
+//                Log.d(TAG, "onSuccess: getFinishedRaceParticipantsEmails" + (event != null ? event.getFinishedRaceParticipantsEmails() : null));
+//            }
+//        });
 
-//        DB.collection("events")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (DocumentSnapshot document : task.getResult()) {
-//                                Log.d(String.valueOf(application.getApplicationContext()), document.getId() + " => " + document.getData());
+        DB.collection("events")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot document : task.getResult()) {
+                                Log.d(String.valueOf(application.getApplicationContext()), document.getId() + " => " + document.getData());
 //                                objectHashMap.put(document.getId(), document.getData());
 //                                idList.add(document.getId());
-//
-//                                Event event = (Event) parseHashMapToObject(document.getData(), Event.class);
-//
-//                            }
-//                        }else {
-//                            Log.w(String.valueOf(application.getApplicationContext()), "Error getting events.", task.getException());
-//                        }
-//
-//                    }
-//                });
 
-        requestCall.idList = idList;
-        requestCall.hashMap = objectHashMap;
+                                Event event = document.toObject(Event.class);
+                                Log.d(TAG, "onComplete: getAllEvents -> Event: " + (event != null ? event.getEventName() : null));
+                                eventList.add(event);
+                            }
+                        }else {
+                            Log.w(String.valueOf(application.getApplicationContext()), "Error getting events.", task.getException());
+                        }
+
+                    }
+                });
+
+        requestCall.eventList = eventList;
         mutableLiveData.postValue(requestCall);
         return mutableLiveData;
     }

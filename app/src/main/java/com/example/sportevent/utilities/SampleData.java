@@ -4,11 +4,13 @@ import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.entities.Participant;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class SampleData {
     public static ArrayList<Participant> participants;
-    public static ArrayList<Participant> joinedParticipantList;
+    public static List<Participant> joinedParticipantList;
     public static ArrayList<Participant> finishedParticipantList;
 
     public static ArrayList<Event> signUpEventList;
@@ -37,7 +39,7 @@ public class SampleData {
             participants.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             joinedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
             finishedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
         }
@@ -78,15 +80,22 @@ public class SampleData {
                 "Software Engineer job qualifications and requirements\n";
 
         for (int i = 0; i < 8; i++) {
+/*
             signUpEventList.add(new Event(images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                     ,joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
-             }
-        for (int i = 0; i < 8; i++) {
-            joinedEventList.add(new Event(images.get(i), i +" : "+ name, description,"",joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
+*/
+            signUpEventList.add(new Event(images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+                    , Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2),Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2), new Date(), new Date(), new Date(), new Date() ));
+
         }
-        for (int i = 0; i < 8; i++) {
-           finishedEventList.add(new Event(images.get(i), i +" : "+ name, description,"",joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
-        }
+
+
+//        for (int i = 0; i < 8; i++) {
+//            joinedEventList.add(new Event(images.get(i), i +" : "+ name, description,"",joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
+//        }
+//        for (int i = 0; i < 8; i++) {
+//           finishedEventList.add(new Event(images.get(i), i +" : "+ name, description,"",joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
+//        }
     }
 
 

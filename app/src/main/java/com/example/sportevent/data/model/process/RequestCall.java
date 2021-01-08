@@ -10,6 +10,5 @@ import java.util.List;
 public class RequestCall {
     public int status;
     public String message;
-    public HashMap<String, Object> hashMap;
-    public ArrayList<String> idList;
+    public ArrayList<Event> eventList;
 }

@@ -2,6 +2,7 @@ package com.example.sportevent.view.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +35,7 @@ public class HomeFragment extends Fragment {
 
     private EventViewModel mEventViewModel;
     private EventAdapter mEventAdapter;
-    private HashMap<String, Object> mSignUpEventList;
-    private ArrayList<String> mIdList;
+    private ArrayList<Event> mEventList;
     View view = null;
 
 
@@ -47,11 +47,21 @@ public class HomeFragment extends Fragment {
         mEventViewModel.getAllEvents().observe(this, new Observer<RequestCall>() {
             @Override
             public void onChanged(RequestCall requestCall) {
-                Log.d(TAG, "onChanged: events" );
-                mSignUpEventList = requestCall.hashMap;
-                mIdList = requestCall.idList;
+                Log.d(TAG, "onChanged: events: " + requestCall.eventList.toString());
+                mEventList = requestCall.eventList;
             }
         });
+
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                {
+//
+//                }
+//            }
+//        }, 2000);
+
     }
 
     @SuppressLint("FragmentLiveDataObserve")
@@ -62,9 +72,15 @@ public class HomeFragment extends Fragment {
         if (view != null)
             return view;
 
+
+
+
         view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        Log.d(TAG, "onCreateView: mIdList" + mIdList);
+
+
+
+        Log.d(TAG, "onCreateView: mEventList" + mEventList);
         ArrayList<Event> signUpEventList = SampleData.getSignUpEventList();
 
 
@@ -76,7 +92,8 @@ public class HomeFragment extends Fragment {
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
-        mEventAdapter.setMEventList(signUpEventList);
+
+        mEventAdapter.setMEventList(signUpEventList); // todo  signUpEventList
         mRecyclerView.setAdapter(mEventAdapter);
         return view;
     }
@@ -109,7 +126,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onEventClick(Event event) {
                 Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
-                mEventViewModel.createEvent(event, event.getId());
+                Log.d(TAG, "onCreateView: mEventList: " + mEventList.get(0).toString());
                 final NavController navController = Navigation.findNavController(view);
                 navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionSignUpFragment(event));
             }

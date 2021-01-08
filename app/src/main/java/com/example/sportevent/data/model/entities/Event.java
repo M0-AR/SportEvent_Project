@@ -1,10 +1,8 @@
 package com.example.sportevent.data.model.entities;
 
-import com.example.sportevent.utilities.SampleData;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Event implements Serializable {
     private static int count = 1;
@@ -13,29 +11,27 @@ public class Event implements Serializable {
     private String eventName;
     private String eventDescription;
     private String location;
-    private ArrayList<Participant> joinedEventParticipants;
-    private ArrayList<Participant> finishedRaceParticipants;
+    private List<String> joinedEventParticipantsEmails;
+    private List<String> finishedRaceParticipantsEmails;
     private Date joinStartDate;
     private Date joinEndDate;
     private Date raceStartDate;
     private Date raceEndDate;
 
-
-
-
-    public Event(String imageURL, String eventName, String eventDescription, String location, ArrayList<Participant> joinedEventParticipants, ArrayList<Participant> finishedRaceParticipants, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
+    public Event(String imageURL, String eventName, String eventDescription, String location, List<String> joinedEventParticipantsEmails, List<String> finishedRaceParticipantsEmails, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
         this.id = count++;
         this.imageURL = imageURL;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.location = location;
-        this.joinedEventParticipants = joinedEventParticipants;
-        this.finishedRaceParticipants = finishedRaceParticipants;
+        this.joinedEventParticipantsEmails = joinedEventParticipantsEmails;
+        this.finishedRaceParticipantsEmails = finishedRaceParticipantsEmails;
         this.joinStartDate = joinStartDate;
         this.joinEndDate = joinEndDate;
         this.raceStartDate = raceStartDate;
         this.raceEndDate = raceEndDate;
     }
+
 
     public Event() {
         // Firebase
@@ -61,12 +57,13 @@ public class Event implements Serializable {
         return location;
     }
 
-    public ArrayList<Participant> getJoinedEventParticipants() {
-        return joinedEventParticipants;
+
+    public List<String> getJoinedEventParticipantsEmails() {
+        return joinedEventParticipantsEmails;
     }
 
-    public ArrayList<Participant> getFinishedRaceParticipants() {
-        return finishedRaceParticipants;
+    public List<String> getFinishedRaceParticipantsEmails() {
+        return finishedRaceParticipantsEmails;
     }
 
     public Date getJoinStartDate() {
@@ -83,5 +80,22 @@ public class Event implements Serializable {
 
     public Date getRaceEndDate() {
         return raceEndDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", imageURL='" + imageURL + '\'' +
+                ", eventName='" + eventName + '\'' +
+                ", eventDescription='" + eventDescription + '\'' +
+                ", location='" + location + '\'' +
+                ", joinedEventParticipantsEmails=" + joinedEventParticipantsEmails +
+                ", finishedRaceParticipantsEmails=" + finishedRaceParticipantsEmails +
+                ", joinStartDate=" + joinStartDate +
+                ", joinEndDate=" + joinEndDate +
+                ", raceStartDate=" + raceStartDate +
+                ", raceEndDate=" + raceEndDate +
+                '}';
     }
 }
