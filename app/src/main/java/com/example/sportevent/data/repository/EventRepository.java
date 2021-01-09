@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -34,6 +35,7 @@ public class EventRepository {
     private Application application;
     public MutableLiveData<Event> mEvents;
     public MutableLiveData<RequestCall> mutableLiveData;
+    final ArrayList<Event> eventList = new ArrayList<>();
 
     public EventRepository(Application application) {
         this.application = application;
@@ -44,40 +46,22 @@ public class EventRepository {
 
     public void createEvent(Event event, int id) {
         DB.collection("events").document(String.valueOf(id)).set(event);
-
-//        DB.collection("events")
-//                .add(event)
-//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Log.d(String.valueOf(application.getApplicationContext()), "Event added with ID: " + documentReference.getId());
-//
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w(String.valueOf(application.getApplicationContext()), "Error adding Event", e);
-//                    }
-//                });
     }
 
     public MutableLiveData<RequestCall> getAllEvents() {
-        RequestCall requestCall = new RequestCall();
-        final ArrayList<Event> eventList = new ArrayList<>();
+        final RequestCall requestCall = new RequestCall();
+        readData(new FirebaseCallBack() {
+            @Override
+            public void onCallBack(List<Event> eventList) {
+                Log.d(TAG, "getAllEvents: FirebaseCallBack: " + eventList);
+                requestCall.eventList = (ArrayList<Event>) eventList;
+                mutableLiveData.postValue(requestCall);
+            }
+        });
+        return mutableLiveData;
+    }
 
-
-//        DocumentReference docRef = DB.collection("events").document("1");
-//        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                Log.d(TAG, "onSuccess: getAllEvents");
-//                 Event event = documentSnapshot.toObject(Event.class);
-//                Log.d(TAG, "onSuccess: getJoinedEventParticipantsEmails" + (event != null ? event.getJoinedEventParticipantsEmails() : null));
-//                Log.d(TAG, "onSuccess: getFinishedRaceParticipantsEmails" + (event != null ? event.getFinishedRaceParticipantsEmails() : null));
-//            }
-//        });
-
+    private void readData(final FirebaseCallBack firebaseCallBack) {
         DB.collection("events")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -85,48 +69,21 @@ public class EventRepository {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot document : task.getResult()) {
-                                Log.d(String.valueOf(application.getApplicationContext()), document.getId() + " => " + document.getData());
-//                                objectHashMap.put(document.getId(), document.getData());
-//                                idList.add(document.getId());
-
+                             //   Log.d(String.valueOf(application.getApplicationContext()), document.getId() + " => " + document.getData());
                                 Event event = document.toObject(Event.class);
-                                Log.d(TAG, "onComplete: getAllEvents -> Event: " + (event != null ? event.getEventName() : null));
+                             //   Log.d(TAG, "onComplete: getAllEvents -> Event: " + (event != null ? event.getEventName() : null));
                                 eventList.add(event);
                             }
+                            firebaseCallBack.onCallBack(eventList);
                         }else {
                             Log.w(String.valueOf(application.getApplicationContext()), "Error getting events.", task.getException());
                         }
-
                     }
                 });
-
-        requestCall.eventList = eventList;
-        mutableLiveData.postValue(requestCall);
-        return mutableLiveData;
     }
 
-    private Object parseHashMapToObject(Map map, Class cls) {
-        Iterator it = map.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-
-            System.out.println(pair.getKey() + " = " + pair.getValue());
-            it.remove(); // avoids a ConcurrentModificationException
-        }
-
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        Gson gson = gsonBuilder.create();
-        String jsonString = gson.toJson(map);
-        return gson.fromJson(jsonString, cls);
+    private interface FirebaseCallBack {
+       void onCallBack(List<Event> eventList);
     }
 
-
-
-
-//    static Object parseHashMapToObject(HashMap map, Class cls) {
-//        GsonBuilder gsonBuilder = new GsonBuilder();
-//        Gson gson = gsonBuilder.create();
-//        String jsonString = gson.toJson(map);
-//        return gson.fromJson(jsonString, cls);
-//    }
 }

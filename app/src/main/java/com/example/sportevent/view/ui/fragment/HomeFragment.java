@@ -47,8 +47,18 @@ public class HomeFragment extends Fragment {
         mEventViewModel.getAllEvents().observe(this, new Observer<RequestCall>() {
             @Override
             public void onChanged(RequestCall requestCall) {
-                Log.d(TAG, "onChanged: events: " + requestCall.eventList.toString());
+                Log.d(TAG, "onChanged: events: " + requestCall.eventList);
                 mEventList = requestCall.eventList;
+                Collections.shuffle(mEventList);
+                sortEventsByClosestDateToToday(mEventList);
+                RecyclerView mRecyclerView = view.findViewById(R.id.recycler_view0);
+                mRecyclerView.setHasFixedSize(true);
+
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
+
+                mEventAdapter.setMEventList(mEventList); // todo  signUpEventList
+                mRecyclerView.setAdapter(mEventAdapter);
             }
         });
 
@@ -69,6 +79,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Todo: it's working but when I go to another app like google Map The view will be not being saved
+
         if (view != null)
             return view;
 
@@ -77,14 +88,10 @@ public class HomeFragment extends Fragment {
 
         view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-
-
-
         Log.d(TAG, "onCreateView: mEventList" + mEventList);
         ArrayList<Event> signUpEventList = SampleData.getSignUpEventList();
 
-
-
+        // TODO: 08/01/2021
         Collections.shuffle(signUpEventList);
         sortEventsByClosestDateToToday(signUpEventList);
         RecyclerView mRecyclerView = view.findViewById(R.id.recycler_view0);
@@ -140,6 +147,7 @@ public class HomeFragment extends Fragment {
             int index = i;
             for (int j = i + 1; j < events.size(); j++) {
                 Event event = events.get(j);
+                if (min.getJoinStartDate() == null || event.getJoinStartDate() == null) continue;
                 if (min.getJoinStartDate().after(event.getJoinStartDate())) { // "Date1 is after Date2"
                     min = event;
                     index = j;
