@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.anupcowkur.reservoir.Reservoir;
+import com.anupcowkur.reservoir.ReservoirPutCallback;
 import com.example.sportevent.data.model.entities.Event;
 
 import java.io.IOException;
@@ -25,6 +26,23 @@ public class CacheManager {
             DISK_CACHE_INITIALIZED = false;
         }
     }
+
+    public static void cacheEvents(List<Event> events) {
+        if (DISK_CACHE_INITIALIZED) {
+            Reservoir.putAsync(Constants.CACHE_KEY_EVENTS, events, new ReservoirPutCallback() {
+                @Override
+                public void onSuccess() {
+                    DISK_CACHE_DIRTY = false;
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    Log.e(TAG, "onFailure: Putting cache to disk");
+                }
+            });
+        }
+    }
+
 
 
 }
