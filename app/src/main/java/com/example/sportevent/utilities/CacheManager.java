@@ -3,11 +3,17 @@ package com.example.sportevent.utilities;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.anupcowkur.reservoir.Reservoir;
+import com.anupcowkur.reservoir.ReservoirGetCallback;
 import com.anupcowkur.reservoir.ReservoirPutCallback;
 import com.example.sportevent.data.model.entities.Event;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +49,22 @@ public class CacheManager {
         }
     }
 
-
+    public LiveData<List<Event>> getCollectionOfEvents() {
+        final MutableLiveData<List<Event>> eventLiveData = new MutableLiveData<>();
+        if (!DISK_CACHE_INITIALIZED) return null;
+        Type resultType = new TypeToken<List<Event>>() {}.getType();
+        Reservoir.getAsync(Constants.CACHE_KEY_EVENTS, resultType, new ReservoirGetCallback<List<Event>>() {
+            @Override
+            public void onSuccess(List<Event> eventList) {
+                eventLiveData.setValue(eventList);
+            }
+            @Override
+            public void onFailure(Exception e) {
+                Log.e(TAG, "onFailure: Async refresh from disk");
+                eventLiveData.setValue(null);
+            }
+        });
+        return eventLiveData;
+    }
 
 }
