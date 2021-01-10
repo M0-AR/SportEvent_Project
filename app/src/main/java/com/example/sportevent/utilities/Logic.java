@@ -10,9 +10,10 @@ public class Logic {
     public static ArrayList<Event> getJoinedEventForUserByEmail(ArrayList<Event> events, String email) {
         ArrayList<Event> joinedEvent = new ArrayList<>();
         for (Event event : events) {
-            ArrayList<String> emails = (ArrayList<String>) event.getJoinedEventParticipantsEmails();
+            List<String> emails = event.getJoinedEventParticipantsEmails();
+            if (emails == null) continue;
             for (String s : emails) {
-                if (s.equals(email)) {
+                if (email.equalsIgnoreCase(s)) {
                     joinedEvent.add(event);
                 }
             }
@@ -20,6 +21,18 @@ public class Logic {
         return joinedEvent;
     }
 
-
+    public static ArrayList<Event> getFinishedEventForUserByEmail(ArrayList<Event> events, String email) {
+        ArrayList<Event> joinedEvent = new ArrayList<>();
+        for (Event event : events) {
+            List<String> emails = event.getFinishedRaceParticipantsEmails();
+            if (emails == null) continue;
+            for (String s : emails) {
+                if (email.equalsIgnoreCase(s)) {
+                    joinedEvent.add(event);
+                }
+            }
+        }
+        return joinedEvent;
+    }
 
 }
