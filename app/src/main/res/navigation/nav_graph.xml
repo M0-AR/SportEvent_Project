@@ -109,12 +109,19 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true"/>
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
     </fragment>
     <fragment
         android:id="@+id/eventResultFragment"
         android:name="com.example.sportevent.view.ui.fragment.EventResultFragment"
         android:label="fragment_result_event"
-        tools:layout="@layout/fragment_result_event" />
+        tools:layout="@layout/fragment_result_event" >
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+    </fragment>
     <fragment
         android:id="@+id/loginEmail"
         android:name="com.example.sportevent.view.ui.fragment.LoginEmailFragment"

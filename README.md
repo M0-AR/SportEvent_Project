@@ -72,5 +72,8 @@ Mohamad and Ismail :
     * Overskrift til signup event list - Closest Event (simplify meaning for the user)
 
 
+## Ask stack holder 
+    * What should we do with finished event in sign up event list? 
+
 ## Rule for stack holder 
     * The id of docment in FireStore should be a number and same as id inside event   

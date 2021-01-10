@@ -35,13 +35,12 @@ public class JoinedEventListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_event, container, false);
 
-
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mEventAdapter = new EventAdapter(getContext(), LAYOUT.JOINED_EVENT_LIST);
-        mEventAdapter.setMEventList(SampleData.getJoinedEventList());
+        mEventAdapter.setMEventList(SampleData.joinedEventList);
 
         mRecyclerView.setAdapter(mEventAdapter);
 
@@ -53,13 +52,10 @@ public class JoinedEventListFragment extends Fragment {
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mEventAdapter.setOnEventClickListener(new EventAdapter.OnEventClickListener() {
-            @Override
-            public void onEventClick(Event event) {
-                Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
-                final NavController navController = Navigation.findNavController(view);
-                navController.navigate( JoinedEventListFragmentDirections.actionJoinedEventFragmentToEventDescriptionFragment(event));
-            }
+        mEventAdapter.setOnEventClickListener(event -> {
+            Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
+            final NavController navController = Navigation.findNavController(view);
+            navController.navigate( JoinedEventListFragmentDirections.actionJoinedEventFragmentToEventDescriptionFragment(event));
         });
 
     }

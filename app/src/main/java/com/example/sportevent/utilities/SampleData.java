@@ -99,7 +99,7 @@ public class SampleData {
 //        }
     }
 
-    public static void getFireStoreEventsData(ArrayList<Event> eventList) {
+    public static void initFireStoreEventsData(ArrayList<Event> eventList) {
         signUpEventList = eventList;
     }
 

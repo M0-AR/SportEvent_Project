@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,7 +22,6 @@ import androidx.navigation.Navigation;
 import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
-import com.example.sportevent.data.model.process.RequestCall;
 import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
@@ -84,13 +82,13 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
                             if (Logic.alreadySignUpToThisEvent(mEvent, SampleData.currentUserEmail)) {
                                 Toast.makeText(getContext(), "Already sign up", Toast.LENGTH_SHORT).show();
                             } else {
+                                Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_SHORT).show();
                                 mEvent.getJoinedEventParticipantsEmails().add(SampleData.currentUserEmail);
                                 mEventViewModel.createEvent(mEvent, mEvent.getId());
                                 mEventViewModel.getAllEvents().observe( this, requestCall -> {
-                                    SampleData.getFireStoreEventsData(requestCall.eventList);
-                                    //CacheManager.cacheEvents(requestCall.eventList);
+                                    SampleData.initFireStoreEventsData(requestCall.eventList);
                                 });
-                                SampleData.addJoinedEventList(mEvent); 
+                                SampleData.addJoinedEventList(mEvent);
                             }
                         });
                 builder.create().show();

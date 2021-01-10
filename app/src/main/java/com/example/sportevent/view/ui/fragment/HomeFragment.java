@@ -52,7 +52,6 @@ public class HomeFragment extends Fragment {
         view =  inflater.inflate(R.layout.fragment_home, container, false);
 
         Log.d(TAG, "onCreateView: User's email: " + SampleData.currentUserEmail);
-        initJoinedAndFinishedEventForUser();
 
         mEventList = SampleData.getSignUpEventList();
         Log.d(TAG, "onCreateView: mEventList" + mEventList);
@@ -66,6 +65,12 @@ public class HomeFragment extends Fragment {
         mEventAdapter.setMEventList(mEventList);
         mRecyclerView.setAdapter(mEventAdapter);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        initJoinedAndFinishedEventForUser();
+        super.onStart();
     }
 
     private void initJoinedAndFinishedEventForUser() {

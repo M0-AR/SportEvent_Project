@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllEvents().observe( this, new Observer<RequestCall>() {
             @Override
             public void onChanged(RequestCall requestCall) {
-                SampleData.getFireStoreEventsData(requestCall.eventList);
+                SampleData.initFireStoreEventsData(requestCall.eventList);
                 //CacheManager.cacheEvents(requestCall.eventList);
             }
         });
