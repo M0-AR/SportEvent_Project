@@ -37,4 +37,12 @@ public class Logic {
         return joinedEvent;
     }
 
+    // O(n)
+    public static boolean alreadySignUpToThisEvent(Event event, String userEmail) {
+       if (event.getJoinedEventParticipantsEmails().contains(userEmail)) {
+           return true;
+       } else {
+           return false;
+       }
+    }
 }

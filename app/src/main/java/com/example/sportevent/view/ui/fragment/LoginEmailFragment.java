@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.sportevent.R;
+import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.ui.MainActivity;
 
 public class LoginEmailFragment extends Fragment implements View.OnClickListener {
@@ -49,8 +50,9 @@ public class LoginEmailFragment extends Fragment implements View.OnClickListener
            NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.emailLogin:
+                SampleData.currentUserEmail = mEmail.getText().toString();
                 Log.d(TAG, "onClick: User's email: " + mEmail.getText().toString());
-                navController.navigate( LoginEmailFragmentDirections.actionLoginEmailToHomeFragment(mEmail.getText().toString()));
+                navController.navigate( LoginEmailFragmentDirections.actionLoginEmailToHomeFragment());
                 break;
         }
     }

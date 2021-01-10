@@ -70,4 +70,7 @@ Mohamad and Ismail :
 
 ## Bug
     * Overskrift til signup event list - Closest Event (simplify meaning for the user)
-  
+
+
+## Rule for stack holder 
+    * The id of docment in FireStore should be a number and same as id inside event   

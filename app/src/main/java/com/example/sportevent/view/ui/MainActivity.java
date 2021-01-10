@@ -21,9 +21,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.sportevent.R;
-import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.process.RequestCall;
-import com.example.sportevent.utilities.CacheManager;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllEvents().observe( this, new Observer<RequestCall>() {
             @Override
             public void onChanged(RequestCall requestCall) {
-                SampleData.initFireStoreData(requestCall.eventList);
+                SampleData.getFireStoreEventsData(requestCall.eventList);
                 //CacheManager.cacheEvents(requestCall.eventList);
             }
         });

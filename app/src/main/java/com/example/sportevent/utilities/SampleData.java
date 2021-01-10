@@ -12,6 +12,7 @@ public class SampleData {
     public static ArrayList<Participant> participants;
     public static List<Participant> joinedParticipantList;
     public static ArrayList<Participant> finishedParticipantList;
+    public static String currentUserEmail;
 
     public static ArrayList<Event> signUpEventList;
     public static ArrayList<Event> joinedEventList;
@@ -98,7 +99,7 @@ public class SampleData {
 //        }
     }
 
-    public static void initFireStoreData(ArrayList<Event> eventList) {
+    public static void getFireStoreEventsData(ArrayList<Event> eventList) {
         signUpEventList = eventList;
     }
 
@@ -138,10 +139,10 @@ public class SampleData {
     }
 
     public static boolean addJoinedEventList(Event event) {
-        return joinedEventList.remove(event);
+        return joinedEventList.add(event);
     }
 
     public static boolean addFinishedEventList(Event event) {
-        return finishedEventList.remove(event);
+        return finishedEventList.add(event);
     }
 }

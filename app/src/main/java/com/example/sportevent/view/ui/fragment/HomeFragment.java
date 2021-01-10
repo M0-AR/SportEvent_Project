@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
     private EventAdapter mEventAdapter;
     private ArrayList<Event> mEventList;
-    private static String mUserEmail;
     private View view = null;
 
 
@@ -52,11 +51,8 @@ public class HomeFragment extends Fragment {
             return view;
         view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        if (mUserEmail == null) {
-            mUserEmail = HomeFragmentArgs.fromBundle(getArguments()).getEmail();
-            Log.d(TAG, "onCreateView: User's email: " + mUserEmail);
-            initJoinedAndFinishedEventForUser();
-        }
+        Log.d(TAG, "onCreateView: User's email: " + SampleData.currentUserEmail);
+        initJoinedAndFinishedEventForUser();
 
         mEventList = SampleData.getSignUpEventList();
         Log.d(TAG, "onCreateView: mEventList" + mEventList);
@@ -76,8 +72,8 @@ public class HomeFragment extends Fragment {
          Executor bgThread = Executors.newSingleThreadExecutor(); // Handle for a background
          Handler uiThread = new Handler(Looper.getMainLooper());  // Handle for a foreground
         bgThread.execute(() -> {
-            SampleData.joinedEventList = Logic.getJoinedEventForUserByEmail(mEventList, mUserEmail);
-            SampleData.finishedEventList = Logic.getFinishedEventForUserByEmail(mEventList, mUserEmail);
+            SampleData.joinedEventList = Logic.getJoinedEventForUserByEmail(mEventList, SampleData.currentUserEmail);
+            SampleData.finishedEventList = Logic.getFinishedEventForUserByEmail(mEventList, SampleData.currentUserEmail);
         });
     }
 
