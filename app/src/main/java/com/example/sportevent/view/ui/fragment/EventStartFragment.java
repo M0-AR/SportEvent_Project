@@ -37,7 +37,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     private MapView mMapView;
     private Button startEvent;
     private Event mEvent;
-    private EventViewModel mEventViewModel;
 
 
     @Nullable
@@ -46,7 +45,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         View view = inflater.inflate(R.layout.fragment_start_event, container, false);
 
         mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
-        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
 
         startEvent = view.findViewById(R.id.start_event);
         startEvent.setOnClickListener(this);
@@ -80,28 +78,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             startActivity(i);
         }
         else {
-            Executor bgThread = Executors.newSingleThreadExecutor(); // Handle for a background
-            Handler uiThread = new Handler(Looper.getMainLooper());  // Handle for a foreground
-            bgThread.execute(new Runnable() {
-                @Override
-                public void run() {
-
-                }
-            });
-            // TODO: 10/01/2021 Bug: we should close the app or navigate to another app to make
             // TODO: 10/01/2021 Check first if the user close to finish point(around 15 meters far) in race and make it automatic
-            // Add to finish event
-//            mEvent.getFinishedRaceParticipantsEmails().add(SampleData.currentUserEmail);
-//            // Remove from joinedEvent
-//            mEvent.getJoinedEventParticipantsEmails().remove(SampleData.currentUserEmail);
-//
-//            SampleData.addFinishedEventList(mEvent);
-//
-//            mEventViewModel.createEvent(mEvent, mEvent.getId());
-//            mEventViewModel.getAllEvents().observe( this, requestCall -> {
-//                SampleData.initFireStoreEventsData(requestCall.eventList);
-//            });
-
             navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment(mEvent));
         }
     }

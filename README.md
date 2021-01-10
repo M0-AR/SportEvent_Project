@@ -25,7 +25,7 @@ Mohamad and Ismail :
     * 12/01-2021 Aflevering 
         * 14.00 Aflevering af 4. iteration - til projektstillere og til internt review
         * (Ask) 15.00 og derefter - gennemsyn af følgegruppers apps og opponentgrupper forbereder sparring til onsda
-            * Firebase
+            * Firebase ---Done---
             * (Ask) GBS
             * Logic
                 * Open App -> Interent connection
@@ -34,9 +34,10 @@ Mohamad and Ismail :
                     * Make id for every new user. 
                 * HomeScreen
                     * Sign up event should be displyed according to closest event date. ---Done--- 
-                    * Move Sign up Event -> Joined Event -> Finished Event. --- Need to test with a data base ---- 
+                    * Move Sign up Event -> Joined Event -> Finished Event. ---Done--- 
                     * Sing up List 
-                        * Delete the event when joinEndDate is done 
+                        * Sort accroding to closest event
+                        * Delete the event when joinEndDate is done ---Ask stack holder--- 
                         * Sign up Event 
                             * Participants button -> Current joined participants in the event
                             * Sign up -> Dialog (yes|no) ---Done--- 
