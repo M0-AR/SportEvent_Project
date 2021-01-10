@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.process.RequestCall;
+import com.example.sportevent.utilities.CacheManager;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,16 +38,21 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView  bottomNavigationView;
     private boolean doubleBackToExitPressedOnce;
 
-
-    private EventViewModel mEventViewModel;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SampleData.initData();
+        EventViewModel viewModel = new ViewModelProvider(this).get(EventViewModel.class);
+        viewModel.getAllEvents().observe( this, new Observer<RequestCall>() {
+            @Override
+            public void onChanged(RequestCall requestCall) {
+                SampleData.initFireStoreData(requestCall.eventList);
+                //CacheManager.cacheEvents(requestCall.eventList);
+            }
+        });
+
+        //SampleData.initData();
         Log.d(TAG, "onCreate: create events");
         // TODO: 07/01/2021 Delete this later
 //        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);

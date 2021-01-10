@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.process.RequestCall;
+import com.example.sportevent.utilities.CacheManager;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.adapters.EventAdapter;
 import com.example.sportevent.view.adapters.LAYOUT;
@@ -39,41 +40,6 @@ public class HomeFragment extends Fragment {
     View view = null;
 
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-
-        mEventViewModel.getAllEvents().observe(this, new Observer<RequestCall>() {
-            @Override
-            public void onChanged(RequestCall requestCall) {
-                Log.d(TAG, "onChanged: events: " + requestCall.eventList);
-                mEventList = requestCall.eventList;
-                Collections.shuffle(mEventList);
-                sortEventsByClosestDateToToday(mEventList);
-                RecyclerView mRecyclerView = view.findViewById(R.id.recycler_view0);
-                mRecyclerView.setHasFixedSize(true);
-
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-                mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
-
-                mEventAdapter.setMEventList(mEventList); // todo  signUpEventList
-                mRecyclerView.setAdapter(mEventAdapter);
-            }
-        });
-
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                {
-//
-//                }
-//            }
-//        }, 2000);
-
-    }
-
     @SuppressLint("FragmentLiveDataObserve")
     @Nullable
     @Override
@@ -83,24 +49,21 @@ public class HomeFragment extends Fragment {
         if (view != null)
             return view;
 
-
-
-
         view =  inflater.inflate(R.layout.fragment_home, container, false);
 
+        mEventList = SampleData.getSignUpEventList();
         Log.d(TAG, "onCreateView: mEventList" + mEventList);
-        ArrayList<Event> signUpEventList = SampleData.getSignUpEventList();
 
         // TODO: 08/01/2021
-        Collections.shuffle(signUpEventList);
-        sortEventsByClosestDateToToday(signUpEventList);
+       // Collections.shuffle(signUpEventList);
+        // sortEventsByClosestDateToToday(signUpEventList);
         RecyclerView mRecyclerView = view.findViewById(R.id.recycler_view0);
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         mEventAdapter = new EventAdapter(getContext(), LAYOUT.HOME_LIST);
 
-        mEventAdapter.setMEventList(signUpEventList); // todo  signUpEventList
+        mEventAdapter.setMEventList(mEventList); // todo  signUpEventList
         mRecyclerView.setAdapter(mEventAdapter);
         return view;
     }
@@ -132,13 +95,24 @@ public class HomeFragment extends Fragment {
         mEventAdapter.setOnEventClickListener(new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event event) {
-                Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onCreateView: mEventList: " + mEventList.get(0).toString());
+                Log.d(TAG, "onCreateView: mEventList: setOnEventClickListener: " + event.toString());
                 final NavController navController = Navigation.findNavController(view);
                 navController.navigate( HomeFragmentDirections.actionHomeFragmentToEventDescriptionSignUpFragment(event));
             }
         });
     }
+
+    private void bindData() {
+        Objects.requireNonNull(CacheManager.getCollectionOfEvents()).observe(this, (List<Event> events) -> {
+            if (events == null || events.size() == 0 || CacheManager.DISK_CACHE_DIRTY) {
+               // getEvents();
+            } else {
+
+            }
+        });
+    }
+
+
 
     public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
         ArrayList<Event> sortedEvents = events;

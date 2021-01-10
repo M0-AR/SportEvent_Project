@@ -98,6 +98,11 @@ public class SampleData {
 //        }
     }
 
+    public static void initFireStoreData(ArrayList<Event> eventList) {
+        signUpEventList = eventList;
+    }
+
+
 
     public static ArrayList<Participant> getParticipants() {
         return participants;

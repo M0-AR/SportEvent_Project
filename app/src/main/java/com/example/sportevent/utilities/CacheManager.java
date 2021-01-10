@@ -25,7 +25,7 @@ public class CacheManager {
 
     public static void initializeCache(Context context) {
         try {
-            Reservoir.init(context, 2048); // In bytes todo Try to extended if need it
+            Reservoir.init(context, 20048); // In bytes todo Try to extended if need it
             DISK_CACHE_INITIALIZED = true;
         } catch (IOException e) {
             Log.e(TAG, "initializeCache: Reservoir failed");
@@ -38,18 +38,19 @@ public class CacheManager {
             Reservoir.putAsync(Constants.CACHE_KEY_EVENTS, events, new ReservoirPutCallback() {
                 @Override
                 public void onSuccess() {
+                    Log.d(TAG, "onSuccess: cacheEvents()");
                     DISK_CACHE_DIRTY = false;
                 }
 
                 @Override
                 public void onFailure(Exception e) {
-                    Log.e(TAG, "onFailure: Putting cache to disk");
+                    Log.e(TAG, "onFailure: Putting cache to disk" + e.toString());
                 }
             });
         }
     }
 
-    public LiveData<List<Event>> getCollectionOfEvents() {
+    public static LiveData<List<Event>> getCollectionOfEvents() {
         final MutableLiveData<List<Event>> eventLiveData = new MutableLiveData<>();
         if (!DISK_CACHE_INITIALIZED) return null;
         Type resultType = new TypeToken<List<Event>>() {}.getType();
