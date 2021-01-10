@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Logic {
 
+    // O(n^2)
     public static ArrayList<Event> getJoinedEventForUserByEmail(ArrayList<Event> events, String email) {
         ArrayList<Event> joinedEvent = new ArrayList<>();
         for (Event event : events) {
@@ -21,6 +22,7 @@ public class Logic {
         return joinedEvent;
     }
 
+    // O(n^2)
     public static ArrayList<Event> getFinishedEventForUserByEmail(ArrayList<Event> events, String email) {
         ArrayList<Event> joinedEvent = new ArrayList<>();
         for (Event event : events) {

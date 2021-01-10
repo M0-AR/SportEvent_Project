@@ -14,7 +14,7 @@
         <activity android:name=".view.ui.fragment.ClosestEvent"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".view.ui.fragment.CreateUserFragment2"
+            android:name=".view.ui.fragment.SignUpFragment"
             tools:ignore="Instantiatable" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"

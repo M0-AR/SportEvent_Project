@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_01"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".view.ui.fragment.LoginEmailFragment">
 
     <LinearLayout
@@ -26,12 +26,12 @@
             android:textStyle="bold" />
 
         <EditText
-            android:layout_marginBottom="34dp"
-            android:id="@+id/emailInput"
-            android:hint="@string/enter_e_mail"
+            android:id="@+id/text_view_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"/>
+            android:layout_marginBottom="34dp"
+            android:background="@color/white"
+            android:hint="@string/enter_e_mail" />
 
 
         <Button
@@ -39,10 +39,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
-            android:gravity="center"
-            android:textSize="28sp"
             android:fontFamily="@font/lemon"
-            android:text="@string/login_button" />
+            android:gravity="center"
+            android:text="@string/login_button"
+            android:textSize="28sp" />
 
     </LinearLayout>
 

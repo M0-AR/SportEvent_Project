@@ -33,6 +33,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="email"
+            app:argType="string" />
 
     </fragment>
     <fragment
@@ -130,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/createUser"
-        android:name="com.example.sportevent.view.ui.fragment.CreateUserFragment2"
+        android:name="com.example.sportevent.view.ui.fragment.SignUpFragment"
         android:label="fragment_create_user"
         tools:layout="@layout/fragment_login_create_user" >
         <action

@@ -8,13 +8,10 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import static org.junit.Assert.*;
 
-// TODO: 10/01/2021  Not working
 public class LogicTest {
-
     private ArrayList<Event> signUpList;
     private Event firstEvent;
     private Event secondEvent;

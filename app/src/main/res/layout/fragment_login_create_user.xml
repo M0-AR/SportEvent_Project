@@ -7,8 +7,7 @@
     android:background="@drawable/image_01"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.ui.fragment.CreateUserFragment2">
-
+    tools:context=".view.ui.fragment.SignUpFragment">
 
 
     <LinearLayout
@@ -18,82 +17,82 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:text="@string/name_title_edittext"
+            android:textColor="@color/colorAccent"
             android:textSize="34dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
-            android:text="@string/name_title_edittext" />
+            android:textStyle="bold" />
 
         <EditText
-            android:layout_marginBottom="34dp"
-            android:id="@+id/navnInput"
-            android:hint="@string/enter_name"
+            android:id="@+id/user_signup_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"/>
-
-        <TextView
-            android:layout_marginBottom="4dp"
-            android:textSize="34sp"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/e_mail_title_edittext" />
-
-        <EditText
             android:layout_marginBottom="34dp"
-            android:id="@+id/emailInput"
-            android:hint="@string/enter_e_mail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"/>
-
-        <TextView
-            android:layout_marginBottom="4dp"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
-            android:text="@string/address_title_edittext" />
-
-        <EditText
-            android:layout_marginBottom="34dp"
-            android:id="@+id/addressInput"
-            android:hint="@string/enter_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"/>
+            android:background="@color/white"
+            android:hint="@string/enter_name" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:textSize="34sp"
+            android:text="@string/e_mail_title_edittext"
             android:textColor="@color/colorAccent"
-            android:textStyle="bold"
-            android:text="@string/phone_number_title_edittext"/>
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
         <EditText
-            android:layout_marginBottom="34dp"
-            android:id="@+id/phoneInput"
-            android:hint="@string/enter_phone_number"
+            android:id="@+id/user_singup_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"/>
+            android:layout_marginBottom="34dp"
+            android:background="@color/white"
+            android:hint="@string/enter_e_mail" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/address_title_edittext"
+            android:textColor="@color/colorAccent"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/user_signup_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:background="@color/white"
+            android:hint="@string/enter_address" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/phone_number_title_edittext"
+            android:textColor="@color/colorAccent"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/user_signup_phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:background="@color/white"
+            android:hint="@string/enter_phone_number" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
-            android:gravity="center"
-            android:textSize="28sp"
             android:fontFamily="@font/lemon"
-            android:text="@string/register_user" />
+            android:gravity="center"
+            android:text="@string/register_user"
+            android:textSize="28sp" />
 
 
     </LinearLayout>

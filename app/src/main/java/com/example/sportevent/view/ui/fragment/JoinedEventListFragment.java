@@ -35,8 +35,6 @@ public class JoinedEventListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_event, container, false);
 
-        //need to check user choice to know which fragment to focus on, crashes the app.. idk
-        //int prevID = Navigation.findNavController(view).getPreviousBackStackEntry().getDestination().getId();
 
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);

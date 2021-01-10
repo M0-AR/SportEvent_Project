@@ -18,26 +18,30 @@ import android.widget.TextView;
 import com.example.sportevent.R;
 import com.example.sportevent.view.ui.MainActivity;
 
-public class LoginEmailFragment extends Fragment implements View.OnClickListener {
-    public static final String TAG = "LoginEmailFragment";
-    private Button login;
-    private EditText mEmail;
+public class SignUpFragment extends Fragment implements View.OnClickListener {
+    public static final String TAG = "SignUpFragment";
+    private Button register;
+    private EditText mName, mEmail, mAddress, mPhoneNumber;
 
-
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login_email, container, false);
-        login = (Button) view.findViewById(R.id.emailLogin);
-        login.setOnClickListener(this);
+        View view = inflater.inflate(R.layout.fragment_login_create_user, container, false);
 
-        mEmail = view.findViewById(R.id.text_view_login_email);
+        register = view.findViewById(R.id.registerButton);
+        register.setOnClickListener(this);
+
+        mName = view.findViewById(R.id.user_signup_name);
+        mEmail = view.findViewById(R.id.user_singup_email);
+        mAddress = view.findViewById(R.id.user_signup_address);
+        mPhoneNumber = view.findViewById(R.id.user_signup_phoneNumber);
+
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
         MainActivity activity = (MainActivity) getActivity();
         if (activity != null)
             activity.hideBottomBar(false);    // to show the bottom bar when
@@ -46,13 +50,12 @@ public class LoginEmailFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-           NavController navController = Navigation.findNavController(view);
+        NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
-            case R.id.emailLogin:
+            case R.id.registerButton:
                 Log.d(TAG, "onClick: User's email: " + mEmail.getText().toString());
-                navController.navigate( LoginEmailFragmentDirections.actionLoginEmailToHomeFragment(mEmail.getText().toString()));
+                navController.navigate(SignUpFragmentDirections.actionCreateUserToHomeFragment(mEmail.getText().toString()));
                 break;
         }
     }
-
 }
