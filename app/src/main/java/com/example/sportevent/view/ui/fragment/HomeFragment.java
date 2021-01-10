@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
     private EventAdapter mEventAdapter;
     private ArrayList<Event> mEventList;
-    private String mUserEmail;
+    private static String mUserEmail;
     private View view = null;
 
 
@@ -52,9 +52,11 @@ public class HomeFragment extends Fragment {
             return view;
         view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        mUserEmail = HomeFragmentArgs.fromBundle(getArguments()).getEmail().toString();
-        Log.d(TAG, "onCreateView: User's email: " + mUserEmail);
-        initJoinedAndFinishedEventForUser();
+        if (mUserEmail == null) {
+            mUserEmail = HomeFragmentArgs.fromBundle(getArguments()).getEmail();
+            Log.d(TAG, "onCreateView: User's email: " + mUserEmail);
+            initJoinedAndFinishedEventForUser();
+        }
 
         mEventList = SampleData.getSignUpEventList();
         Log.d(TAG, "onCreateView: mEventList" + mEventList);
