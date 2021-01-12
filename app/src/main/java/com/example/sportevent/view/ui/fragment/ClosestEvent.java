@@ -74,8 +74,8 @@ public class ClosestEvent extends Fragment implements View.OnClickListener{
                             public void onClick(DialogInterface dialog, int which) {
                                 // TODO: 05/01/2021 Show an animation
                                 // TODO: 05/01/2021 Show toast message if the user is already sing up to the event OR find another solution
-                                SampleData.addJoinedEventList(mEvent);
-                                SampleData.removeSignUpEventList(mEvent); // TODO: 05/01/2021 the delete here should be from the data base
+                                SampleData.joinedEventList.add(mEvent);
+                                SampleData.signUpEventList.remove(mEvent); // TODO: 05/01/2021 the delete here should be from the data base
 
                             }
                         });

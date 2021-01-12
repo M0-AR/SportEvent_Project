@@ -86,9 +86,9 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
                                 mEvent.getJoinedEventParticipantsEmails().add(SampleData.currentUserEmail);
                                 mEventViewModel.createEvent(mEvent, mEvent.getId());
                                 mEventViewModel.getAllEvents().observe( this, requestCall -> {
-                                    SampleData.initFireStoreEventsData(requestCall.eventList);
+                                    SampleData.signUpEventList = requestCall.eventList;
                                 });
-                                SampleData.addJoinedEventList(mEvent);
+                                SampleData.joinedEventList.add(mEvent);
                             }
                         });
                 builder.create().show();

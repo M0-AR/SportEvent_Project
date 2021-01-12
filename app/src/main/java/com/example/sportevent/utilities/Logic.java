@@ -45,4 +45,27 @@ public class Logic {
            return false;
        }
     }
+
+
+    // O(n^2)
+    public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
+        ArrayList<Event> sortedEvents = events;
+        for (int i = 0; i < events.size(); i++) {
+            Event min = events.get(i);
+            int index = i;
+            for (int j = i + 1; j < events.size(); j++) {
+                Event event = events.get(j);
+                if (min.getJoinStartDate() == null || event.getJoinStartDate() == null) continue;
+                if (min.getJoinStartDate().after(event.getJoinStartDate())) { // "Date1 is after Date2"
+                    min = event;
+                    index = j;
+                }
+            }
+            if (i != index) {
+                events.set(index, events.get(i));
+                events.set(i, min);
+            }
+        }
+        return sortedEvents;
+    }
 }

@@ -72,6 +72,7 @@ public class EventRepository {
                          //   Log.d(TAG, "onComplete: getAllEvents -> Event: " + (event != null ? event.getEventName() : null));
                             eventList.add(event);
                         }
+                        Log.d(TAG, "readData: eventList: " + eventList);
                         firebaseCallBack.onCallBack(eventList);
                     }else {
                         Log.w(String.valueOf(application.getApplicationContext()), "Error getting events.", task.getException());

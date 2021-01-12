@@ -42,7 +42,7 @@ public class FinishedEventListFragment extends Fragment {
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mEventAdapter = new EventAdapter(getContext(), LAYOUT.JOINED_EVENT_LIST);
-        mEventAdapter.setMEventList(SampleData.getFinishedEventList());
+        mEventAdapter.setMEventList(SampleData.finishedEventList);
         mRecyclerView.setAdapter(mEventAdapter);
 
         return view;

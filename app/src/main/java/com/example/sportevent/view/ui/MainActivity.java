@@ -24,6 +24,7 @@ import com.example.sportevent.R;
 import com.example.sportevent.data.model.process.RequestCall;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
+import com.example.sportevent.viewModel.ParticipantViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -42,12 +43,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         EventViewModel viewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        viewModel.getAllEvents().observe( this, new Observer<RequestCall>() {
-            @Override
-            public void onChanged(RequestCall requestCall) {
-                SampleData.initFireStoreEventsData(requestCall.eventList);
-                //CacheManager.cacheEvents(requestCall.eventList);
-            }
+        viewModel.getAllEvents().observe( this, requestCall -> {
+            Log.d(TAG, "onCreate: eventList: " + requestCall.eventList);
+            SampleData.signUpEventList = requestCall.eventList;
+        });
+
+        ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
+        participantViewModel.getAllParticipants().observe( this, requestCall -> {
+            Log.d(TAG, "onCreate: participantList: " + requestCall.participantList);
+            SampleData.participants = requestCall.participantList;
         });
 
         //SampleData.initData();

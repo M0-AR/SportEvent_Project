@@ -31,7 +31,7 @@ public class ParticipantListFragment2 extends Fragment {
         ArrayList<Participant> participantList = new ArrayList<>();
         ArrayList<PersonalEventData> personalEventData = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            participantList.add(new Participant(i, "MD", "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
+            participantList.add(new Participant(i, "MD"+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
             personalEventData.add(new PersonalEventData(participantList.get(i).getEmail(), "Event: "+i, i));
         }
 

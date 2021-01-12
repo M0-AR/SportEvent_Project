@@ -11,4 +11,5 @@ public class RequestCall {
     public int status;
     public String message;
     public ArrayList<Event> eventList;
+    public ArrayList<Participant> participantList;
 }

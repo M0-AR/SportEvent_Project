@@ -46,11 +46,11 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
         // Remove from joinedEvent
         mEvent.getJoinedEventParticipantsEmails().remove(SampleData.currentUserEmail);
 
-        SampleData.addFinishedEventList(mEvent);
+        SampleData.finishedEventList.add(mEvent);
 
         mEventViewModel.createEvent(mEvent, mEvent.getId());
         mEventViewModel.getAllEvents().observe( this, requestCall -> {
-            SampleData.initFireStoreEventsData(requestCall.eventList);
+            SampleData.signUpEventList = requestCall.eventList;
         });
     }
 

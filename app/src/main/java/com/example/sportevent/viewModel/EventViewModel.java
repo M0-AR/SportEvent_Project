@@ -16,6 +16,7 @@ import java.util.List;
 public class EventViewModel extends AndroidViewModel {
 
     private  EventRepository mEventRepository;
+    // TODO: 12/01/2021 Come back and see for what to use this
     public MutableLiveData<Event> mEvents;
 
     public EventViewModel(@NonNull Application application) {
