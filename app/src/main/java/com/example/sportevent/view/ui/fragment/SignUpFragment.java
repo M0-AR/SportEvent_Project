@@ -3,6 +3,8 @@ package com.example.sportevent.view.ui.fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -16,8 +18,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.sportevent.R;
+import com.example.sportevent.data.model.entities.Participant;
+import com.example.sportevent.data.model.process.RequestCall;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.ui.MainActivity;
+import com.example.sportevent.viewModel.EventViewModel;
+import com.example.sportevent.viewModel.ParticipantViewModel;
 
 public class SignUpFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "SignUpFragment";
@@ -54,6 +60,9 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.registerButton:
+                Participant participant = new Participant(mName.getText().toString(),mEmail.getText().toString(),mAddress.getText().toString(),mPhoneNumber.getText().toString());
+                ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
+                participantViewModel.createParticipant(participant);
                 SampleData.currentUserEmail = mEmail.getText().toString();
                 Log.d(TAG, "onClick: User's email: " + mEmail.getText().toString());
                 navController.navigate(SignUpFragmentDirections.actionCreateUserToHomeFragment());

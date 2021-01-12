@@ -25,6 +25,13 @@ public class Participant implements Serializable{
         this.phoneNumber = phoneNumber;
     }
 
+    public Participant(String name, String email, String address, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Participant(String name, String email, String address, String phoneNumber, List<String> joinedEventListId, List<String> finishedEventListId, Result result) {
         this.name = name;
         this.email = email;

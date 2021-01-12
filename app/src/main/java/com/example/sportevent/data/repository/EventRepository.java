@@ -64,20 +64,17 @@ public class EventRepository {
     private void readData(final FirebaseCallBack firebaseCallBack) {
         DB.collection("events")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (DocumentSnapshot document : task.getResult()) {
-                             //   Log.d(String.valueOf(application.getApplicationContext()), document.getId() + " => " + document.getData());
-                                Event event = document.toObject(Event.class);
-                             //   Log.d(TAG, "onComplete: getAllEvents -> Event: " + (event != null ? event.getEventName() : null));
-                                eventList.add(event);
-                            }
-                            firebaseCallBack.onCallBack(eventList);
-                        }else {
-                            Log.w(String.valueOf(application.getApplicationContext()), "Error getting events.", task.getException());
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                         //   Log.d(String.valueOf(application.getApplicationContext()), document.getId() + " => " + document.getData());
+                            Event event = document.toObject(Event.class);
+                         //   Log.d(TAG, "onComplete: getAllEvents -> Event: " + (event != null ? event.getEventName() : null));
+                            eventList.add(event);
                         }
+                        firebaseCallBack.onCallBack(eventList);
+                    }else {
+                        Log.w(String.valueOf(application.getApplicationContext()), "Error getting events.", task.getException());
                     }
                 });
     }
