@@ -69,7 +69,7 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
         NavController navController = Navigation.findNavController(v);;
         switch (v.getId()) {
             case R.id.participant_list:
-              //  navController.navigate(R.id.action_eventDescriptionFragment1_to_participantListFragment1);
+                navController.navigate(EventDescriptionSignUpFragmentDirections.actionEventDescriptionSignUpFragmentToParticipantListSignUpFragment());
                 break;
             case R.id.event_signup:
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext())

@@ -19,13 +19,13 @@ import com.example.sportevent.view.adapters.ParticipantAdapter2;
 
 import java.util.ArrayList;
 
-public class ParticipantListFragment2 extends Fragment {
+public class ParticipantListFinishedFragment extends Fragment {
     private ParticipantAdapter2 mEventAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_participant2, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_participant_finished, container, false);
 
 
         ArrayList<Participant> participantList = new ArrayList<>();

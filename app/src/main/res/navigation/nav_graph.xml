@@ -74,7 +74,7 @@
         tools:layout="@layout/fragment_description_event" >
         <action
             android:id="@+id/action_eventDescriptionFragment_to_participant"
-            app:destination="@id/participant"
+            app:destination="@id/ParticipantListJoinedFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -91,10 +91,10 @@
             app:argType="com.example.sportevent.data.model.entities.Event" />
     </fragment>
     <fragment
-        android:id="@+id/participant"
-        android:name="com.example.sportevent.view.ui.fragment.ParticipantListFragment"
-        android:label="fragment_participant"
-        tools:layout="@layout/fragment_list_participant" />
+        android:id="@+id/ParticipantListJoinedFragment"
+        android:name="com.example.sportevent.view.ui.fragment.ParticipantListJoinedFragment"
+        android:label="fragment_list_participant_joined"
+        tools:layout="@layout/fragment_list_participant_joined" />
     <fragment
         android:id="@+id/startEvent"
         android:name="com.example.sportevent.view.ui.fragment.EventStartFragment"
@@ -150,9 +150,9 @@
 
     <fragment
         android:id="@+id/participantListFragment2"
-        android:name="com.example.sportevent.view.ui.fragment.ParticipantListFragment2"
-        android:label="fragment_list_participant2"
-        tools:layout="@layout/fragment_list_participant2" />
+        android:name="com.example.sportevent.view.ui.fragment.ParticipantListFinishedFragment"
+        android:label="fragment_list_participant_finished"
+        tools:layout="@layout/fragment_list_participant_finished" />
     <fragment
         android:id="@+id/completedEventFragment"
         android:name="com.example.sportevent.view.ui.fragment.FinishedEventListFragment"
@@ -179,18 +179,18 @@
         android:name="com.example.sportevent.view.ui.fragment.EventDescriptionSignUpFragment"
         android:label="fragment_description_event1"
         tools:layout="@layout/fragment_signup_description_event" >
-        <action
-            android:id="@+id/action_eventDescriptionSignUpFragment_to_participantListFragment1"
-            app:destination="@id/participantListFragment1" />
         <argument
             android:name="event"
             app:argType="com.example.sportevent.data.model.entities.Event" />
+        <action
+            android:id="@+id/action_eventDescriptionSignUpFragment_to_participantListSignUpFragment"
+            app:destination="@id/participantListSignUpFragment" />
     </fragment>
     <fragment
-        android:id="@+id/participantListFragment1"
-        android:name="com.example.sportevent.view.ui.fragment.ParticipantListFragment1"
-        android:label="fragment_list_participant1"
-        tools:layout="@layout/fragment_list_participant1" />
+        android:id="@+id/participantListSignUpFragment"
+        android:name="com.example.sportevent.view.ui.fragment.ParticipantListSingUpFragment"
+        android:label="fragment_list_participant_sign_up"
+        tools:layout="@layout/fragment_list_participant_sign_up" />
     <action
         android:id="@+id/action_global_closestEvent"
         app:destination="@id/closestEvent"
