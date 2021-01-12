@@ -79,7 +79,7 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
 
                         }).setPositiveButton("yes", (dialog, which) -> {
                             // TODO: 05/01/2021 Show an animation until the firestore is being updated
-                            if (Logic.alreadySignUpToThisEvent(mEvent, SampleData.currentUserEmail)) {
+                            if (Logic.isUserAlreadySignUpToEvent(mEvent, SampleData.currentUserEmail)) {
                                 Toast.makeText(getContext(), "Already sign up", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_SHORT).show();

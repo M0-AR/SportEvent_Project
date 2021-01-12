@@ -1,6 +1,7 @@
 package com.example.sportevent.utilities;
 
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.entities.Participant;
 
 
 import org.junit.Before;
@@ -16,6 +17,8 @@ public class LogicTest {
     private Event firstEvent;
     private Event secondEvent;
     private Event thirdEvent;
+
+    private ArrayList<Participant> participants;
 
     @Before
     public void initDataTest() {
@@ -33,6 +36,9 @@ public class LogicTest {
         signUpList.add(firstEvent);
         signUpList.add(secondEvent);
         signUpList.add(thirdEvent);
+
+        participants = new ArrayList<>();
+        participants.add(new Participant(0, "MD" ,"md@gmail.com", "Albertslund", "33333333"));
     }
 
     @Test
@@ -52,6 +58,12 @@ public class LogicTest {
         // cr@gmail.com has just finished one event (secondEvent)
         assertEquals(1, joinedEventListForUser.size());
         assertEquals(secondEvent, joinedEventListForUser.get(0));
+    }
+
+    @Test
+    public void checkIfEmailAlreadyExist() {
+       boolean exist = Logic.isEmailAlreadyExist(participants, "md@gmail.com");
+        assertTrue(exist);
     }
 
 }

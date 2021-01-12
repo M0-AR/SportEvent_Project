@@ -1,6 +1,7 @@
 package com.example.sportevent.utilities;
 
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.entities.Participant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class Logic {
     }
 
     // O(n)
-    public static boolean alreadySignUpToThisEvent(Event event, String userEmail) {
+    public static boolean isUserAlreadySignUpToEvent(Event event, String userEmail) {
        if (event.getJoinedEventParticipantsEmails().contains(userEmail)) {
            return true;
        } else {
@@ -48,7 +49,7 @@ public class Logic {
 
 
     // O(n^2)
-    public ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
+    public static ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
         ArrayList<Event> sortedEvents = events;
         for (int i = 0; i < events.size(); i++) {
             Event min = events.get(i);
@@ -68,4 +69,17 @@ public class Logic {
         }
         return sortedEvents;
     }
+
+
+    // O(n)
+    public static boolean isEmailAlreadyExist(ArrayList<Participant> participantArrayList, String userEmail) {
+        for (Participant participant : participantArrayList) {
+           if (participant.getEmail().equalsIgnoreCase(userEmail)) {
+               return true;
+           }
+        }
+        return false;
+    }
+
+
 }
