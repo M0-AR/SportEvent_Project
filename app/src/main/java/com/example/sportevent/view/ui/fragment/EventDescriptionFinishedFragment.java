@@ -20,25 +20,25 @@ import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
 
 public class EventDescriptionFinishedFragment extends Fragment implements View.OnClickListener{
-
+    private Event mEvent;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_description_event2, container, false);
 
-        Event event = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
+        mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
 
         ImageView imageView = view.findViewById(R.id.imageView);
         Glide.with(this)
                 .asBitmap()
-                .load(event.getImageURL())
+                .load(mEvent.getImageURL())
                 .into(imageView);
 
         TextView textView1 = view.findViewById(R.id.textView1);
-        textView1.setText(event.getEventName());
+        textView1.setText(mEvent.getEventName());
 
         TextView textView2 = view.findViewById(R.id.textView2);
-        textView2.setText(event.getEventDescription());
+        textView2.setText(mEvent.getEventDescription());
         textView2.setMovementMethod(new ScrollingMovementMethod());
 
         final Button participantList = view.findViewById(R.id.participant_list);
@@ -51,7 +51,7 @@ public class EventDescriptionFinishedFragment extends Fragment implements View.O
     public void onClick(View v) {
         NavController navController = Navigation.findNavController(v);;
         if (v.getId() == R.id.participant_list) {
-            navController.navigate(R.id.action_eventDescriptionFragment2_to_participantListFragment2);
+            navController.navigate(EventDescriptionFinishedFragmentDirections.actionEventDescriptionFragment2ToParticipantListFragment2(mEvent));
         }
     }
 }

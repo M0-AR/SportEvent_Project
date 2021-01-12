@@ -50,8 +50,8 @@ public class LoginEmailFragment extends Fragment implements View.OnClickListener
            NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.emailLogin:
-                SampleData.currentUserEmail = mEmail.getText().toString();
-                Log.d(TAG, "onClick: User's email: " + mEmail.getText().toString());
+                SampleData.currentUserEmail = mEmail.getText().toString().trim();
+                Log.d(TAG, "onClick: User's email: " + SampleData.currentUserEmail);
                 navController.navigate( LoginEmailFragmentDirections.actionLoginEmailToHomeFragment());
                 break;
         }

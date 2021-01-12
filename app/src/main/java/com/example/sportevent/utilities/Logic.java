@@ -82,4 +82,25 @@ public class Logic {
     }
 
 
+    // O(n^2)
+    public static ArrayList<Participant> getParticipantsWhoJoinedEvent(ArrayList<Participant> participants, Event mEvent) {
+        ArrayList<Participant> joinedEvent = new ArrayList<>();
+        for (Participant participant : participants) {
+            if (mEvent.getJoinedEventParticipantsEmails().contains(participant.getEmail())) {
+                joinedEvent.add(participant);
+            }
+        }
+        return joinedEvent;
+    }
+
+    // O(n^2)
+    public static ArrayList<Participant> getParticipantsWhoFinishedEvent(ArrayList<Participant> participants, Event mEvent) {
+        ArrayList<Participant> joinedEvent = new ArrayList<>();
+        for (Participant participant : participants) {
+            if (mEvent.getFinishedRaceParticipantsEmails().contains(participant.getEmail())) {
+                joinedEvent.add(participant);
+            }
+        }
+        return joinedEvent;
+    }
 }

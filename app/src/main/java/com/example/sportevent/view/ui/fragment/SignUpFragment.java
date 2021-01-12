@@ -60,7 +60,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.registerButton:
-                Participant participant = new Participant(0, mName.getText().toString(),mEmail.getText().toString(),mAddress.getText().toString(),mPhoneNumber.getText().toString());
+                Participant participant = new Participant(0, mName.getText().toString().trim(),mEmail.getText().toString().trim(),mAddress.getText().toString().trim(),mPhoneNumber.getText().toString().trim());
                 ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
                 participantViewModel.createParticipant(participant, participant.getEmail());
                 SampleData.currentUserEmail = mEmail.getText().toString();

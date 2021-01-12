@@ -66,10 +66,10 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
 
     @Override
     public void onClick(View v) {
-        NavController navController = Navigation.findNavController(v);;
+        NavController navController = Navigation.findNavController(v);
         switch (v.getId()) {
             case R.id.participant_list:
-                navController.navigate(EventDescriptionSignUpFragmentDirections.actionEventDescriptionSignUpFragmentToParticipantListSignUpFragment());
+                navController.navigate(EventDescriptionSignUpFragmentDirections.actionEventDescriptionSignUpFragmentToParticipantListSignUpFragment(mEvent));
                 break;
             case R.id.event_signup:
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext())

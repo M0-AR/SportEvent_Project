@@ -59,7 +59,7 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
         NavController navController = Navigation.findNavController(v);;
         switch (v.getId()) {
             case R.id.participant_list:
-                navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToParticipant());
+                navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToParticipant(mEvent));
                 break;
             case R.id.event_start_description:
                 navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));

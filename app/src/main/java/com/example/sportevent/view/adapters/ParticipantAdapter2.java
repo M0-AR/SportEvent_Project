@@ -17,11 +17,9 @@ import java.util.List;
 
 public class ParticipantAdapter2 extends RecyclerView.Adapter<ParticipantAdapter2.ParticipantViewHolder> {
     private  List<Participant> mParticipantList;
-    private List<PersonalEventData> mPersonalEventData;
 
-    public ParticipantAdapter2(ArrayList<Participant> participantList, ArrayList<PersonalEventData> personalEventData) {
+    public ParticipantAdapter2(ArrayList<Participant> participantList) {
         mParticipantList = participantList;
-        mPersonalEventData = personalEventData;
     }
 
     @NonNull
@@ -34,15 +32,15 @@ public class ParticipantAdapter2 extends RecyclerView.Adapter<ParticipantAdapter
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ParticipantViewHolder holder, final int position) {
-        if (mParticipantList != null && mPersonalEventData != null) {
+        if (mParticipantList != null) {
             Participant participant = mParticipantList.get(position);
-            PersonalEventData personalEventData = mPersonalEventData.get(position);
 
             //race result data
-            holder.mTextView3.setText((personalEventData.getResult()+1) + ((position < 9) ? "  " : ""));
+            // TODO: 12/01/2021 Make Result extend Participant
+            holder.mTextView3.setText((participant.getId()+1) + ((position < 9) ? "  " : ""));
 
             holder.mTextView1.setText(participant.getName());
-            holder.mTextView2.setText((participant.getId()+1) + "");
+            holder.mTextView2.setText((participant.getId()) + "");
         } // Todo how to cover this problem 9:37 https://www.youtube.com/watch?v=reSPN7mgshI&list=PLrnPJCHvNZuDihTpkRs6SpZhqgBqPU118&index=6
     }
 

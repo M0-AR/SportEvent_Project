@@ -55,12 +55,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
 
 
-        holder.mParent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mOnEventClickListener != null && position != RecyclerView.NO_POSITION)
-                    mOnEventClickListener.onEventClick(mEventList.get(position));
-            }
+        holder.mParent.setOnClickListener(v -> {
+            if (mOnEventClickListener != null && position != RecyclerView.NO_POSITION)
+                mOnEventClickListener.onEventClick(mEventList.get(position));
         });
 
         } // Todo how to cover this problem 9:37 https://www.youtube.com/watch?v=reSPN7mgshI&list=PLrnPJCHvNZuDihTpkRs6SpZhqgBqPU118&index=6
@@ -70,11 +67,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public int getItemCount() {
         return mEventList.size();
     }
-
-
-
-
-
 
     // Instead of passing reference from constructor
     public void setOnEventClickListener(OnEventClickListener onEventClickListener) {
