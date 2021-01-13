@@ -86,8 +86,10 @@ public class Logic {
     public static ArrayList<Participant> getParticipantsWhoJoinedEvent(ArrayList<Participant> participants, Event mEvent) {
         ArrayList<Participant> joinedEvent = new ArrayList<>();
         for (Participant participant : participants) {
-            if (mEvent.getJoinedEventParticipantsEmails().contains(participant.getEmail())) {
-                joinedEvent.add(participant);
+            for (String joinedEventParticipantsEmail : mEvent.getJoinedEventParticipantsEmails()) {
+                if (joinedEventParticipantsEmail.equalsIgnoreCase(participant.getEmail())) {
+                    joinedEvent.add(participant);
+                }
             }
         }
         return joinedEvent;
@@ -97,8 +99,10 @@ public class Logic {
     public static ArrayList<Participant> getParticipantsWhoFinishedEvent(ArrayList<Participant> participants, Event mEvent) {
         ArrayList<Participant> joinedEvent = new ArrayList<>();
         for (Participant participant : participants) {
-            if (mEvent.getFinishedRaceParticipantsEmails().contains(participant.getEmail())) {
-                joinedEvent.add(participant);
+            for (String finishedRaceParticipantsEmails : mEvent.getFinishedRaceParticipantsEmails()) {
+                if (finishedRaceParticipantsEmails.equalsIgnoreCase(participant.getEmail())) {
+                    joinedEvent.add(participant);
+                }
             }
         }
         return joinedEvent;
