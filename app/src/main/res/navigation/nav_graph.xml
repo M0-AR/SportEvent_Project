@@ -39,6 +39,9 @@
         android:id="@+id/closestEvent"
         android:name="com.example.sportevent.view.ui.fragment.ClosestEvent"
         >
+        <action
+            android:id="@+id/action_closestEvent_to_participantListSignUpFragment"
+            app:destination="@id/participantListSignUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinedEventFragment"
