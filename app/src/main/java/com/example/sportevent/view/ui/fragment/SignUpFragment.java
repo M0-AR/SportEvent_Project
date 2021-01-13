@@ -51,8 +51,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
 
         MainActivity activity = (MainActivity) getActivity();
         if (activity != null)
-            activity.hideBottomBar(false);    // to show the bottom bar when
-        // we destroy this fragment
+            activity.hideBottomBar(false);    // to show the bottom bar when we destroy this fragment
     }
 
     @Override

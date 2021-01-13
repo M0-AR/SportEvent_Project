@@ -44,7 +44,7 @@ public class LogicTest {
     @Test
     public void checkJoinedEventListForUserByEmail() {
         // Get the events that cr@gmail.com has been joined
-        ArrayList<Event> joinedEventListForUser =  Logic.getJoinedEventForUserByEmail(signUpList, "cr@gmail.com");
+        ArrayList<Event> joinedEventListForUser =  Logic.getJoinedEventListForUserByEmail(signUpList, "cr@gmail.com");
         // cr@gmail.com has just joined tow events (firstEvent and secondEvent)
         assertEquals(2, joinedEventListForUser.size());
         assertEquals(firstEvent, joinedEventListForUser.get(0));
@@ -54,7 +54,7 @@ public class LogicTest {
     @Test
     public void checkFinishedEventListForUserByEmail() {
         // Get the events that cr@gmail.com has been joined
-        ArrayList<Event> joinedEventListForUser =  Logic.getFinishedEventForUserByEmail(signUpList, "cr@gmail.com");
+        ArrayList<Event> joinedEventListForUser =  Logic.getFinishedEventListForUserByEmail(signUpList, "cr@gmail.com");
         // cr@gmail.com has just finished one event (secondEvent)
         assertEquals(1, joinedEventListForUser.size());
         assertEquals(secondEvent, joinedEventListForUser.get(0));
