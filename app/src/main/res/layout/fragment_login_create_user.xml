@@ -50,6 +50,7 @@
             android:background="@color/white"
             android:hint="@string/enter_e_mail" />
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,6 +85,7 @@
             android:background="@color/white"
             android:hint="@string/enter_phone_number" />
 
+
         <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
@@ -93,6 +95,8 @@
             android:gravity="center"
             android:text="@string/register_user"
             android:textSize="28sp" />
+
+
 
 
     </LinearLayout>

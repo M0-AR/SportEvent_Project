@@ -10,12 +10,14 @@ import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Participant;
@@ -29,6 +31,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "SignUpFragment";
     private Button register;
     private EditText mName, mEmail, mAddress, mPhoneNumber;
+    String sName,sEmail,sAddress,sPhoneNumber;
+    TextView eEmail,ePhoneNumber;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +46,10 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         mAddress = view.findViewById(R.id.user_signup_address);
         mPhoneNumber = view.findViewById(R.id.user_signup_phoneNumber);
 
+        sName = mName.getText().toString().trim();
+        sEmail = mEmail.getText().toString().trim();
+        sAddress = mAddress.getText().toString().trim();
+        sPhoneNumber = mPhoneNumber.getText().toString().trim();
         return view;
     }
 
@@ -60,13 +68,62 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.registerButton:
-                Participant participant = new Participant(mName.getText().toString(),mEmail.getText().toString(),mAddress.getText().toString(),mPhoneNumber.getText().toString());
-                ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
-                participantViewModel.createParticipant(participant);
-                SampleData.currentUserEmail = mEmail.getText().toString();
-                Log.d(TAG, "onClick: User's email: " + mEmail.getText().toString());
-                navController.navigate(SignUpFragmentDirections.actionCreateUserToHomeFragment());
-                break;
+                if (validateName() && validateEmail() && validateAddress() && validatePhoneNumber() ){
+                    Participant participant = new Participant(
+                            mName.getText().toString().trim(),
+                            mEmail.getText().toString().trim(),
+                            mAddress.getText().toString().trim(),
+                            mPhoneNumber.getText().toString().trim());
+                    ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
+                    participantViewModel.createParticipant(participant);
+                    SampleData.currentUserEmail = mEmail.getText().toString();
+                    Log.d(TAG, "onClick: User's email: " + mEmail.getText().toString());
+                    navController.navigate(SignUpFragmentDirections.actionCreateUserToHomeFragment());
+                    break;
+                } else break;
+
+        }
+    }
+    private boolean validatePhoneNumber(){
+        if( mPhoneNumber.getText().toString().trim().isEmpty()){
+            mPhoneNumber.setError("Phone number field Can't be empty");
+            return false;
+        }else if(!Patterns.PHONE.matcher( mPhoneNumber.getText().toString().trim()).matches()){
+            mPhoneNumber.setError("Please enter a valid phone number");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+
+    private boolean validateName(){
+        if(mName.getText().toString().trim().isEmpty()){
+            mName.setError("Name field Can't be empty");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    private boolean validateAddress(){
+        if(mAddress.getText().toString().trim().isEmpty()){
+            mAddress.setError("Address field Can't be empty");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    private boolean validateEmail(){
+        if(mEmail.getText().toString().trim().isEmpty()){
+            mEmail.setError("Email field Can't be empty");
+            return false;
+        }else if(!Patterns.EMAIL_ADDRESS.matcher(mEmail.getText().toString().trim()).matches()){
+            mEmail.setError("Please enter a valid email");
+            return false;
+        }else {
+            return true;
         }
     }
 }
