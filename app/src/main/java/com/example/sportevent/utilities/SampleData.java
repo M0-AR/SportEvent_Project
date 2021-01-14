@@ -36,13 +36,14 @@ public class SampleData {
             finishedParticipantList = new ArrayList<>();
         }
 
+        // TODO: 14/01/2021 Clean up
         for (int i = 0; i < 20; i++) {
-            participants.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
+            //participants.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i,));
         }
 
         for (int i = 0; i < 8; i++) {
-            joinedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
-            finishedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
+            //joinedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
+            //finishedParticipantList.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i));
         }
 
         if (images == null) {

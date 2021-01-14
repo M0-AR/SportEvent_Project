@@ -1,24 +1,36 @@
 package com.example.sportevent.data.model.entities;
 
 public class Result {
-    private Timer timer;
-    private int distance;
+    private float distance;
+    private float hours;
+    private float minutes;
+    private float seconds;
     private int placeNumber;
     private int medal;
 
-    public Result(Timer timer, int distance, int placeNumber, int medal) {
-        this.timer = timer;
+
+    public Result(float distance, float hours, float minutes, float seconds, int placeNumber, int medal) {
         this.distance = distance;
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
         this.placeNumber = placeNumber;
         this.medal = medal;
     }
 
-
-    public Timer getTimer() {
-        return timer;
+    public float getHours() {
+        return hours;
     }
 
-    public int getDistance() {
+    public float getMinutes() {
+        return minutes;
+    }
+
+    public float getSeconds() {
+        return seconds;
+    }
+
+    public float getDistance() {
         return distance;
     }
 

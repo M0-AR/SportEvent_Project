@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.entities.Participant;
+import com.example.sportevent.data.model.entities.Result;
 import com.example.sportevent.data.model.process.RequestCall;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,15 +40,21 @@ public class ParticipantRepository {
                 .addOnFailureListener(e -> Log.w(TAG, "Error writing document: participant", e));
     }
 
+    public void insertParticipantResult(String participantEmail, int eventId, Result result) {
+        DB.collection("Participants").document(participantEmail)
+                .collection("result").document(String.valueOf(eventId))
+                .set(result)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully written! participant's result"))
+                .addOnFailureListener(e -> Log.w(TAG, "Error writing document: participant's result", e));
+    }
+
+
     public MutableLiveData<RequestCall> getAllParticipants() {
         final RequestCall requestCall = new RequestCall();
-        readData(new ParticipantRepository.FirebaseCallBack() {
-            @Override
-            public void onCallBack(List<Participant> participantList) {
-                Log.d(TAG, "getAllEvents: FirebaseCallBack: " + participantList);
-                requestCall.participantList = (ArrayList<Participant>) participantList;
-                mutableLiveData.postValue(requestCall);
-            }
+        readData(participantList -> {
+            Log.d(TAG, "getAllEvents: FirebaseCallBack: " + participantList);
+            requestCall.participantList = (ArrayList<Participant>) participantList;
+            mutableLiveData.postValue(requestCall);
         });
         return mutableLiveData;
     }

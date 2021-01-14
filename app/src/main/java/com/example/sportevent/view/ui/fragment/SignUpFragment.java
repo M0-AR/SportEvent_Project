@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Participant;
+import com.example.sportevent.data.model.entities.Result;
+import com.example.sportevent.data.model.entities.Timer;
 import com.example.sportevent.data.model.process.RequestCall;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.ui.MainActivity;
@@ -59,7 +61,11 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.registerButton:
-                Participant participant = new Participant(0, mName.getText().toString().trim(),mEmail.getText().toString().trim(),mAddress.getText().toString().trim(),mPhoneNumber.getText().toString().trim());
+                Participant participant = new Participant(0
+                        , mName.getText().toString().trim()
+                        , mEmail.getText().toString().trim()
+                        , mAddress.getText().toString().trim()
+                        , mPhoneNumber.getText().toString().trim());
                 ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
                 participantViewModel.createParticipant(participant, participant.getEmail());
                 SampleData.currentUserEmail = mEmail.getText().toString();

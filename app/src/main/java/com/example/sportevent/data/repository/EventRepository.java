@@ -50,13 +50,10 @@ public class EventRepository {
 
     public MutableLiveData<RequestCall> getAllEvents() {
         final RequestCall requestCall = new RequestCall();
-        readData(new FirebaseCallBack() {
-            @Override
-            public void onCallBack(List<Event> eventList) {
-                Log.d(TAG, "getAllEvents: FirebaseCallBack: " + eventList);
-                requestCall.eventList = (ArrayList<Event>) eventList;
-                mutableLiveData.postValue(requestCall);
-            }
+        readData(eventList -> {
+            Log.d(TAG, "getAllEvents: FirebaseCallBack: " + eventList);
+            requestCall.eventList = (ArrayList<Event>) eventList;
+            mutableLiveData.postValue(requestCall);
         });
         return mutableLiveData;
     }

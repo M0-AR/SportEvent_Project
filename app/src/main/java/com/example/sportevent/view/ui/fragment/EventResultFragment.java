@@ -15,13 +15,17 @@ import android.widget.Button;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.entities.Result;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
+import com.example.sportevent.viewModel.ParticipantViewModel;
 
 public class EventResultFragment extends Fragment implements  View.OnClickListener{
     private Button mShareResult;
     private Event mEvent;
     private EventViewModel mEventViewModel;
+    private ParticipantViewModel mParticipantViewModel;
+
 
     @Nullable
     @Override
@@ -30,7 +34,7 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
 
         mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
         mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-
+        mParticipantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
         customizeData();
 
         mShareResult = view.findViewById(R.id.share_result);
@@ -52,6 +56,10 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
         mEventViewModel.getAllEvents().observe( this, requestCall -> {
             SampleData.signUpEventList = requestCall.eventList;
         });
+
+        // Add result to the user
+        // TODO: 14/01/2021 Make the correct result
+        mParticipantViewModel.createParticipantResult(SampleData.currentUserEmail, mEvent.getId(), new Result(0,0,0,0,0,0));
     }
 
     @Override
