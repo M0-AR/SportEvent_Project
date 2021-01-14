@@ -103,7 +103,7 @@
     <string name="time_counter">Time:</string>
     <string name="distance">Distance:</string>
     <string name="race_place_number">Race place number:</string>
-    <string name="medal">Medal</string>
+    <string name="medal">Medal:</string>
     <string name="participants_number_result">Participant:</string>
     <string name="result_user_name">"Name: "</string>
     <string name="speed_start_event">"\t\t\t\t\tSpeed\n\n\t\t\t\t\t\t\t\t\t\tkm/h"</string>

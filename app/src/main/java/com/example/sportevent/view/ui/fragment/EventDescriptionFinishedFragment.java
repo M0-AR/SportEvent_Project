@@ -44,6 +44,9 @@ public class EventDescriptionFinishedFragment extends Fragment implements View.O
         final Button participantList = view.findViewById(R.id.participant_list);
         participantList.setOnClickListener(this);
 
+        final Button result = view.findViewById(R.id.event_result_description);
+        result.setOnClickListener(this);
+
         return view;
     }
 
@@ -52,6 +55,9 @@ public class EventDescriptionFinishedFragment extends Fragment implements View.O
         NavController navController = Navigation.findNavController(v);;
         if (v.getId() == R.id.participant_list) {
             navController.navigate(EventDescriptionFinishedFragmentDirections.actionEventDescriptionFragment2ToParticipantListFragment2(mEvent));
+        } else if (v.getId() == R.id.event_result_description) {
+            // TODO: 14/01/2021 on back pressed
+            navController.navigate(EventDescriptionFinishedFragmentDirections.actionEventDescriptionFragment2ToEventResultFragment(mEvent));
         }
     }
 }

@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="16dp"
-
             android:paddingTop="24dp"
             android:paddingBottom="16dp"
             android:text="@string/result_information"
@@ -29,6 +28,7 @@
             tools:ignore="RtlSymmetry" />
 
         <TextView
+            android:id="@+id/result_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
@@ -38,6 +38,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/result_distance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
@@ -47,6 +48,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/result_place_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
@@ -56,6 +58,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/result_medal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
@@ -67,20 +70,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="none" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:padding="12dp"
             android:text="@string/participants_number_result"
             android:textColor="@android:color/holo_orange_dark"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/result_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"

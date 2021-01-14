@@ -184,6 +184,9 @@
         <argument
             android:name="event"
             app:argType="com.example.sportevent.data.model.entities.Event" />
+        <action
+            android:id="@+id/action_eventDescriptionFragment2_to_eventResultFragment"
+            app:destination="@id/eventResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventDescriptionSignUpFragment"

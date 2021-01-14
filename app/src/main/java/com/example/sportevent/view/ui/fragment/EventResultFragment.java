@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
@@ -25,7 +26,7 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
     private Event mEvent;
     private EventViewModel mEventViewModel;
     private ParticipantViewModel mParticipantViewModel;
-
+    private TextView mTime, mDistance, mPlaceNumber, mMedal, mName;
 
     @Nullable
     @Override
@@ -36,6 +37,14 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
         mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         mParticipantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
         customizeData();
+
+        mTime = view.findViewById(R.id.result_time);
+        mTime.setText("Time:\t\t14:33 min");
+        mDistance = view.findViewById(R.id.result_distance);
+        mPlaceNumber = view.findViewById(R.id.result_place_number);
+        mMedal = view.findViewById(R.id.result_medal);
+        mName = view.findViewById(R.id.result_name);
+
 
         mShareResult = view.findViewById(R.id.share_result);
         mShareResult.setOnClickListener(this);
