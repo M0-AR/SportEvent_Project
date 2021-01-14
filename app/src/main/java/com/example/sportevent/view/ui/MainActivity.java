@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,7 +20,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.sportevent.R;
-import com.example.sportevent.data.model.process.RequestCall;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 import com.example.sportevent.viewModel.ParticipantViewModel;
@@ -53,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: participantList: " + requestCall.participantList);
             SampleData.participants = requestCall.participantList;
         });
+
 
         //SampleData.initData();
         Log.d(TAG, "onCreate: create events");

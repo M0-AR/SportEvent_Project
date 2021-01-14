@@ -31,4 +31,8 @@ public class ParticipantViewModel extends AndroidViewModel {
     public MutableLiveData<RequestCall> getAllParticipants() {
         return participantRepository.getAllParticipants();
     }
+
+    public MutableLiveData<RequestCall> getParticipantResult(String participantEmail) {
+        return participantRepository.getParticipantResult(participantEmail);
+    }
 }

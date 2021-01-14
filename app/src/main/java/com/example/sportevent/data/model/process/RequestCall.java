@@ -12,4 +12,6 @@ public class RequestCall {
     public String message;
     public ArrayList<Event> eventList;
     public ArrayList<Participant> participantList;
+    // String -> eventId
+    public HashMap<String,Result> participantResultList;
 }

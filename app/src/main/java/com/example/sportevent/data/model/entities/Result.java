@@ -18,6 +18,10 @@ public class Result {
         this.medal = medal;
     }
 
+    public Result() {
+        // Cloud FireStore
+    }
+
     public float getHours() {
         return hours;
     }

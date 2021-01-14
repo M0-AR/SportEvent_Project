@@ -2,14 +2,18 @@ package com.example.sportevent.utilities;
 
 import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.entities.Participant;
+import com.example.sportevent.data.model.entities.Result;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class SampleData {
     public static ArrayList<Participant> participants;
+    public static HashMap<String, Result> participantResults;
+
     public static List<Participant> joinedParticipantList;
     public static ArrayList<Participant> finishedParticipantList;
     public static String currentUserEmail;
