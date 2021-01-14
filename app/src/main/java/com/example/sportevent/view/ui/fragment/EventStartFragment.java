@@ -9,14 +9,13 @@ import androidx.navigation.Navigation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +23,14 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.sportevent.utilities.Constants;
 import com.example.sportevent.R;
-import com.example.sportevent.view.ui.MainActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -40,6 +38,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.Date;
 import java.util.List;
 
 public class EventStartFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
@@ -50,13 +49,15 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     private TextView lat, lon, speed, locationTrack, address, timer;
     Switch locUpdate, gps;
 
-    //Google API for location services
+    // Google API for location services
     FusedLocationProviderClient fusedLocationProviderClient;
-
-    boolean updateLocation = false;
 
     LocationRequest locationRequest;
     LocationCallback locationCallBack;
+
+    Location currentLocation;
+
+    GoogleMap mGoogleMap;
 
     @Nullable
     @Override
@@ -67,11 +68,12 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         startEvent.setOnClickListener(this);
 
         mMapView = view.findViewById(R.id.start_map);
-        //initGoogleMap(savedInstanceState);
+        initGoogleMap(savedInstanceState);
 
         lat = view.findViewById(R.id.tempLAT);
         lon = view.findViewById(R.id.tempLON);
         speed = view.findViewById(R.id.speedEvent);
+        timer = view.findViewById(R.id.timerEvent);
         address = view.findViewById(R.id.tempAddress);
 
         gps = view.findViewById(R.id.gpsSwitch);
@@ -90,7 +92,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
         // set properties of LocationRequest
         locationRequest = new LocationRequest();
-        // how often default location checks
+        // default location check
         locationRequest.setInterval(20000);
         // fastest location check
         locationRequest.setFastestInterval(5000);
@@ -132,13 +134,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
         locationTrack.setText("Location is being tracked");
         if (ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallBack, null);
@@ -182,7 +177,11 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
                 @Override
                 public void onSuccess(Location location) {
                     // permissions granted
+                    currentLocation = location;
                     updateUI(location);
+
+                    onPause();
+                    onResume();
                 }
             });
         }
@@ -209,7 +208,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
         lat.setText(String.valueOf(location.getLatitude()));
         lon.setText(String.valueOf(location.getLongitude()));
-        // Cannot test, my pc does not have speed sensor
+        // cannot test, my pc does not have speed sensor, probably works!
         if (location.hasSpeed()) {
             speed.setText(String.valueOf(location.getSpeed()));
         }
@@ -219,18 +218,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-    }
-
-
-    /*
     private void initGoogleMap(Bundle savedInstanceState){
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
@@ -247,23 +234,48 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         String buttonText = startEvent.getText()+"";
         if (buttonText.equalsIgnoreCase("Start Event")) {
             startEvent.setText("Finish Event");
-            // Todo Try to find better solution
-            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"));
-            startActivity(i);
+
+            // implement some kind of timer
+            timer.setText("soon");
         }
         else
             navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment());
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("MD"));
+
+        mGoogleMap = googleMap;
+        double Lat = 0, Lon = 0;
+
+        if (currentLocation != null) {
+            Lat = currentLocation.getLatitude();
+            Lon = currentLocation.getLongitude();
+        }
+
+        LatLng latLng = new LatLng(Lat, Lon);
+        mGoogleMap.addMarker(new MarkerOptions().position(latLng).title("Du er her"));
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(7));
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mMapView.onResume();
+        if (mGoogleMap != null) {
+            mGoogleMap.clear();
+
+            // add marker to the map
+            double Lat, Lon;
+
+            Lat = currentLocation.getLatitude();
+            Lon = currentLocation.getLongitude();
+            LatLng latLng = new LatLng(Lat, Lon);
+            mGoogleMap.addMarker(new MarkerOptions().position(latLng).title("Du er her"));
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+        }
     }
 
     @Override
@@ -295,6 +307,5 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         super.onLowMemory();
         mMapView.onLowMemory();
     }
-     */
 
 }
