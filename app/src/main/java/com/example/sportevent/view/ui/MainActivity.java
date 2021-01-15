@@ -53,15 +53,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //SampleData.initData();
-        Log.d(TAG, "onCreate: create events");
-        // TODO: 07/01/2021 Delete this later
-//        mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-//        for (int i = 0; i < 8; i++) {
-//            mEventViewModel.createEvent(SampleData.signUpEventList.get(i), SampleData.signUpEventList.get(i).getId());
-//        }
-
-
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         navController = Navigation.findNavController( this, R.id.nav_host_fragment_container);
 
@@ -78,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setVisibility(View.INVISIBLE);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
-
     }
+
+
 
     public void hideBottomBar(boolean isHidden){
         bottomNavigationView.setVisibility(isHidden ? View.INVISIBLE : View.VISIBLE);

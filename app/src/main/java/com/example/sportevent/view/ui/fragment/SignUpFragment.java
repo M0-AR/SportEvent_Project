@@ -2,6 +2,8 @@ package com.example.sportevent.view.ui.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -49,14 +51,23 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
+    public void onStart() {
+        super.onStart();
+        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (supportActionBar != null)
+            supportActionBar.show();
         MainActivity activity = (MainActivity) getActivity();
         if (activity != null)
-            activity.hideBottomBar(false);    // to show the bottom bar when
-        // we destroy this fragment
+            activity.hideBottomBar(true);    // to show the bottom bar when we destroy this fragment
     }
+
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        MainActivity activity = (MainActivity) getActivity();
+//        if (activity != null)
+//            activity.hideBottomBar(false);    // to show the bottom bar when we destroy this fragment
+//    }
 
     @Override
     public void onClick(View view) {
