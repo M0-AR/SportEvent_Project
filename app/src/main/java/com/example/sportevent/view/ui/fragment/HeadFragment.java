@@ -42,6 +42,11 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
         ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         if (supportActionBar != null)
             supportActionBar.hide();
+
+        MainActivity activity = (MainActivity) getActivity();
+        if (activity != null)
+            activity.hideBottomBar(true);    // to show the bottom bar when we destroy this fragment
+
     }
 
     public void onClick(View view) {

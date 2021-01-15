@@ -54,17 +54,18 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         if (supportActionBar != null)
             supportActionBar.show();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
         MainActivity activity = (MainActivity) getActivity();
         if (activity != null)
-            activity.hideBottomBar(false);    // to show the bottom bar when
-        // we destroy this fragment
+            activity.hideBottomBar(true);    // to show the bottom bar when we destroy this fragment
     }
+
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        MainActivity activity = (MainActivity) getActivity();
+//        if (activity != null)
+//            activity.hideBottomBar(false);    // to show the bottom bar when we destroy this fragment
+//    }
 
     @Override
     public void onClick(View view) {

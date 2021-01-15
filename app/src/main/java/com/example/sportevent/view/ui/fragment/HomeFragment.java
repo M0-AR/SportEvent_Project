@@ -26,6 +26,7 @@ import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.adapters.EventAdapter;
 import com.example.sportevent.view.adapters.LAYOUT;
+import com.example.sportevent.view.ui.MainActivity;
 import com.example.sportevent.viewModel.ParticipantViewModel;
 
 import java.util.ArrayList;
@@ -73,6 +74,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         initJoinedAndFinishedEventForUser();
+        MainActivity activity = (MainActivity) getActivity();
+        if (activity != null)
+            activity.hideBottomBar(false);    // to show the bottom bar when we destroy this fragment
         super.onStart();
     }
 

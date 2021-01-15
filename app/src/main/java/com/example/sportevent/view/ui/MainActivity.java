@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setVisibility(View.INVISIBLE);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
-
     }
 
 
