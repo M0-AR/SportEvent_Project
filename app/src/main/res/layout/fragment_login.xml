@@ -47,6 +47,21 @@
             android:textColor="@android:color/white"
             android:background="@drawable/button"
             android:fontFamily="@font/lemon"/>
+
+
+        <TextView
+            android:id="@+id/txtDefaultpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autoLink="web"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="@string/contact_us"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/lemon"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
 </LinearLayout>
