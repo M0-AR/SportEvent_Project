@@ -46,7 +46,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     private static final int PERMISSIONS_FINE_LOCATIONS = 99;
     private MapView mMapView;
     private Button startEvent;
-    private TextView lat, lon, speed, locationTrack, address, timer;
+    private TextView lat, lon, speed, distance, timer, locationTrack, address;
     Switch locUpdate, gps;
 
     // Google API for location services
@@ -56,7 +56,9 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     LocationCallback locationCallBack;
 
     Location currentLocation;
+    LatLng destination;
 
+    // I use this to move location data into the map methods
     GoogleMap mGoogleMap;
 
     @Nullable
@@ -73,8 +75,13 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         lat = view.findViewById(R.id.tempLAT);
         lon = view.findViewById(R.id.tempLON);
         speed = view.findViewById(R.id.speedEvent);
+        distance = view.findViewById(R.id.distanceEvent);
         timer = view.findViewById(R.id.timerEvent);
         address = view.findViewById(R.id.tempAddress);
+
+        // insert latlng values for destination here
+        // TODO: 1/15/2021 make an easier way for organizer to create destinations (if time)
+        destination = new LatLng(0,0);
 
         gps = view.findViewById(R.id.gpsSwitch);
         gps.setOnClickListener(new View.OnClickListener() {
@@ -144,8 +151,8 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     private void stopLocationUpdates() {
 
         locationTrack.setText("Location is not being tracked");
-        lat.setText("No tracking");
-        lon.setText("No tracking");
+        lat.setText("N/A");
+        lon.setText("N/A");
 
         fusedLocationProviderClient.removeLocationUpdates(locationCallBack);
     }
@@ -254,10 +261,14 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             Lon = currentLocation.getLongitude();
         }
 
+        // current location
         LatLng latLng = new LatLng(Lat, Lon);
         mGoogleMap.addMarker(new MarkerOptions().position(latLng).title("Du er her"));
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(7));
+
+        // destination
+        mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
     }
 
     @Override
@@ -266,7 +277,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         if (mGoogleMap != null) {
             mGoogleMap.clear();
 
-            // add marker to the map
+            // current location marker
             double Lat, Lon;
 
             Lat = currentLocation.getLatitude();
@@ -275,6 +286,9 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             mGoogleMap.addMarker(new MarkerOptions().position(latLng).title("Du er her"));
             mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+
+            // destination marker
+            mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
         }
     }
 
