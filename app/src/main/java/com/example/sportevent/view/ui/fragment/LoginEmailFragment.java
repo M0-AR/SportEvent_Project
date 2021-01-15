@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.sportevent.R;
+import com.example.sportevent.utilities.LogicValidation;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.ui.MainActivity;
 
@@ -50,10 +52,32 @@ public class LoginEmailFragment extends Fragment implements View.OnClickListener
            NavController navController = Navigation.findNavController(view);
         switch (view.getId()) {
             case R.id.emailLogin:
-                SampleData.currentUserEmail = mEmail.getText().toString().trim();
-                Log.d(TAG, "onClick: User's email: " + SampleData.currentUserEmail);
-                navController.navigate( LoginEmailFragmentDirections.actionLoginEmailToHomeFragment());
-                break;
+
+                if(validateEmail()) {
+                    SampleData.currentUserEmail = mEmail.getText().toString().trim();
+                    Log.d(TAG, "onClick: User's email: " + SampleData.currentUserEmail);
+                    navController.navigate( LoginEmailFragmentDirections.actionLoginEmailToHomeFragment());
+                    break;
+                } else break;
+
+        }
+    }
+
+    public boolean validateEmail(){
+        String email = mEmail.getText().toString().trim();
+        if(email.isEmpty()){
+            mEmail.setError("Email field Can't be empty");
+            return false;
+        }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            mEmail.setError("Please enter a valid email");
+            return false;
+        }else if(!LogicValidation.isEmailAlreadyExists(SampleData.participants, email)){
+            mEmail.setError("Your email doesn't exist in system, please enter another email or sign up");
+            return false;
+        }
+        else {
+            mEmail.setError(null);
+            return true;
         }
     }
 
