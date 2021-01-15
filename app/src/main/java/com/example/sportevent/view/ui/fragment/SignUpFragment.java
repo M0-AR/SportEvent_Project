@@ -62,13 +62,13 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.registerButton:
                 if (validateName() && validateEmail() && validateAddress() && validatePhoneNumber() ){
-                    Participant participant = new Participant(
+                    Participant participant = new Participant(0,
                             mName.getText().toString().trim(),
                             mEmail.getText().toString().trim(),
                             mAddress.getText().toString().trim(),
                             mPhoneNumber.getText().toString().trim());
                     ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
-                    participantViewModel.createParticipant(participant);
+                    participantViewModel.createParticipant(participant, participant.getEmail());
                     SampleData.currentUserEmail = mEmail.getText().toString();
                     Log.d(TAG, "onClick: User's email: " + mEmail.getText().toString());
                     navController.navigate(SignUpFragmentDirections.actionCreateUserToHomeFragment());
@@ -85,6 +85,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             mPhoneNumber.setError("Please enter a valid phone number");
             return false;
         }else {
+            mPhoneNumber.setError(null);
             return true;
         }
     }
@@ -95,6 +96,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             mName.setError("Name field Can't be empty");
             return false;
         }else {
+            mName.setError(null);
             return true;
         }
     }
@@ -104,6 +106,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             mAddress.setError("Address field Can't be empty");
             return false;
         }else {
+            mAddress.setError(null);
             return true;
         }
     }
@@ -116,6 +119,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
             mEmail.setError("Please enter a valid email");
             return false;
         }else {
+            mEmail.setError(null);
             return true;
         }
     }
