@@ -23,6 +23,8 @@ import android.widget.TextView;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Participant;
 import com.example.sportevent.data.model.process.RequestCall;
+import com.example.sportevent.utilities.Logic;
+import com.example.sportevent.utilities.LogicValidation;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.ui.MainActivity;
 import com.example.sportevent.viewModel.EventViewModel;
@@ -123,13 +125,18 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     private boolean validateEmail(){
-        if(mEmail.getText().toString().trim().isEmpty()){
+        String email = mEmail.getText().toString().trim();
+        if(email.isEmpty()){
             mEmail.setError("Email field Can't be empty");
             return false;
-        }else if(!Patterns.EMAIL_ADDRESS.matcher(mEmail.getText().toString().trim()).matches()){
+        }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             mEmail.setError("Please enter a valid email");
             return false;
-        }else {
+        }else if(LogicValidation.isEmailAlreadyExists(SampleData.participants, email)){
+            mEmail.setError("This email is already exists");
+            return false;
+        }
+        else {
             mEmail.setError(null);
             return true;
         }
