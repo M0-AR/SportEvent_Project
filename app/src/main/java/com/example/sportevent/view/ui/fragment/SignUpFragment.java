@@ -2,6 +2,8 @@ package com.example.sportevent.view.ui.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -44,6 +46,14 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         mPhoneNumber = view.findViewById(R.id.user_signup_phoneNumber);
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (supportActionBar != null)
+            supportActionBar.show();
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.example.sportevent.view.ui.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -34,6 +36,14 @@ public class LoginEmailFragment extends Fragment implements View.OnClickListener
 
         mEmail = view.findViewById(R.id.text_view_login_email);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (supportActionBar != null)
+            supportActionBar.show();
     }
 
     @Override

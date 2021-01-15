@@ -2,6 +2,8 @@ package com.example.sportevent.view.ui.fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.sportevent.R;
+import com.example.sportevent.view.ui.MainActivity;
 
 public class HeadFragment extends Fragment implements View.OnClickListener {
     Button loginUser;
@@ -32,6 +35,14 @@ public class HeadFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ActionBar supportActionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
+        if (supportActionBar != null)
+            supportActionBar.hide();
+    }
 
     public void onClick(View view) {
         NavController navController = Navigation.findNavController(view);
