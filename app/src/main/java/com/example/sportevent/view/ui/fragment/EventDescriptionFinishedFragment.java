@@ -1,5 +1,6 @@
 package com.example.sportevent.view.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import com.example.sportevent.data.model.entities.Event;
 
 public class EventDescriptionFinishedFragment extends Fragment implements View.OnClickListener{
     private Event mEvent;
+    @SuppressLint("ResourceAsColor")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
