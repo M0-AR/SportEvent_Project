@@ -20,8 +20,23 @@
             android:background="@color/colorPrimary"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/logo_white"
+                    />
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
 
 
         <fragment
