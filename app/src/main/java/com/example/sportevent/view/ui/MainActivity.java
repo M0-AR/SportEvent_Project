@@ -12,9 +12,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -28,7 +31,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "MainActivity";
 
     private NavController navController;
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         NavigationView navView = findViewById(R.id.nav_view);
+        navView.setNavigationItemSelectedListener(this);
         NavigationUI.setupWithNavController(navView, navController);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -86,13 +91,20 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) { // Todo: There is a small problem here, when ClosetEventOrHome is being access from other fragments, so headFragment located under them in the stack. How to make them first layer in stack
          if (item.getItemId() == R.id.contactUs) {
             // todo 13:14 https://www.youtube.com/watch?v=WWgNCPu8MeQ&list=PLrnPJCHvNZuCamMFswP597mUF-whXoAA6&index=6
+             Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.geotrail.dk/kontakt/"));
+             startActivity(browser);
             return true;
-        }
-
+         } else if (item.getItemId() == R.id.termsAndConditions) {
+             // TODO: 17/01/2021 Add the correct link
+             Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.geotrail.dk/kontakt/"));
+             startActivity(browser);
+             return true;
+         }
         return  super.onOptionsItemSelected(item);
     }
 
@@ -107,6 +119,22 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.contactUs) {
+            Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.geotrail.dk/kontakt/"));
+            startActivity(browser);
+            return true;
+        } else if (item.getItemId() == R.id.termsAndConditions) {
+            // TODO: 17/01/2021 Add the correct link
+            Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.geotrail.dk/kontakt/"));
+            startActivity(browser);
+            return true;
+        }
+        return false;
+    }
+
 }
 
 
