@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.sportevent.R;
+import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 import com.example.sportevent.viewModel.ParticipantViewModel;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllEvents().observe( this, requestCall -> {
             Log.d(TAG, "onCreate: eventList: " + requestCall.eventList);
             SampleData.signUpEventList = requestCall.eventList;
+            Logic.sortEventsByClosestDateToToday(SampleData.signUpEventList);
         });
 
         ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
@@ -103,13 +105,7 @@ public class MainActivity extends AppCompatActivity {
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
 
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
+        new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
     }
 }
 
