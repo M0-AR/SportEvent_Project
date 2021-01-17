@@ -9,11 +9,15 @@ import androidx.navigation.Navigation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,6 +52,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -93,6 +98,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
     Location currentLocation;
     LatLng origin, destination;
+    Marker originMarker = null, destinationMarker = null;
 
     // I use this to move location data into the map methods
     GoogleMap mGoogleMap;
@@ -121,8 +127,8 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
         // insert latlng values for destination here
         // TODO: 1/15/2021 make an easier way for organizer to create destinations (if time)
-        destination = new LatLng(0,0);
-        origin = new LatLng(0, 0);
+        destination = new LatLng(56.460449,10.036367);
+        origin = new LatLng(56.460349, 10.036467);
 
         gps = view.findViewById(R.id.gpsSwitch);
         gps.setOnClickListener(new View.OnClickListener() {
@@ -296,6 +302,9 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         if (buttonText.equalsIgnoreCase("Start Event")) {
             startEvent.setText("Finish Event");
 
+            // navigates to google maps with "destination" latlng as destination
+            onInfoWindowClick(destinationMarker);
+
             // implement some kind of timer
             timer.setText("soon");
         }
@@ -344,6 +353,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(14));
 
             // destination marker
+            destinationMarker = mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
             mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
 
         }
@@ -378,6 +388,42 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     public void onLowMemory() {
         super.onLowMemory();
         mMapView.onLowMemory();
+    }
+
+    // "borrowed" from https://github.com/mitchtabian/Google-Maps-2018/blob/Google-Maps-Directions-using-an-Intent-end/app/src/main/java/com/codingwithmitch/googlemaps2018/ui/UserListFragment.java
+    public void onInfoWindowClick(final Marker marker) {
+        if(marker.getTitle().contains("Destination")){
+            final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Open Google Maps?")
+                    .setCancelable(true)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                            String latitude = String.valueOf(marker.getPosition().latitude);
+                            String longitude = String.valueOf(marker.getPosition().longitude);
+                            Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latitude + "," + longitude + "&avoid=tf&mode=b");
+                            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                            mapIntent.setPackage("com.google.android.apps.maps");
+
+                            try{
+                                if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                                    startActivity(mapIntent);
+                                }
+                            }catch (NullPointerException e){
+                                Log.e("EventStartFragment", "onClick: NullPointerException: Couldn't open map." + e.getMessage() );
+                                Toast.makeText(getActivity(), "Couldn't open map", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                            dialog.cancel();
+                        }
+                    });
+            final AlertDialog alert = builder.create();
+            alert.show();
+        }
+
     }
 
 }
