@@ -73,9 +73,8 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         String buttonText = startEvent.getText()+"";
         if (buttonText.equalsIgnoreCase("Start Event")) {
             startEvent.setText("Finish Event");
-            // Todo Try to find better solution
-            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"));
-            startActivity(i);
+            Intent googleMaps= new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getLocation()));
+            startActivity(googleMaps);
         }
         else {
             // TODO: 10/01/2021 Check first if the user close to finish point(around 15 meters far) in race and make it automatic

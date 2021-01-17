@@ -62,16 +62,18 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
                 navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToParticipant(mEvent));
                 break;
             case R.id.event_start_description:
-                Date currentDate = new Date();
-                if(currentDate.after(mEvent.getRaceStartDate()) && currentDate.before(mEvent.getRaceEndDate()))
-                    navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
-                else {
-                    if (currentDate.before(mEvent.getRaceStartDate())) {
-                        makeAlertDialog("This event will start on " + mEvent.getRaceStartDate());
-                    } else {
-                        makeAlertDialog("This event has finished on " + mEvent.getRaceEndDate());
-                    }
-                }
+                navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
+                // TODO: 17/01/2021  
+//                Date currentDate = new Date();
+//                if(currentDate.after(mEvent.getRaceStartDate()) && currentDate.before(mEvent.getRaceEndDate()))
+//                    navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
+//                else {
+//                    if (currentDate.before(mEvent.getRaceStartDate())) {
+//                        makeAlertDialog("This event will start on " + mEvent.getRaceStartDate());
+//                    } else {
+//                        makeAlertDialog("This event has finished on " + mEvent.getRaceEndDate());
+//                    }
+//                }
                 break;
             default:
                 break;
