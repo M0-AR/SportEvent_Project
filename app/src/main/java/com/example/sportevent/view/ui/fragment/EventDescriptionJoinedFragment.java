@@ -62,24 +62,28 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
                 navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToParticipant(mEvent));
                 break;
             case R.id.event_start_description:
-                navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
-                // TODO: 05/01/2021
-                /*if(mEvent.getRaceStartDate().equals(new Date()))
-                    navController.navigate(R.id.action_eventDescriptionFragment_to_startEvent);
+                Date currentDate = new Date();
+                if(currentDate.after(mEvent.getRaceStartDate()) && currentDate.before(mEvent.getRaceEndDate()))
+                    navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
                 else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
-                            .setTitle("OPS...")
-                            .setMessage("This event will start on " + mEvent.getRaceStartDate())
-                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            });
-                    builder.create().show();
-                }*/
+                    if (currentDate.before(mEvent.getRaceStartDate())) {
+                        makeAlertDialog("This event will start on " + mEvent.getRaceStartDate());
+                    } else {
+                        makeAlertDialog("This event has finished on " + mEvent.getRaceEndDate());
+                    }
+                }
                 break;
             default:
                 break;
         }
+    }
+
+    private void makeAlertDialog(String s) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                .setTitle("OPS...")
+                .setMessage(s)
+                .setPositiveButton("Ok", (dialog, which) -> {
+                });
+        builder.create().show();
     }
 }
