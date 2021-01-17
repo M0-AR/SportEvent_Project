@@ -42,9 +42,6 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
         View view =  inflater.inflate(R.layout.fragment_signup_description_event, container, false);
 
         mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-
-        // Todo: Maybe: size of image 0.3 and textView 2 is 0.7 try to hide action bar getActivity().getActionBar().hide();
-
         mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
 
         ImageView imageView = view.findViewById(R.id.imageView);
@@ -82,17 +79,15 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
                         .setNegativeButton("no", (dialog, which) -> {
 
                         }).setPositiveButton("yes", (dialog, which) -> {
-                            // TODO: 05/01/2021 Show an animation until the firestore is being updated
                             Date currentDate = new Date();
-
                             if (Logic.isUserAlreadySignUpToEvent(mEvent, SampleData.currentUserEmail)) {
-                                Toast.makeText(getContext(), "Already sign up", Toast.LENGTH_SHORT).show();
+                                makeAlertDialog("Already sign up");
                             } else if (currentDate.before(mEvent.getJoinStartDate())) {
-                                Toast.makeText(getContext(), "Sign up will be on " + mEvent.getJoinStartDate(), Toast.LENGTH_LONG).show();
+                                makeAlertDialog("Sign up will be on " + mEvent.getJoinStartDate());
                             } else if (currentDate.after(mEvent.getJoinEndDate())) {
-                                Toast.makeText(getContext(), "Sign up has finished on " + mEvent.getJoinEndDate(), Toast.LENGTH_LONG).show();
+                                makeAlertDialog("Sign up has finished on " + mEvent.getJoinEndDate());
                             } else {
-                                Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_LONG).show();
                                 mEvent.getJoinedEventParticipantsEmails().add(SampleData.currentUserEmail);
                                 mEventViewModel.createEvent(mEvent, mEvent.getId());
                                 mEventViewModel.getAllEvents().observe( this, requestCall -> {
@@ -103,9 +98,17 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
                         });
                 builder.create().show();
                 break;
-
             default:
                 break;
         }
+    }
+
+    private void makeAlertDialog(String s) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                .setTitle("OPS...")
+                .setMessage(s)
+                .setPositiveButton("Ok", (dialog, which) -> {
+                });
+        builder.create().show();
     }
 }
