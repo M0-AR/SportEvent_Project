@@ -82,6 +82,10 @@ public class Event implements Serializable {
         return raceEndDate;
     }
 
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
+    }
+
     @Override
     public String toString() {
         return "Event{" +

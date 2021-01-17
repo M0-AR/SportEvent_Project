@@ -67,6 +67,10 @@ public class EventRepository {
                          //   Log.d(String.valueOf(application.getApplicationContext()), document.getId() + " => " + document.getData());
                             Event event = document.toObject(Event.class);
                          //   Log.d(TAG, "onComplete: getAllEvents -> Event: " + (event != null ? event.getEventName() : null));
+                            if(event != null) {
+                               String s = event.getEventDescription().replace( "/n", "\n");
+                               event.setEventDescription(s);
+                            }
                             eventList.add(event);
                         }
                         Log.d(TAG, "readData: eventList: " + eventList);
