@@ -26,6 +26,10 @@ import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
+
 public class EventDescriptionSignUpFragment extends Fragment implements View.OnClickListener{
     public static final String TAG = "EventDescriptionSignUpFragment";
     private Event mEvent;
@@ -79,8 +83,14 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
 
                         }).setPositiveButton("yes", (dialog, which) -> {
                             // TODO: 05/01/2021 Show an animation until the firestore is being updated
+                            Date currentDate = new Date();
+
                             if (Logic.isUserAlreadySignUpToEvent(mEvent, SampleData.currentUserEmail)) {
                                 Toast.makeText(getContext(), "Already sign up", Toast.LENGTH_SHORT).show();
+                            } else if (currentDate.before(mEvent.getJoinStartDate())) {
+                                Toast.makeText(getContext(), "Sign up will be on " + mEvent.getJoinStartDate(), Toast.LENGTH_LONG).show();
+                            } else if (currentDate.after(mEvent.getJoinEndDate())) {
+                                Toast.makeText(getContext(), "Sign up has finished on " + mEvent.getJoinEndDate(), Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_SHORT).show();
                                 mEvent.getJoinedEventParticipantsEmails().add(SampleData.currentUserEmail);
