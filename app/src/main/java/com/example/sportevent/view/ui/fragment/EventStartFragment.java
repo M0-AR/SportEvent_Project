@@ -10,12 +10,16 @@ import androidx.navigation.Navigation;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,30 +27,62 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.directions.route.AbstractRouting;
+import com.directions.route.Route;
+import com.directions.route.RouteException;
+import com.directions.route.Routing;
+import com.directions.route.RoutingListener;
 import com.example.sportevent.utilities.Constants;
 import com.example.sportevent.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.maps.DirectionsApi;
+import com.google.maps.GeoApiContext;
+import com.google.maps.android.PolyUtil;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.DirectionsResult;
+import com.google.maps.model.TravelMode;
 
+import org.joda.time.DateTime;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class EventStartFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
+    private static final String API_KEY = "AIzaSyBnR4ViXl40S9SvXdCt4g2lGg8jWr5ATA0";
     private static final int PERMISSIONS_FINE_LOCATIONS = 99;
     private MapView mMapView;
     private Button startEvent;
     private TextView lat, lon, speed, distance, timer, locationTrack, address;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch locUpdate, gps;
 
     // Google API for location services
@@ -56,10 +92,14 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     LocationCallback locationCallBack;
 
     Location currentLocation;
-    LatLng destination;
+    LatLng origin, destination;
 
     // I use this to move location data into the map methods
     GoogleMap mGoogleMap;
+
+    // I use the handler and runnable to end tracking with the switch so app doesn't crash when navigating to results
+    Handler handler = new Handler();
+    Runnable myRunnable;
 
     @Nullable
     @Override
@@ -82,6 +122,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         // insert latlng values for destination here
         // TODO: 1/15/2021 make an easier way for organizer to create destinations (if time)
         destination = new LatLng(0,0);
+        origin = new LatLng(0, 0);
 
         gps = view.findViewById(R.id.gpsSwitch);
         gps.setOnClickListener(new View.OnClickListener() {
@@ -117,16 +158,24 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         };
 
         locationTrack = view.findViewById(R.id.tempTRACKING);
+        // uncheck before finishing event or app will crash in <= 4s
         locUpdate = view.findViewById(R.id.locationSwitch);
         locUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (locUpdate.isChecked()) {
                     // tracking begins
-                    startLocationUpdates();
+                    final int delay = 4000;
+                    handler.postDelayed(myRunnable = new Runnable() {
+                        public void run() {
+                            startLocationUpdates();
+                            handler.postDelayed(this, delay);
+                        }
+                    }, delay);
                 } else {
                     // tracking ends
                     stopLocationUpdates();
+                    handler.removeCallbacks(myRunnable);
                 }
             }
         });
@@ -140,7 +189,9 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     private void startLocationUpdates() {
 
         locationTrack.setText("Location is being tracked");
-        if (ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getActivity()
+                , Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallBack, null);
@@ -164,6 +215,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         switch (requestCode) {
             case PERMISSIONS_FINE_LOCATIONS:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
                     updateGPS();
                 }
                 else {
@@ -178,15 +230,17 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         // get current location from fused client
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
 
-        if (ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
 
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this.getActivity(), new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(Location location) {
                     // permissions granted
                     currentLocation = location;
-                    updateUI(location);
+                    origin = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
 
+                    updateUI(location);
                     onPause();
                     onResume();
                 }
@@ -200,6 +254,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateUI(Location location) {
 
         Geocoder geocoder = new Geocoder(EventStartFragment.this.getActivity());
@@ -222,7 +277,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         else {
             speed.setText("N/A");
         }
-
     }
 
     private void initGoogleMap(Bundle savedInstanceState){
@@ -269,11 +323,13 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
         // destination
         mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
         if (mGoogleMap != null) {
             mGoogleMap.clear();
 
@@ -289,7 +345,9 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
             // destination marker
             mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
+
         }
+
     }
 
     @Override

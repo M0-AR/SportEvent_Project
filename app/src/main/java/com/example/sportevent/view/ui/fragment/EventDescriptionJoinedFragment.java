@@ -63,7 +63,7 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
                 break;
             case R.id.event_start_description:
                 navController.navigate(R.id.action_eventDescriptionFragment_to_startEvent);
-                /*if(mEvent.getRaceStartDate().equals(new Date()))
+                if(mEvent.getRaceStartDate().equals(new Date()))
                     navController.navigate(R.id.action_eventDescriptionFragment_to_startEvent);
                 else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
@@ -76,7 +76,6 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
                             });
                     builder.create().show();
                 }
-                 */
                 break;
             default:
                 break;
