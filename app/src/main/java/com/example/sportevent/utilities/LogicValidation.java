@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class LogicValidation {
     public static boolean isEmailAlreadyExists(ArrayList<Participant> participants, String email){
         for (Participant participant : participants) {
-            if (participant.getEmail().equals(email)) {
+            if (participant.getEmail().equalsIgnoreCase(email)) {
                 return true;
             }
         }
