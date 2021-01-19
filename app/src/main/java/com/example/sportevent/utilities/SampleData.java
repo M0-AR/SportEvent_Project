@@ -23,6 +23,8 @@ public class SampleData {
     public static ArrayList<Event> finishedEventList;
 
 
+    public static int countOneByOneSecond = 0;
+
     public static ArrayList<String> images;
     private static final String image_test_0 = "https://dur-duweb.newscyclecloud.com/storyimage/DU/20200313/SPORTS01/200319747/AR/0/AR-200319747.jpg";
     private static final String image_test_1 = "https://s3-eu-west-1.amazonaws.com/rb-cms/rbv5/production/uploads/cover_images/c87e85c695ec584acbf8c9665a5727021854/i1080x475.jpg";

@@ -4,8 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -17,24 +22,26 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.entities.Result;
 import com.example.sportevent.utilities.Constants;
 import com.example.sportevent.R;
+import com.example.sportevent.utilities.StopWatchWorker;
+import com.example.sportevent.view.ui.MainActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -42,12 +49,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
-import java.util.Date;
+import java.sql.Time;
 import java.util.List;
+import java.util.UUID;
+
+import static com.example.sportevent.utilities.Constants.SIX_HOURS;
+import static com.example.sportevent.utilities.StopWatchWorker.WORK_NUMBER_KEY;
 
 public class EventStartFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
     private static final int PERMISSIONS_FINE_LOCATIONS = 99;
+    public static final String TAG = "EventStartFragment";
     private MapView mMapView;
     private Button startEvent;
     private TextView lat, lon, speed, distance, timer, locationTrack, address;
@@ -67,6 +79,11 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
     // I use this to move location data into the map methods
     GoogleMap mGoogleMap;
+
+
+    private UUID mCountRequestId;
+    WorkManager workManager;
+
 
     @Nullable
     @Override
@@ -235,6 +252,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View v) {
+
         NavController navController = Navigation.findNavController(v);
         String buttonText = startEvent.getText()+"";
         if (buttonText.equalsIgnoreCase("Start Event")) {
@@ -242,12 +260,53 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             // implement some kind of timer
             timer.setText("soon");
 
+
+            initStopWatchWorker();
+
             Intent googleMaps= new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getLocation()));
             startActivity(googleMaps);
         }
         else {
+
+            // TODO: 19/01/2021 No one is working
+           /* workManager.cancelWorkById(mCountRequestId);
+            workManager.cancelAllWork();
+            workManager.cancelAllWorkByTag("Count");*/
+            workManager.cancelAllWorkByTag("Count");
+    //    public Result(float distance, int hours, int minutes, int seconds, int placeNumber, int medal) {
+
+            Result result = new Result();
             navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment(mEvent));
         }
+    }
+
+    private void initStopWatchWorker() {
+        Data data = new Data.Builder()
+                .putInt(WORK_NUMBER_KEY, SIX_HOURS)
+                .build();
+
+        OneTimeWorkRequest countRequest = new OneTimeWorkRequest.Builder(StopWatchWorker.class)
+                .setInputData(data)
+                .addTag("Count")
+                .build();
+
+        mCountRequestId = countRequest.getId();
+        workManager = WorkManager.getInstance(getContext());
+        workManager.enqueue(countRequest);
+
+        workManager.getWorkInfosByTagLiveData("Count").observe(this, new Observer<List<WorkInfo>>() {
+            @Override
+            public void onChanged(List<WorkInfo> workInfos) {
+                for (WorkInfo workInfo : workInfos) {
+                    Log.d(TAG, "onChanged: Work status: " + workInfo.getState());
+                }
+            }
+        });
+//        SystemClock.sleep(3000);
+//        workManager.cancelWorkById(mCountRequestId);
+//        workManager.cancelAllWork();
+//        workManager.cancelAllWorkByTag("Count");
+
     }
 
    /* @Override
@@ -325,6 +384,10 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     @Override
     public void onDestroy() {
         mMapView.onDestroy();
+
+        // Stop StopWatchService
+        MainActivity activity = (MainActivity) getActivity();
+
         super.onDestroy();
     }
 
