@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Event implements Serializable {
-    private static int count = 1;
+    private double distance;
+    private int maxNumberOfParticipant;
     private int id;
     private String imageURL;
     private String eventName;
@@ -18,8 +19,10 @@ public class Event implements Serializable {
     private Date raceStartDate;
     private Date raceEndDate;
 
-    public Event(String imageURL, String eventName, String eventDescription, String location, List<String> joinedEventParticipantsEmails, List<String> finishedRaceParticipantsEmails, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
-        this.id = count++;
+    public Event(int id, int maxNumberOfParticipant, double distance, String imageURL, String eventName, String eventDescription, String location, List<String> joinedEventParticipantsEmails, List<String> finishedRaceParticipantsEmails, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
+        this.id = id;
+        this.maxNumberOfParticipant = maxNumberOfParticipant;
+        this.distance = distance;
         this.imageURL = imageURL;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
@@ -39,6 +42,14 @@ public class Event implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public int getMaxNumberOfParticipant() {
+        return maxNumberOfParticipant;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 
     public String getImageURL() {

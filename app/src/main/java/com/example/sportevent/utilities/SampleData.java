@@ -90,7 +90,7 @@ public class SampleData {
             signUpEventList.add(new Event(images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                     ,joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
 */
-            signUpEventList.add(new Event(images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+            signUpEventList.add(new Event(i,1000 ,25.0, images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                     , Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2),Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2), new Date(), new Date(), new Date(), new Date() ));
 
         }

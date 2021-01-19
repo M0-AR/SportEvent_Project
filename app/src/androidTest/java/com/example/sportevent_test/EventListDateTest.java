@@ -34,7 +34,7 @@ public class EventListDateTest{
         SampleData.initData();
         joinedEventList = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            new Event(SampleData.images.get(i), i +" : ", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+            new Event(i, 50.0, SampleData.images.get(i), i +" : ", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                     , Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2),Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2),
                     new Date(2020 , 11 , 15 + i), // JoinStartDate
                     new Date(2020, 11, 25 + i) ,  // JoinEndDate
