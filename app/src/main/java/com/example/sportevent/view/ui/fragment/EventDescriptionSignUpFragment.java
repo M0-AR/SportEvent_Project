@@ -66,8 +66,8 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
 
         final Button participantList = view.findViewById(R.id.participant_list);
         participantList.setOnClickListener(this);
-        final Button startEvent = view.findViewById(R.id.event_signup);
-        startEvent.setOnClickListener(this);
+        final Button signupEvent = view.findViewById(R.id.event_signup);
+        signupEvent.setOnClickListener(this);
 
         return view;
     }
