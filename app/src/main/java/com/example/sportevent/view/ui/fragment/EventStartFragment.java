@@ -35,6 +35,7 @@ import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.entities.Result;
 import com.example.sportevent.utilities.Constants;
 import com.example.sportevent.R;
+import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.utilities.StopWatchWorker;
 import com.example.sportevent.view.ui.MainActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -268,14 +269,21 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         }
         else {
 
-            // TODO: 19/01/2021 No one is working
+            // TODO: 19/01/2021 No one is working I can't stop the worker (it's will wait until the loop terminated)
            /* workManager.cancelWorkById(mCountRequestId);
             workManager.cancelAllWork();
             workManager.cancelAllWorkByTag("Count");*/
             workManager.cancelAllWorkByTag("Count");
-    //    public Result(float distance, int hours, int minutes, int seconds, int placeNumber, int medal) {
 
-            Result result = new Result();
+            int seconds = SampleData.countOneByOneSecond % 60;
+            int minuets = (seconds/60)%60;
+            int hours = (seconds/60)/60;
+            int placeNumber = mEvent.getFinishedRaceParticipantsEmails().size()+1;
+            String medal = (placeNumber == 1) ? "Gold": (placeNumber == 2) ? "Silver": (placeNumber == 3) ? "Bronze": "SecondBronze";
+            // TODO: 19/01/2021 Distance Logic: get latitude and longitude when the user click on finish race button then calculate the destination
+            // Example: I was 15 km far from the beginning point when I click on finish button, but the event's distance is 50.0 km(mEvent.getDistance())
+            Result result = new Result(mEvent.getDistance(), hours, minuets, seconds, placeNumber, medal);
+
             navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment(mEvent));
         }
     }
@@ -302,55 +310,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
                 }
             }
         });
-//        SystemClock.sleep(3000);
-//        workManager.cancelWorkById(mCountRequestId);
-//        workManager.cancelAllWork();
-//        workManager.cancelAllWorkByTag("Count");
-
     }
-
-   /* @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-        mGoogleMap = googleMap;
-        double Lat = 0, Lon = 0;
-
-        if (currentLocation != null) {
-            Lat = currentLocation.getLatitude();
-            Lon = currentLocation.getLongitude();
-        }
-
-        // current location
-        LatLng latLng = new LatLng(Lat, Lon);
-        mGoogleMap.addMarker(new MarkerOptions().position(latLng).title("Du er her"));
-        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(7));
-
-        // destination
-        mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mGoogleMap != null) {
-            mGoogleMap.clear();
-
-            // current location marker
-            double Lat, Lon;
-
-            Lat = currentLocation.getLatitude();
-            Lon = currentLocation.getLongitude();
-            LatLng latLng = new LatLng(Lat, Lon);
-            mGoogleMap.addMarker(new MarkerOptions().position(latLng).title("Du er her"));
-            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-
-            // destination marker
-            mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
-        }
-        mMapView.onResume();
-    }*/
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -384,10 +344,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     @Override
     public void onDestroy() {
         mMapView.onDestroy();
-
-        // Stop StopWatchService
-        MainActivity activity = (MainActivity) getActivity();
-
         super.onDestroy();
     }
 

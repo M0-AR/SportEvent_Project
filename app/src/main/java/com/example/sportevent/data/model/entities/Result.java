@@ -1,15 +1,17 @@
 package com.example.sportevent.data.model.entities;
 
-public class Result {
-    private float distance;
-    private float hours;
-    private float minutes;
-    private float seconds;
+import java.io.Serializable;
+
+public class Result implements Serializable {
+    private double distance;
+    private int hours;
+    private int minutes;
+    private int seconds;
     private int placeNumber;
-    private int medal;
+    private String medal;
 
 
-    public Result(float distance, float hours, float minutes, float seconds, int placeNumber, int medal) {
+    public Result(double distance, int hours, int minutes, int seconds, int placeNumber, String medal) {
         this.distance = distance;
         this.hours = hours;
         this.minutes = minutes;
@@ -22,19 +24,19 @@ public class Result {
         // Cloud FireStore
     }
 
-    public float getHours() {
+    public int getHours() {
         return hours;
     }
 
-    public float getMinutes() {
+    public int getMinutes() {
         return minutes;
     }
 
-    public float getSeconds() {
+    public int getSeconds() {
         return seconds;
     }
 
-    public float getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -42,7 +44,7 @@ public class Result {
         return placeNumber;
     }
 
-    public int getMedal() {
+    public String getMedal() {
         return medal;
     }
 }

@@ -17,7 +17,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements
     private AppBarConfiguration appBarConfiguration;
     private BottomNavigationView  bottomNavigationView;
     private boolean doubleBackToExitPressedOnce;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

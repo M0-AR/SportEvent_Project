@@ -68,7 +68,7 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
 
         // Add result to the user
         // TODO: 14/01/2021 Make the correct result
-        mParticipantViewModel.createParticipantResult(SampleData.currentUserEmail, mEvent.getId(), new Result(0,0,0,0,0,0));
+        mParticipantViewModel.createParticipantResult(SampleData.currentUserEmail, mEvent.getId(), new Result(0,0,0,0,0,"Gold"));
     }
 
     @Override
