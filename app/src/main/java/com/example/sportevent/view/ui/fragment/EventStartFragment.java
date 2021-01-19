@@ -9,10 +9,12 @@ import androidx.navigation.Navigation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,6 +25,8 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.utilities.Constants;
 import com.example.sportevent.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -47,7 +51,10 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     private MapView mMapView;
     private Button startEvent;
     private TextView lat, lon, speed, distance, timer, locationTrack, address;
-    Switch locUpdate, gps;
+    private Switch locUpdate, gps;
+
+    private Event mEvent;
+
 
     // Google API for location services
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -65,6 +72,8 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_start_event, container, false);
+
+        mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
 
         startEvent = view.findViewById(R.id.start_event);
         startEvent.setOnClickListener(this);
@@ -184,11 +193,13 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
                 @Override
                 public void onSuccess(Location location) {
                     // permissions granted
-                    currentLocation = location;
-                    updateUI(location);
+                    if (location != null) {
+                        currentLocation = location;
+                        updateUI(location);
 
-                    onPause();
-                    onResume();
+                        //onPause();
+                        //onResume();
+                    }
                 }
             });
         }
@@ -215,6 +226,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
 
         lat.setText(String.valueOf(location.getLatitude()));
         lon.setText(String.valueOf(location.getLongitude()));
+
         // cannot test, my pc does not have speed sensor, probably works!
         if (location.hasSpeed()) {
             speed.setText(String.valueOf(location.getSpeed()));
@@ -241,16 +253,18 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         String buttonText = startEvent.getText()+"";
         if (buttonText.equalsIgnoreCase("Start Event")) {
             startEvent.setText("Finish Event");
-
             // implement some kind of timer
             timer.setText("soon");
-        }
-        else
-            navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment());
 
+            Intent googleMaps= new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getLocation()));
+            startActivity(googleMaps);
+        }
+        else {
+            navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment(mEvent));
+        }
     }
 
-    @Override
+   /* @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mGoogleMap = googleMap;
@@ -290,6 +304,18 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             // destination marker
             mGoogleMap.addMarker(new MarkerOptions().position(destination).title("Destination"));
         }
+        mMapView.onResume();
+    }*/
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("MD"));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mMapView.onResume();
     }
 
     @Override
@@ -321,5 +347,4 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         super.onLowMemory();
         mMapView.onLowMemory();
     }
-
 }
