@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "520791590723",
+    "project_id": "sportevent-cae57",
+    "storage_bucket": "sportevent-cae57.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520791590723:android:518075b414b5af2617d1f6",
+        "android_client_info": {
+          "package_name": "com.example.sportevent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520791590723-vqibkhm2mvduol5bb4oc68ofg2t855b5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sportevent",
+            "certificate_hash": "812fe3833f1f1f2fe3a6339c32063c3a36a4d063"
+          }
+        },
+        {
+          "client_id": "520791590723-c6970braolgheosbhacc4r5ngen89tkr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSrcFwZdkNfjcRcDEs3-ux5d3TvM-AQS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520791590723-c6970braolgheosbhacc4r5ngen89tkr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
