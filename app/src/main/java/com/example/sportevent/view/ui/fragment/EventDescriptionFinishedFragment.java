@@ -19,6 +19,10 @@ import androidx.navigation.Navigation;
 import com.bumptech.glide.Glide;
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.entities.Result;
+import com.example.sportevent.utilities.SampleData;
+
+import java.util.Objects;
 
 public class EventDescriptionFinishedFragment extends Fragment implements View.OnClickListener{
     private Event mEvent;
@@ -59,7 +63,9 @@ public class EventDescriptionFinishedFragment extends Fragment implements View.O
             navController.navigate(EventDescriptionFinishedFragmentDirections.actionEventDescriptionFragment2ToParticipantListFragment2(mEvent));
         } else if (v.getId() == R.id.event_result_description) {
             // TODO: 14/01/2021 on back pressed
-            navController.navigate(EventDescriptionFinishedFragmentDirections.actionEventDescriptionFragment2ToEventResultFragment(mEvent));
+
+            Result result =  SampleData.participantResults.get(String.valueOf(mEvent.getId()));
+            navController.navigate(EventDescriptionFinishedFragmentDirections.actionEventDescriptionFragment2ToEventResultFragment(mEvent, result));
         }
     }
 }

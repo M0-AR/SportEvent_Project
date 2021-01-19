@@ -24,6 +24,7 @@ import com.example.sportevent.viewModel.ParticipantViewModel;
 public class EventResultFragment extends Fragment implements  View.OnClickListener{
     private Button mShareResult;
     private Event mEvent;
+    private Result mResult;
     private EventViewModel mEventViewModel;
     private ParticipantViewModel mParticipantViewModel;
     private TextView mTime, mDistance, mPlaceNumber, mMedal, mName;
@@ -33,18 +34,24 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_result_event, container, false);
 
-        mEvent = EventDescriptionSignUpFragmentArgs.fromBundle(getArguments()).getEvent();
+        mEvent = EventResultFragmentArgs.fromBundle(getArguments()).getEvent();
+        mResult = EventResultFragmentArgs.fromBundle(getArguments()).getResult();
+
         mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         mParticipantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
         customizeData();
 
         mTime = view.findViewById(R.id.result_time);
-        mTime.setText("Time:\t\t14:33 min");
+        mTime.setText("Time:\t\t"+ mResult.getHours() + ":" + mResult.getMinutes() + ":" + mResult.getSeconds());
         mDistance = view.findViewById(R.id.result_distance);
+        mDistance.setText("Distance:\t\t" + mResult.getDistance() + " km");
         mPlaceNumber = view.findViewById(R.id.result_place_number);
+        mPlaceNumber.setText("Place number:\t\t" + mResult.getPlaceNumber());
         mMedal = view.findViewById(R.id.result_medal);
+        mMedal.setText("Medal:\t\t" + mResult.getMedal());
         mName = view.findViewById(R.id.result_name);
-
+        // TODO: 19/01/2021 Put a participant name here need a method in Logic to get the right participant According to the email
+        mName.setText("Name:\t\tTest");
 
         mShareResult = view.findViewById(R.id.share_result);
         mShareResult.setOnClickListener(this);
@@ -68,7 +75,7 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
 
         // Add result to the user
         // TODO: 14/01/2021 Make the correct result
-        mParticipantViewModel.createParticipantResult(SampleData.currentUserEmail, mEvent.getId(), new Result(0,0,0,0,0,"Gold"));
+        mParticipantViewModel.createParticipantResult(SampleData.currentUserEmail, mEvent.getId(), mResult);
     }
 
     @Override

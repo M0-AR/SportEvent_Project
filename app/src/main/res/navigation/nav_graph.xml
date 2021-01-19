@@ -128,6 +128,9 @@
         <argument
             android:name="event"
             app:argType="com.example.sportevent.data.model.entities.Event" />
+        <argument
+            android:name="result"
+            app:argType="com.example.sportevent.data.model.entities.Result" />
     </fragment>
     <fragment
         android:id="@+id/loginEmail"

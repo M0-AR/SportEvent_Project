@@ -38,7 +38,7 @@ public class ClosestEvent extends Fragment implements View.OnClickListener{
 
         mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
 
-        // TODO: 05/01/2021 Get the first element in the list which has the closest event
+        // TODO: 05/01/2021 Clean up
         mEvent = SampleData.signUpEventList.get(0);
 
         ImageView imageView = view.findViewById(R.id.imageView);

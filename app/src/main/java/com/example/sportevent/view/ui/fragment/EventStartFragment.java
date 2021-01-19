@@ -284,7 +284,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             // Example: I was 15 km far from the beginning point when I click on finish button, but the event's distance is 50.0 km(mEvent.getDistance())
             Result result = new Result(mEvent.getDistance(), hours, minuets, seconds, placeNumber, medal);
 
-            navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment(mEvent));
+            navController.navigate(EventStartFragmentDirections.actionStartEventToEventResultFragment(mEvent, result));
         }
     }
 
