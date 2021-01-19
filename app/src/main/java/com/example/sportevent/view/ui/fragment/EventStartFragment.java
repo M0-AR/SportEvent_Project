@@ -166,21 +166,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         fusedLocationProviderClient.removeLocationUpdates(locationCallBack);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        switch (requestCode) {
-            case PERMISSIONS_FINE_LOCATIONS:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    updateGPS();
-                }
-                else {
-                    Toast.makeText(this.getActivity(), "This app requires permission in order to work", Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
-                }
-        }
-    }
 
     private void updateGPS(){
         // get permissions from user to track GPS
