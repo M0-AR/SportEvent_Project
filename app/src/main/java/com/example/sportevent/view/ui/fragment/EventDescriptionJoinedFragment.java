@@ -1,7 +1,10 @@
 package com.example.sportevent.view.ui.fragment;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -13,6 +16,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -62,8 +67,12 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
                 navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToParticipant(mEvent));
                 break;
             case R.id.event_start_description:
-                navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
-                // TODO: 17/01/2021  
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                } else {
+                    navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
+                }
+                // TODO: 17/01/2021
 //                Date currentDate = new Date();
 //                if(currentDate.after(mEvent.getRaceStartDate()) && currentDate.before(mEvent.getRaceEndDate()))
 //                    navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
@@ -88,4 +97,5 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
                 });
         builder.create().show();
     }
+
 }
