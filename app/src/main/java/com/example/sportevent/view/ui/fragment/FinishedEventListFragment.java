@@ -33,9 +33,6 @@ public class FinishedEventListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_event2, container, false);
 
-        //need to check user choice to know which fragment to focus on, crashes the app.. idk
-        //int prevID = Navigation.findNavController(view).getPreviousBackStackEntry().getDestination().getId();
-
         RecyclerView mRecyclerView = view.findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
 
@@ -56,7 +53,6 @@ public class FinishedEventListFragment extends Fragment {
         mEventAdapter.setOnEventClickListener(new EventAdapter.OnEventClickListener() {
             @Override
             public void onEventClick(Event event) {
-                Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
                 final NavController navController = Navigation.findNavController(view);
                 navController.navigate( FinishedEventListFragmentDirections.actionCompletedEventFragmentToEventDescriptionFragment2(event));
             }

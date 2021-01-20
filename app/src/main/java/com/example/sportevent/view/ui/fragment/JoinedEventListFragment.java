@@ -51,7 +51,6 @@ public class JoinedEventListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mEventAdapter.setOnEventClickListener(event -> {
-            Toast.makeText(getContext(), "EventFragment : " + event.getEventName(), Toast.LENGTH_SHORT).show();
             final NavController navController = Navigation.findNavController(view);
             navController.navigate( JoinedEventListFragmentDirections.actionJoinedEventFragmentToEventDescriptionFragment(event));
         });
