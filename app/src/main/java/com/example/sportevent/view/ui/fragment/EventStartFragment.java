@@ -107,7 +107,6 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
         address = view.findViewById(R.id.tempAddress);
 
         // insert latlng values for destination here
-        // TODO: 1/15/2021 make an easier way for organizer to create destinations (if time)
         destination = new LatLng(0,0);
 
         gps = view.findViewById(R.id.gpsSwitch);

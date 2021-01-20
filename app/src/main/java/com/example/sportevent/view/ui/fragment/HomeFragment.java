@@ -45,7 +45,6 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Todo: it's working but when I go to another app like google Map The view will be not being saved
         if (view != null)
             return view;
         view =  inflater.inflate(R.layout.fragment_home, container, false);

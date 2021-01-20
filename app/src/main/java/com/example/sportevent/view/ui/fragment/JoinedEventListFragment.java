@@ -25,8 +25,6 @@ import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.view.adapters.LAYOUT;
 import com.example.sportevent.utilities.Constants;
 
-// Todo check https://stackoverflow.com/questions/26621060/display-a-recyclerview-in-fragment
-// to use Runnable class
 public class JoinedEventListFragment extends Fragment {
    private EventAdapter mEventAdapter;
 
