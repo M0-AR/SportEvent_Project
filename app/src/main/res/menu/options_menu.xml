@@ -8,6 +8,11 @@
             app:showAsAction="never"/>
 
         <item
+            android:id="@+id/aboutUs"
+            android:title="About Us:"
+            app:showAsAction="never"/>
+
+        <item
             android:id="@+id/contactUs"
             android:title="@string/contact_us"
             app:showAsAction="never"/>

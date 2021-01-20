@@ -226,4 +226,9 @@
         app:destination="@id/homeFragment"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/aboutUs"
+        android:name="com.example.sportevent.view.ui.AboutUs"
+        android:label="activity_about_us"
+        tools:layout="@layout/activity_about_us" />
 </navigation>
