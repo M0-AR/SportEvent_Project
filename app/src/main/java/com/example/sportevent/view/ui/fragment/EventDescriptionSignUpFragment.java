@@ -88,12 +88,13 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
                         }).setPositiveButton("yes", (dialog, which) -> {
                             Date currentDate = new Date();
                             if (Logic.isUserAlreadySignUpToEvent(mEvent, SampleData.currentUserEmail)) {
-                                makeAlertDialog("Already sign up");
+                                makeAlertDialog("OPS...","Already sign up");
                             } else if (currentDate.before(mEvent.getJoinStartDate())) {
-                                makeAlertDialog("Sign up will be on " + mEvent.getJoinStartDate());
+                                makeAlertDialog("OPS...","Sign up will be on " + mEvent.getJoinStartDate());
                             } else if (currentDate.after(mEvent.getJoinEndDate())) {
-                                makeAlertDialog("Sign up has finished on " + mEvent.getJoinEndDate());
+                                makeAlertDialog("OPS...","Sign up has finished on " + mEvent.getJoinEndDate());
                             } else {
+                                makeAlertDialog("HOORAY", "Congratulations you just sign up");
                                 Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_LONG).show();
                                 mEvent.getJoinedEventParticipantsEmails().add(SampleData.currentUserEmail);
                                 mEventViewModel.createEvent(mEvent, mEvent.getId());
@@ -110,10 +111,10 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
         }
     }
 
-    private void makeAlertDialog(String s) {
+    private void makeAlertDialog(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
-                .setTitle("OPS...")
-                .setMessage(s)
+                .setTitle(title)
+                .setMessage(message)
                 .setPositiveButton("Ok", (dialog, which) -> {
                 });
         builder.create().show();

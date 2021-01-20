@@ -27,6 +27,8 @@ import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 
+import java.util.Date;
+
 public class ClosestEvent extends Fragment implements View.OnClickListener{
     public static final String TAG = "ClosestEvent";
     private Event mEvent;
@@ -38,7 +40,6 @@ public class ClosestEvent extends Fragment implements View.OnClickListener{
 
         mEventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
 
-        // TODO: 05/01/2021 Clean up
         mEvent = SampleData.signUpEventList.get(0);
 
         ImageView imageView = view.findViewById(R.id.imageView);
@@ -75,11 +76,16 @@ public class ClosestEvent extends Fragment implements View.OnClickListener{
                         .setNegativeButton("no", (dialog, which) -> {
 
                         }).setPositiveButton("yes", (dialog, which) -> {
-                            // TODO: 05/01/2021 Show an animation until the firestore is being updated
+                            Date currentDate = new Date();
                             if (Logic.isUserAlreadySignUpToEvent(mEvent, SampleData.currentUserEmail)) {
-                                Toast.makeText(getContext(), "Already sign up", Toast.LENGTH_SHORT).show();
+                                makeAlertDialog("OPS...","Already sign up");
+                            } else if (currentDate.before(mEvent.getJoinStartDate())) {
+                                makeAlertDialog("OPS...","Sign up will be on " + mEvent.getJoinStartDate());
+                            } else if (currentDate.after(mEvent.getJoinEndDate())) {
+                                makeAlertDialog("OPS...","Sign up has finished on " + mEvent.getJoinEndDate());
                             } else {
-                                Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_SHORT).show();
+                                makeAlertDialog("HOORAY", "Congratulations you just sign up");
+                                Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_LONG).show();
                                 mEvent.getJoinedEventParticipantsEmails().add(SampleData.currentUserEmail);
                                 mEventViewModel.createEvent(mEvent, mEvent.getId());
                                 mEventViewModel.getAllEvents().observe( this, requestCall -> {
@@ -90,9 +96,17 @@ public class ClosestEvent extends Fragment implements View.OnClickListener{
                         });
                 builder.create().show();
                 break;
-
             default:
                 break;
         }
+    }
+
+    private void makeAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("Ok", (dialog, which) -> {
+                });
+        builder.create().show();
     }
 }
