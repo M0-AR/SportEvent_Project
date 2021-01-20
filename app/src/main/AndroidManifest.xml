@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ui.AboutUs"></activity>
+        <activity android:name=".view.ui.TermAndCondition"></activity>
+        <activity android:name=".view.ui.AboutUs" />
         <activity
             android:name=".view.ui.fragment.ClosestEvent"
             tools:ignore="Instantiatable" />

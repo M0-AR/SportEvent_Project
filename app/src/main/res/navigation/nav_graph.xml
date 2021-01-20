@@ -231,4 +231,9 @@
         android:name="com.example.sportevent.view.ui.AboutUs"
         android:label="activity_about_us"
         tools:layout="@layout/activity_about_us" />
+    <fragment
+        android:id="@+id/termsAndConditions"
+        android:name="com.example.sportevent.view.ui.TermAndCondition"
+        android:label="activity_term_and_condition"
+        tools:layout="@layout/activity_term_and_condition" />
 </navigation>
