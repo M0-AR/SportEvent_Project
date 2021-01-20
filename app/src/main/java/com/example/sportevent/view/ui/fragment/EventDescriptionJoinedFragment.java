@@ -70,19 +70,17 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
                 if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                 } else {
-                    navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
+                    Date currentDate = new Date();
+                    if(currentDate.after(mEvent.getRaceStartDate()) && currentDate.before(mEvent.getRaceEndDate()))
+                        navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
+                    else {
+                        if (currentDate.before(mEvent.getRaceStartDate())) {
+                            makeAlertDialog("This event will start on " + mEvent.getRaceStartDate());
+                        } else {
+                            makeAlertDialog("This event has finished on " + mEvent.getRaceEndDate());
+                        }
+                    }
                 }
-                // TODO: 17/01/2021
-//                Date currentDate = new Date();
-//                if(currentDate.after(mEvent.getRaceStartDate()) && currentDate.before(mEvent.getRaceEndDate()))
-//                    navController.navigate(EventDescriptionJoinedFragmentDirections.actionEventDescriptionFragmentToStartEvent(mEvent));
-//                else {
-//                    if (currentDate.before(mEvent.getRaceStartDate())) {
-//                        makeAlertDialog("This event will start on " + mEvent.getRaceStartDate());
-//                    } else {
-//                        makeAlertDialog("This event has finished on " + mEvent.getRaceEndDate());
-//                    }
-//                }
                 break;
             default:
                 break;
