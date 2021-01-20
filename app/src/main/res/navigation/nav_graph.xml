@@ -236,4 +236,8 @@
         android:name="com.example.sportevent.view.ui.fragment.menu.TermAndCondition"
         android:label="activity_term_and_condition"
         tools:layout="@layout/activity_term_and_condition" />
+    <fragment
+        android:id="@+id/contactUs"
+        android:name="com.example.sportevent.view.ui.fragment.menu.ContactUs"
+        android:label="ContactUs" />
 </navigation>
