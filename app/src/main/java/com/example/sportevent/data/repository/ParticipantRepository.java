@@ -83,6 +83,7 @@ public class ParticipantRepository {
     }
 
     private void readParticipantResultData(String participantEmail, final FirebaseCallBackMap firebaseCallBackMap) {
+        if (participantEmail.isEmpty()) return; // TODO: 14/01/2021 Delete this when the app is finish
         DB.collection("Participants").document(participantEmail)
                 .collection("result")
                 .get()
