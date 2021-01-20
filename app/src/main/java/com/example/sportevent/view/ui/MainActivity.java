@@ -12,8 +12,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -30,6 +32,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import io.sentry.Sentry;
+import io.sentry.android.core.SentryAndroid;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,17 +46,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // sentry
-        try {
-            throw new Exception("This is a test.");
-        } catch (Exception e) {
-            Sentry.captureException(e);
-        }
-
         setContentView(R.layout.activity_main);
+
+        initSentry();
+
+
+
 
         EventViewModel viewModel = new ViewModelProvider(this).get(EventViewModel.class);
         viewModel.getAllEvents().observe( this, requestCall -> {
+            initSentryExecption("onCreate: get all eventList from cloud firestore: " + requestCall.message);
             Log.d(TAG, "onCreate: eventList: " + requestCall.eventList);
             SampleData.signUpEventList = requestCall.eventList;
             Logic.sortEventsByClosestDateToToday(SampleData.signUpEventList);
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
         participantViewModel.getAllParticipants().observe( this, requestCall -> {
+            initSentryExecption("onCreate: get all participants from cloude firestore: " + requestCall.message);
             Log.d(TAG, "onCreate: participantList: " + requestCall.participantList);
             SampleData.participants = requestCall.participantList;
         });
@@ -84,6 +87,33 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
     }
 
+    public void initSentry(){
+        boolean EMULATOR = Build.PRODUCT.contains("SDK") || Build.MODEL.contains("Emulator");
+        if(!EMULATOR) {
+            Context context = this.getApplicationContext();
+            String sentryDSN = "https://a22caf113b674befa0cfc6583f54df0b@o508120.ingest.sentry.io/5600164";
+            SentryAndroid.init(context , options -> {
+                options.setDsn(sentryDSN);
+                options.setDebug(true);
+                options.setSampleRate(1.0);
+                options.setAttachStacktrace(true);
+                options.setBeforeSend(((event, hint) -> {
+                    if(event.getTag("TAG") != null) return null;
+                    else
+                        return event;
+                }));
+            });
+        }
+    }
+
+    public void initSentryExecption(String message){
+        try {
+            throw new Exception(message);
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+    }
+
     public void hideBottomBar(boolean isHidden){
         bottomNavigationView.setVisibility(isHidden ? View.INVISIBLE : View.VISIBLE);
     }
@@ -105,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
+
+
 
 }
 
