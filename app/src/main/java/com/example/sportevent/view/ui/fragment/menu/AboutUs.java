@@ -26,11 +26,11 @@ public class AboutUs extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.activity_about_us, container, false);
         mTextView = view.findViewById(R.id.textView);
-        String aboutUs = "The app were being develop by: \n\n" +
-                "\tMohammad Javad Zamani\t\t\nTest@gmail.com\n\n" +
-                "\tBashar Khalad Bdawi\t\t\nbasharbdewi86@gmail.com\n\n" +
-                "\tAndrey Baskakov\t\t\nTest@gmail.com\n\n" +
-                "\tMohamad Ashmar\t\t\ns176492@student.dtu.dk";
+        String aboutUs = "The app were being developed by: \n\n" +
+                "\tMohammad Javad Zamani\t\t\n\tjvdzmn@gmail.com\n\n\n" +
+                "\tBashar Khalad Bdawi\t\t\n\tbasharbdewi86@gmail.com\n\n" +
+                "\tAndrey Baskakov\t\t\n\tflere2@outlook.dk\n\n\n" +
+                "\tMohamad Ashmar\t\t\n\ts176492@student.dtu.dk";
         mTextView.setText(aboutUs);
         return view;
     }
