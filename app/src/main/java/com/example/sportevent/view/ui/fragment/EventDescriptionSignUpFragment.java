@@ -95,7 +95,6 @@ public class EventDescriptionSignUpFragment extends Fragment implements View.OnC
                                 makeAlertDialog("OPS...","Sign up has finished on " + mEvent.getJoinEndDate());
                             } else {
                                 makeAlertDialog("HOORAY", "Congratulations you just sign up");
-                                Toast.makeText(getContext(), "Congratulations you just sign up", Toast.LENGTH_LONG).show();
                                 mEvent.getJoinedEventParticipantsEmails().add(SampleData.currentUserEmail);
                                 mEventViewModel.createEvent(mEvent, mEvent.getId());
                                 mEventViewModel.getAllEvents().observe( this, requestCall -> {
