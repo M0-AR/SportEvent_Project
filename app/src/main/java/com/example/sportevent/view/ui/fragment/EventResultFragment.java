@@ -16,7 +16,9 @@ import android.widget.TextView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.entities.Participant;
 import com.example.sportevent.data.model.entities.Result;
+import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 import com.example.sportevent.viewModel.ParticipantViewModel;
@@ -50,8 +52,8 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
         mMedal = view.findViewById(R.id.result_medal);
         mMedal.setText("Medal:\t\t" + mResult.getMedal());
         mName = view.findViewById(R.id.result_name);
-        // TODO: 19/01/2021 Put a participant name here need a method in Logic to get the right participant According to the email
-        mName.setText("Name:\t\tTest");
+        Participant participant = Logic.getParticipantByEmail(SampleData.participants, SampleData.currentUserEmail);
+        mName.setText("Name:\t\t" + participant.getName());
 
         mShareResult = view.findViewById(R.id.share_result);
         mShareResult.setOnClickListener(this);
