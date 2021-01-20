@@ -25,13 +25,14 @@ public class LogicTest {
         //Get a sign up list
         signUpList = new ArrayList<>();
         // Three have sign up to this event, and three finish the race of this event
-        firstEvent = new Event("0", 0 +" : ", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+          //  public Event(int id, int maxNumberOfParticipant, double distance, String imageURL, String eventName, String eventDescription, String location, List<String> joinedEventParticipantsEmails, List<String> finishedRaceParticipantsEmails, Date joinStartDate, Date joinEndDate, Date raceStartDate, Date raceEndDate) {
+            firstEvent = new Event(0,0,0.0, " : ","", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                 , Arrays.asList("md@gmail.com", "ar@gmail.com", "cr@gmail.com"),Arrays.asList("md@gmail.com", "ar@gmail.com"), new Date(), new Date(), new Date(), new Date() );
         // Three have sign up to this event, and two finish the race of this event
-        secondEvent = new Event("1", 1 +" : ", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+        secondEvent = new Event(1,1,1.0, 1 +" : ","", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                 , Arrays.asList("ar@gmail.com", "cr@gmail.com", "md@gmail.com"),Arrays.asList("ar@gmail.com", "cr@gmail.com"), new Date(), new Date(), new Date(), new Date() );
         // Two have sign up to this event, and no one finish the race of this event
-        thirdEvent = new Event("2", 2 +" : ", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+        thirdEvent = new Event(2,2,2.0,"", 2 +" : ", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                 , Arrays.asList("md@gmail.com", "ar@gmail.com"), null, new Date(), new Date(), new Date(), new Date() );
         signUpList.add(firstEvent);
         signUpList.add(secondEvent);
