@@ -28,7 +28,7 @@ public class AboutUs extends Fragment {
         mTextView = view.findViewById(R.id.textView);
         String aboutUs = "The app were being develop by: \n\n" +
                 "\tMohammad Javad Zamani\t\t\nTest@gmail.com\n\n" +
-                "\tBashar Khalad Bdawi\t\t\nTest@gmail.com\n\n" +
+                "\tBashar Khalad Bdawi\t\t\nbasharbdewi86@gmail.com\n\n" +
                 "\tAndrey Baskakov\t\t\nTest@gmail.com\n\n" +
                 "\tMohamad Ashmar\t\t\ns176492@student.dtu.dk";
         mTextView.setText(aboutUs);
