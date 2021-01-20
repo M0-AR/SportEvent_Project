@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context=".view.ui.AboutUs">
+    tools:context=".view.ui.fragment.menu.AboutUs">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

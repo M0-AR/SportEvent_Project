@@ -1,4 +1,4 @@
-package com.example.sportevent.view.ui;
+package com.example.sportevent.view.ui.fragment.menu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
