@@ -49,7 +49,7 @@ public class Logic {
 
 
     // O(n^2)
-    public static ArrayList<Event> sortEventsByClosestDateToToday(ArrayList<Event> events){
+    public static ArrayList<Event> sortEventStartDateInAscendingOrder(ArrayList<Event> events){
         ArrayList<Event> sortedEvents = events;
         for (int i = 0; i < events.size(); i++) {
             Event min = events.get(i);

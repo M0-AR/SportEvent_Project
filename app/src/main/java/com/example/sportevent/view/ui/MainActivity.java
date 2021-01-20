@@ -1,7 +1,6 @@
 package com.example.sportevent.view.ui;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,12 +11,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -47,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllEvents().observe( this, requestCall -> {
             Log.d(TAG, "onCreate: eventList: " + requestCall.eventList);
             SampleData.signUpEventList = requestCall.eventList;
-            Logic.sortEventsByClosestDateToToday(SampleData.signUpEventList);
+            Logic.sortEventStartDateInAscendingOrder(SampleData.signUpEventList);
         });
 
         ParticipantViewModel participantViewModel = new ViewModelProvider(this).get(ParticipantViewModel.class);
