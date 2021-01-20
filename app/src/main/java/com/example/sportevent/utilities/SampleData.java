@@ -10,6 +10,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * When we start running the app , the data is being loaded from
+ * the fireStore then the data is being stored here in these attributes
+ */
 public class SampleData {
     public static ArrayList<Participant> participants;
     public static HashMap<String, Result> participantResults;
@@ -25,6 +29,10 @@ public class SampleData {
 
     public static int countOneByOneSecond = 0;
 
+
+    /*
+     * The data below is a fake data which you can use it in junit test or whatever
+     */
     public static ArrayList<String> images;
     private static final String image_test_0 = "https://dur-duweb.newscyclecloud.com/storyimage/DU/20200313/SPORTS01/200319747/AR/0/AR-200319747.jpg";
     private static final String image_test_1 = "https://s3-eu-west-1.amazonaws.com/rb-cms/rbv5/production/uploads/cover_images/c87e85c695ec584acbf8c9665a5727021854/i1080x475.jpg";
@@ -35,14 +43,13 @@ public class SampleData {
     private static final String image_test_6 = "https://content.bikeroar.com/system/content/000/092/964/original/CriteriumRace.jpg";
     private static final String image_test_7 = "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2017/08/08/amateur-cyclists-mt-evans-colorado_s.jpg";
 
-    public static void initData() {
+    public static void initFakeData() {
         if (participants == null && joinedParticipantList == null && finishedParticipantList == null) {
             participants = new ArrayList<>();
             joinedParticipantList = new ArrayList<>();
             finishedParticipantList = new ArrayList<>();
         }
 
-        // TODO: 14/01/2021 Clean up
         for (int i = 0; i < 20; i++) {
             //participants.add(new Participant(i, "MD: "+i, "@gmail.com: "+i, "DTU: "+i, "00 00 00 0"+i,));
         }
@@ -92,8 +99,12 @@ public class SampleData {
             signUpEventList.add(new Event(images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
                     ,joinedParticipantList,finishedParticipantList, new Date(), new Date(), new Date(), new Date() ));
 */
-            signUpEventList.add(new Event(i,1000 ,25.0, images.get(i), i +" : "+ name, description,"https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
-                    , Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2),Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2), new Date(), new Date(), new Date(), new Date() ));
+            signUpEventList.add(new Event(i, i, 50.0, SampleData.images.get(i), i +" : ", "description","https://www.google.com/maps/dir/Copenhagen/Spain/@47.7297451,-4.5837011,5z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x4652533c5c803d23:0x4dd7edde69467b8!2m2!1d12.5683372!2d55.6760968!1m5!1m1!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!2m2!1d-3.74922!2d40.463667!3e1"
+                    , Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2),Arrays.asList("@gmail.com:"+i, "@gmail.com:"+i+1, "@gmail.com:"+i+2),
+                    new Date(2020 , 11 , 15 + i), // JoinStartDate
+                    new Date(2020, 11, 25 + i) ,  // JoinEndDate
+                    new Date(2021 , 11 , 15 + i), // RaceStartDate
+                    new Date(2021, 11, 25 + i)));
 
         }
 
