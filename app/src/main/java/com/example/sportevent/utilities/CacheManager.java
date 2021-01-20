@@ -17,6 +17,14 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is responsible for storing data in cash memory in specific bytes specified by
+ * the developer according to his future view and data that will be created in the future
+ * like fex. creating a new event or operate new users to reduce the usage of the
+ * main memory resources and pressure, and store the data locally at the same time
+ * which provides speed access to the data and save the time.
+ */
+
 public class CacheManager {
     public static final String TAG = "CacheManager";
     public static boolean DISK_CACHE_INITIALIZED = false;
@@ -25,7 +33,7 @@ public class CacheManager {
 
     public static void initializeCache(Context context) {
         try {
-            Reservoir.init(context, 20048); // In bytes todo Try to extended if need it
+            Reservoir.init(context, 20048); // In bytes
             DISK_CACHE_INITIALIZED = true;
         } catch (IOException e) {
             Log.e(TAG, "initializeCache: Reservoir failed");
