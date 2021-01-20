@@ -23,7 +23,6 @@ public class ParticipantRepository {
     ArrayList<Participant> participantList = new ArrayList<>();
     HashMap<String,Result> participantResultList = new HashMap<>();
 
-    // TODO: 12/01/2021 Not sure that we need application
     public ParticipantRepository(Application application) {
         this.mutableLiveData = new MutableLiveData<>();
     }
@@ -84,7 +83,6 @@ public class ParticipantRepository {
     }
 
     private void readParticipantResultData(String participantEmail, final FirebaseCallBackMap firebaseCallBackMap) {
-        if (participantEmail.isEmpty()) return; // TODO: 14/01/2021 Delete this when the app is finish
         DB.collection("Participants").document(participantEmail)
                 .collection("result")
                 .get()

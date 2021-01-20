@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
-import com.example.sportevent.data.model.entities.PersonalEventData;
 import com.example.sportevent.data.model.entities.Participant;
 import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
