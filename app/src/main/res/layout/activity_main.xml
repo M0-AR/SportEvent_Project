@@ -36,8 +36,9 @@
                     android:textColor="@android:color/white"
                     android:text="@string/sport_event_upper_bar_name"/>
                 <ImageView
+                    android:layout_marginRight="10dp"
                     android:id="@+id/logo"
-                    android:layout_width="45dp"
+                    android:layout_width="30dp"
                     android:layout_height="50dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/logo_white"

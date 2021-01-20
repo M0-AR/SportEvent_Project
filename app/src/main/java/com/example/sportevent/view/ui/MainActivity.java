@@ -29,6 +29,8 @@ import com.example.sportevent.viewModel.ParticipantViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import io.sentry.Sentry;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -41,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // sentry
+        try {
+            throw new Exception("This is a test.");
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+
         setContentView(R.layout.activity_main);
 
         EventViewModel viewModel = new ViewModelProvider(this).get(EventViewModel.class);

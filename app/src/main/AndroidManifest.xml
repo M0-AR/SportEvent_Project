@@ -48,6 +48,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        <meta-data android:name="io.sentry.dsn"
+            android:value="https://a22caf113b674befa0cfc6583f54df0b@o508120.ingest.sentry.io/5600164" />
+
+
     </application>
 
 </manifest>
