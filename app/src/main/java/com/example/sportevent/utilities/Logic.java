@@ -107,4 +107,14 @@ public class Logic {
         }
         return joinedEvent;
     }
+
+    public static Participant getParticipantByEmail(ArrayList<Participant> participants, String currentUserEmail) {
+        for (int i = 0; i < participants.size(); i++) {
+            if (participants.get(i).getEmail().equalsIgnoreCase(currentUserEmail)) {
+                return participants.get(i);
+            }
+        }
+        return null;
+    }
+
 }
