@@ -12,12 +12,16 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ui.fragment.menu.ContactUs"></activity>
-        <activity android:name=".view.ui.fragment.menu.TermAndCondition" />
-        <activity android:name=".view.ui.fragment.menu.AboutUs" />
+        <activity
+            android:name=".view.ui.fragment.menu.ContactUs"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".view.ui.fragment.menu.TermAndCondition"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".view.ui.fragment.menu.AboutUs"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".view.ui.fragment.ClosestEvent"
             tools:ignore="Instantiatable" />
