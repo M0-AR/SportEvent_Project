@@ -33,20 +33,6 @@
             android:layout_weight="1" />
 
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/participant_id_test"
-            android:textSize="15sp"
-            android:layout_marginStart="8dp"
-            android:ellipsize="end"
-            android:paddingRight="4dp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            />
-
-
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

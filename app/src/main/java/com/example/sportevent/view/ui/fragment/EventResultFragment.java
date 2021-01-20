@@ -75,8 +75,6 @@ public class EventResultFragment extends Fragment implements  View.OnClickListen
             SampleData.signUpEventList = requestCall.eventList;
         });
 
-        // Add result to the user
-        // TODO: 14/01/2021 Make the correct result
         mParticipantViewModel.createParticipantResult(SampleData.currentUserEmail, mEvent.getId(), mResult);
     }
 

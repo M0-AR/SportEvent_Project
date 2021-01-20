@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class SampleData {
     public static ArrayList<Participant> participants;
+    // String -> eventId
     public static HashMap<String, Result> participantResults;
 
     public static List<Participant> joinedParticipantList;

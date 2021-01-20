@@ -60,7 +60,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 mOnEventClickListener.onEventClick(mEventList.get(position));
         });
 
-        } // Todo how to cover this problem 9:37 https://www.youtube.com/watch?v=reSPN7mgshI&list=PLrnPJCHvNZuDihTpkRs6SpZhqgBqPU118&index=6
+        }
     }
 
     @Override
@@ -82,7 +82,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
 
     public interface OnEventClickListener {
-        // Todo why this suggest safe delete
         void onEventClick(Event event);
     }
 

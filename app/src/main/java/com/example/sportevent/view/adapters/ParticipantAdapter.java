@@ -36,8 +36,7 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
             Participant participant = mParticipantList.get(position);
 
             holder.mTextView1.setText(participant.getName());
-            holder.mTextView2.setText(participant.getId() + "");
-        } // Todo how to cover this problem 9:37 https://www.youtube.com/watch?v=reSPN7mgshI&list=PLrnPJCHvNZuDihTpkRs6SpZhqgBqPU118&index=6
+        }
     }
 
     @Override

@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.*;
+import com.example.sportevent.utilities.Logic;
+import com.example.sportevent.utilities.SampleData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +36,13 @@ public class ParticipantAdapter2 extends RecyclerView.Adapter<ParticipantAdapter
     public void onBindViewHolder(@NonNull ParticipantViewHolder holder, final int position) {
         if (mParticipantList != null) {
             Participant participant = mParticipantList.get(position);
-
+            //Result result = SampleData.participantResults.get(String.valueOf(mEvent.getId()))
             //race result data
-            // TODO: 12/01/2021 Make Result extend Participant
-            holder.mTextView3.setText((participant.getId()+1) + ((position < 9) ? "  " : ""));
-
+           // holder.mTextView3.setText((mResult.getPlaceNumber()) + ((position < 9) ? "  " : ""));
+            // TODO: 1/20/2021  
             holder.mTextView1.setText(participant.getName());
-            holder.mTextView2.setText((participant.getId()) + "");
-        } // Todo how to cover this problem 9:37 https://www.youtube.com/watch?v=reSPN7mgshI&list=PLrnPJCHvNZuDihTpkRs6SpZhqgBqPU118&index=6
+           // holder.mTextView2.setText( mResult.getHours() + ":" + mResult.getMinutes() + ":" + mResult.getSeconds());
+        }
     }
 
     @Override
