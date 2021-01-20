@@ -274,9 +274,10 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
             workManager.cancelAllWorkByTag("Count");*/
             workManager.cancelAllWorkByTag("Count");
 
-            int seconds = SampleData.countOneByOneSecond % 60;
-            int minuets = (seconds/60)%60;
-            int hours = (seconds/60)/60;
+            int totalSeconds = SampleData.countOneByOneSecond;
+            int seconds = totalSeconds % 60;
+            int minuets = (totalSeconds/60)%60;
+            int hours = (totalSeconds/60)/60;
             int placeNumber = mEvent.getFinishedRaceParticipantsEmails().size()+1;
             String medal = (placeNumber == 1) ? "Gold": (placeNumber == 2) ? "Silver": (placeNumber == 3) ? "Bronze": "SecondBronze";
             // TODO: 19/01/2021 Distance Logic: get latitude and longitude when the user click on finish race button then calculate the destination
