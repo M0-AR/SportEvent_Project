@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.sportevent.view.ui.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home"
+        tools:ignore="ExtraText">
+        <action
+            android:id="@+id/action_homeFragment_to_joinedEventFragment"
+            app:destination="@id/joinedEventFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+         />
+        <action
+            android:id="@+id/action_homeFragment_to_completedEventFragment"
+            app:destination="@id/completedEventFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_eventDescriptionSignUpFragment"
+            app:destination="@id/eventDescriptionSignUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/closestEvent"
+        android:name="com.example.sportevent.view.ui.fragment.ClosestEvent"
+        >
+        <action
+            android:id="@+id/action_closestEvent_to_participantListSignUpFragment"
+            app:destination="@id/participantListSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinedEventFragment"
+        android:name="com.example.sportevent.view.ui.fragment.JoinedEventListFragment"
+        android:label="joined_event_fragment"
+        tools:layout="@layout/fragment_list_event" >
+        <action
+            android:id="@+id/action_joinedEventFragment_to_eventDescriptionFragment"
+            app:destination="@id/eventDescriptionFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.sportevent.view.ui.fragment.HeadFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_loginEmail"
+            app:destination="@id/loginEmail"
+            app:enterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+
+        <action
+            android:id="@+id/action_login_to_createUser"
+            app:destination="@id/createUser"
+            app:enterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDescriptionFragment"
+        android:name="com.example.sportevent.view.ui.fragment.EventDescriptionJoinedFragment"
+        android:label="fragment_description_event"
+        tools:layout="@layout/fragment_description_event" >
+        <action
+            android:id="@+id/action_eventDescriptionFragment_to_participant"
+            app:destination="@id/ParticipantListJoinedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_eventDescriptionFragment_to_startEvent"
+            app:destination="@id/startEvent"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/ParticipantListJoinedFragment"
+        android:name="com.example.sportevent.view.ui.fragment.ParticipantListJoinedFragment"
+        android:label="fragment_list_participant_joined"
+        tools:layout="@layout/fragment_list_participant_joined" >
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/startEvent"
+        android:name="com.example.sportevent.view.ui.fragment.EventStartFragment"
+        android:label="fragment_start_event"
+        tools:layout="@layout/fragment_start_event" >
+        <action
+            android:id="@+id/action_startEvent_to_eventResultFragment"
+            app:destination="@id/eventResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventResultFragment"
+        android:name="com.example.sportevent.view.ui.fragment.EventResultFragment"
+        android:label="fragment_result_event"
+        tools:layout="@layout/fragment_result_event" >
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+        <argument
+            android:name="result"
+            app:argType="com.example.sportevent.data.model.entities.Result" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginEmail"
+        android:name="com.example.sportevent.view.ui.fragment.LoginEmailFragment"
+        android:label="fragment_login_email"
+        tools:layout="@layout/fragment_login_email" >
+        <action
+            android:id="@+id/action_loginEmail_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/createUser"
+        android:name="com.example.sportevent.view.ui.fragment.SignUpFragment"
+        android:label="fragment_create_user"
+        tools:layout="@layout/fragment_login_create_user" >
+        <action
+            android:id="@+id/action_createUser_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/participantListFragment2"
+        android:name="com.example.sportevent.view.ui.fragment.ParticipantListFinishedFragment"
+        android:label="fragment_list_participant_finished"
+        tools:layout="@layout/fragment_list_participant_finished" >
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/completedEventFragment"
+        android:name="com.example.sportevent.view.ui.fragment.FinishedEventListFragment"
+        android:label="completed_event_fragment"
+        tools:layout="@layout/fragment_list_event2" >
+        <action
+            android:id="@+id/action_completedEventFragment_to_eventDescriptionFragment2"
+            app:destination="@id/eventDescriptionFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDescriptionFragment2"
+        android:name="com.example.sportevent.view.ui.fragment.EventDescriptionFinishedFragment"
+        android:label="fragment_description_event2"
+        tools:layout="@layout/fragment_description_event2" >
+        <action
+            android:id="@+id/action_eventDescriptionFragment2_to_participantListFragment2"
+            app:destination="@id/participantListFragment2" />
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+        <action
+            android:id="@+id/action_eventDescriptionFragment2_to_eventResultFragment"
+            app:destination="@id/eventResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDescriptionSignUpFragment"
+        android:name="com.example.sportevent.view.ui.fragment.EventDescriptionSignUpFragment"
+        android:label="fragment_description_event1"
+        tools:layout="@layout/fragment_signup_description_event" >
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+        <action
+            android:id="@+id/action_eventDescriptionSignUpFragment_to_participantListSignUpFragment"
+            app:destination="@id/participantListSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/participantListSignUpFragment"
+        android:name="com.example.sportevent.view.ui.fragment.ParticipantListSingUpFragment"
+        android:label="fragment_list_participant_sign_up"
+        tools:layout="@layout/fragment_list_participant_sign_up" >
+        <argument
+            android:name="event"
+            app:argType="com.example.sportevent.data.model.entities.Event" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_closestEvent"
+        app:destination="@id/closestEvent"
+        app:enterAnim="@anim/slide_in_top"
+        app:exitAnim="@anim/slide_out_bottom"
+        app:popEnterAnim="@anim/slide_in_bottom"
+        app:popExitAnim="@anim/slide_out_top"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/aboutUs"
+        android:name="com.example.sportevent.view.ui.fragment.menu.AboutUs"
+        android:label="activity_about_us"
+        tools:layout="@layout/activity_about_us" />
+    <fragment
+        android:id="@+id/termsAndConditions"
+        android:name="com.example.sportevent.view.ui.fragment.menu.TermAndCondition"
+        android:label="activity_term_and_condition"
+        tools:layout="@layout/activity_term_and_condition" />
+    <fragment
+        android:id="@+id/contactUs"
+        android:name="com.example.sportevent.view.ui.fragment.menu.ContactUs"
+        android:label="ContactUs" />
+</navigation>
