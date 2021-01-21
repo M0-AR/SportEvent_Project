@@ -91,6 +91,7 @@ dependencies {
     implementation "androidx.work:work-runtime:$work_version"
 
 
-    // Add Sentry's SDK as a dependency.
+    // Add Sentry's SDK as a dependency
     implementation 'io.sentry:sentry-android:3.1.0'
+
 }
