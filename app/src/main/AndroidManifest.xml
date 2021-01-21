@@ -28,11 +28,9 @@
         <activity
             android:name=".view.ui.fragment.SignUpFragment"
             tools:ignore="Instantiatable" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBnR4ViXl40S9SvXdCt4g2lGg8jWr5ATA0" />
-
         <activity
             android:name=".view.ui.fragment.EventResultFragment"
             tools:ignore="Instantiatable" />
@@ -53,14 +51,17 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <meta-data android:name="io.sentry.dsn"
+            android:value="https://a22caf113b674befa0cfc6583f54df0b@o508120.ingest.sentry.io/5600164" />
+
+
     </application>
 
 </manifest>
