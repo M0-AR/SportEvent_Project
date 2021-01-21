@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import java.util.Collections;
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /****************************************************************
  *  The test here is according to the requirements.             *

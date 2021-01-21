@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.entities.Participant;
 import com.example.sportevent.data.model.entities.Result;
 import com.example.sportevent.data.model.process.RequestCall;

@@ -4,26 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
+import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.adapters.EventAdapter;
-import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.view.adapters.LAYOUT;
-import com.example.sportevent.utilities.Constants;
 
 public class FinishedEventListFragment extends Fragment {
     private EventAdapter mEventAdapter;

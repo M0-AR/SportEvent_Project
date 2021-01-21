@@ -24,8 +24,6 @@ import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.entities.Result;
 import com.example.sportevent.utilities.SampleData;
 
-import java.util.Objects;
-
 public class EventDescriptionFinishedFragment extends Fragment implements View.OnClickListener{
     private Event mEvent;
     @SuppressLint("ResourceAsColor")

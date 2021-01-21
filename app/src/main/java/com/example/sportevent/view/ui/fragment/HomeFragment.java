@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Event;
-import com.example.sportevent.data.model.entities.Result;
 import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.adapters.EventAdapter;
@@ -30,7 +29,6 @@ import com.example.sportevent.view.ui.MainActivity;
 import com.example.sportevent.viewModel.ParticipantViewModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 

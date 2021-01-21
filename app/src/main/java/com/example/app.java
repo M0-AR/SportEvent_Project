@@ -3,13 +3,6 @@ package com.example;
 import android.app.Application;
 import android.util.Log;
 
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
-import com.example.sportevent.data.model.process.RequestCall;
-import com.example.sportevent.utilities.CacheManager;
-import com.example.sportevent.viewModel.EventViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class app extends Application {

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,8 +27,6 @@ import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.viewModel.EventViewModel;
 
-import java.util.Calendar;
-import java.util.Comparator;
 import java.util.Date;
 
 public class EventDescriptionSignUpFragment extends Fragment implements View.OnClickListener{

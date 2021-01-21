@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sportevent.R;
-import com.example.sportevent.data.model.entities.*;
+import com.example.sportevent.data.model.entities.Participant;
+
 import java.util.ArrayList;
 import java.util.List;
 

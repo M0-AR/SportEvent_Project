@@ -12,8 +12,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.sportevent.data.model.entities.*;
 import com.example.sportevent.R;
+import com.example.sportevent.data.model.entities.Event;
 
 import java.util.List;
 

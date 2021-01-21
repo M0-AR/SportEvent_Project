@@ -1,10 +1,11 @@
 package com.example.sportevent.data.model.process;
 
-import com.example.sportevent.data.model.entities.*;
+import com.example.sportevent.data.model.entities.Event;
+import com.example.sportevent.data.model.entities.Participant;
+import com.example.sportevent.data.model.entities.Result;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class RequestCall {

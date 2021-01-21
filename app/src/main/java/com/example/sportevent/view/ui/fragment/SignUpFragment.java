@@ -1,15 +1,5 @@
 package com.example.sportevent.view.ui.fragment;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -18,16 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.sportevent.R;
 import com.example.sportevent.data.model.entities.Participant;
-import com.example.sportevent.data.model.process.RequestCall;
-import com.example.sportevent.utilities.Logic;
 import com.example.sportevent.utilities.LogicValidation;
 import com.example.sportevent.utilities.SampleData;
 import com.example.sportevent.view.ui.MainActivity;
-import com.example.sportevent.viewModel.EventViewModel;
 import com.example.sportevent.viewModel.ParticipantViewModel;
 
 public class SignUpFragment extends Fragment implements View.OnClickListener {

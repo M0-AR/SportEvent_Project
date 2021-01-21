@@ -3,14 +3,15 @@ package com.example.sportevent.utilities;
 import com.example.sportevent.data.model.entities.Event;
 import com.example.sportevent.data.model.entities.Participant;
 
-
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LogicTest {
     private ArrayList<Event> signUpList;
