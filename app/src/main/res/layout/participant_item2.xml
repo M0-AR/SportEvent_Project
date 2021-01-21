@@ -21,7 +21,7 @@
             android:ellipsize="end"
             android:maxLines="5"
             android:paddingRight="4dp"
-            android:text="nr"
+            android:text="placeNumber"
             android:textSize="15sp"
             />
 
@@ -48,7 +48,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/participant_id_test"
+            android:text="Timer"
             android:textSize="15sp"
             android:layout_marginEnd="8dp"
             android:maxLines="5"
