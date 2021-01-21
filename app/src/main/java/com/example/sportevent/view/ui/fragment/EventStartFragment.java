@@ -289,6 +289,7 @@ public class EventStartFragment extends Fragment implements OnMapReadyCallback, 
     }
 
     private void initStopWatchWorker() {
+        SampleData.countOneByOneSecond = 0;
         Data data = new Data.Builder()
                 .putInt(WORK_NUMBER_KEY, SIX_HOURS)
                 .build();

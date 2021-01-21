@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -50,6 +51,11 @@ public class EventDescriptionJoinedFragment extends Fragment implements View.OnC
         TextView textView2 = view.findViewById(R.id.textView2);
         textView2.setText(mEvent.getEventDescription());
         textView2.setMovementMethod(new ScrollingMovementMethod());
+        textView2.setOnLongClickListener(v -> {
+            Intent googleMaps= new Intent(Intent.ACTION_VIEW, Uri.parse(mEvent.getLocation()));
+            startActivity(googleMaps);
+            return false;
+        });
 
         final Button participantList = view.findViewById(R.id.participant_list);
         participantList.setOnClickListener(this);
