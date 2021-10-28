@@ -1,5 +1,6 @@
-## SportEvent_Project
+# SportEvent Project
 
+![Screenshot](Planche-1.jpg)
 
 ## 04/Jan/2021
     * UX 
@@ -52,8 +53,3 @@
           En fra hver gruppe laver en kort (12 minutter) demonstration af app'en over for lærere og censor
           Det er en fremvisning - ikke en eksamen.
           Nærmere beskrivelse og fremlæggelsesplan - opdateres
- 
-    
-## Rules for stakeholder 
-    * The id of docment in FireStore should be a number and same as id inside event 
-    *   
