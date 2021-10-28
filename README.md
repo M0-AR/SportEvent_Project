@@ -1,8 +1,10 @@
 # SportEvent Project
 
+The app is about -> Stakeholder create a sport event, where the user could join that event. 
+
 ![Screenshot](Planche-1.jpg)
 
-## 04/Jan/2021
+## 04/Jan/2021 -> Three weeks' plan
     * UX 
         * 06/01-2021 Grupper præsenterer deres app for Ian og får feedback på deres UX
         * 08/01-2021 De resterende grupper præsenterer deres app for Ian og får feedback på deres UX
